@@ -2,524 +2,198 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Korean Buddy 🌸🇰🇷</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Korean Buddy 🌸</title>
 
 <style>
-:root{
-  --pink:#ff6fae;
-  --purple:#7c5cff;
-  --blue:#4b9cff;
-  --green:#43c59e;
-  --yellow:#ffd45c;
-  --ink:#29263a;
-  --muted:#77758a;
-  --bg:#f8f7fc;
-  --card:#ffffff;
-  --line:#eceaf3;
-}
-
 *{box-sizing:border-box}
-
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  background:var(--bg);
-  color:var(--ink);
+  background:linear-gradient(180deg,#fff7fb,#f5f2ff);
+  color:#292335;
 }
-
-button{
-  font:inherit;
-  border:0;
-  cursor:pointer;
-}
-
-.app{
-  max-width:760px;
-  margin:auto;
-  min-height:100vh;
-  padding-bottom:90px;
-}
-
-header{
-  padding:18px 18px 12px;
-  position:sticky;
-  top:0;
-  z-index:20;
-  background:rgba(248,247,252,.94);
-  backdrop-filter:blur(12px);
-}
-
-.brand{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.brand h1{
-  margin:0;
-  font-size:25px;
-}
-
-.stats{
-  display:flex;
-  gap:7px;
-  flex-wrap:wrap;
-  margin-top:12px;
-}
-
-.pill{
-  background:white;
-  border:1px solid var(--line);
-  border-radius:999px;
-  padding:7px 11px;
-  font-size:13px;
-}
-
-main{
-  padding:8px 16px;
-}
-
-.page{display:none}
-.page.active{display:block}
-
-.hero{
-  background:linear-gradient(135deg,#fff0f7,#eeeaff);
-  border-radius:28px;
-  padding:24px;
-  margin:12px 0 18px;
-  border:1px solid #eee8fa;
-}
-
-.hero h2{
-  margin:0 0 8px;
-  font-size:27px;
-}
-
-.hero p{
-  margin:0;
-  line-height:1.5;
-  color:var(--muted);
-}
-
-.section-title{
-  margin:22px 0 11px;
-  font-size:20px;
-}
+.app{max-width:520px;margin:auto;padding:18px 16px 90px}
+header{text-align:center;padding:12px 0 18px}
+.logo{font-size:30px;font-weight:900}
+.subtitle{color:#777;margin-top:4px}
 
 .card{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:22px;
-  padding:17px;
-  margin:12px 0;
-  box-shadow:0 5px 20px rgba(48,38,80,.05);
-}
-
-.buddy-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:11px;
-}
-
-.buddy{
   background:white;
-  border:2px solid var(--line);
-  border-radius:22px;
-  padding:16px 10px;
-  text-align:center;
-  transition:.2s;
-}
-
-.buddy.selected{
-  border-color:var(--pink);
-  box-shadow:0 6px 20px rgba(255,111,174,.18);
-}
-
-.avatar{
-  font-size:48px;
-  display:block;
-  margin-bottom:5px;
-}
-
-.buddy.talking .avatar{
-  animation:bounce .45s infinite alternate;
-}
-
-@keyframes bounce{
-  from{transform:translateY(0) scale(1)}
-  to{transform:translateY(-5px) scale(1.06)}
-}
-
-.buddy-name{
-  font-weight:800;
-  font-size:18px;
-}
-
-.buddy-style{
-  font-size:12px;
-  color:var(--muted);
-  margin:4px 0 10px;
-}
-
-.btn{
-  width:100%;
-  padding:13px 15px;
-  border-radius:15px;
-  background:var(--purple);
-  color:white;
-  font-weight:750;
-  margin-top:8px;
-}
-
-.btn.secondary{
-  background:#f0edff;
-  color:#5b45cc;
-}
-
-.btn.pink{
-  background:var(--pink);
-}
-
-.btn.green{
-  background:var(--green);
-}
-
-.btn.dark{
-  background:#302c45;
-}
-
-.btn.small{
-  width:auto;
-  display:inline-block;
-  padding:9px 12px;
-  font-size:13px;
-}
-
-.phrase{
-  font-size:29px;
-  font-weight:800;
-  text-align:center;
-  margin:15px 0 5px;
-}
-
-.translation{
-  text-align:center;
-  color:var(--muted);
-  font-size:15px;
-}
-
-.roman{
-  text-align:center;
-  color:#8c6b9d;
-  font-size:14px;
-  margin-top:5px;
-}
-
-.audio{
-  background:#fff0f7;
-  color:#d63c7f;
-}
-
-.lesson-step{
-  display:flex;
-  gap:12px;
-  align-items:flex-start;
-  margin:12px 0;
-}
-
-.step-number{
-  min-width:32px;
-  height:32px;
-  border-radius:50%;
-  background:#eeeaff;
-  color:#6048d5;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:800;
-}
-
-.question{
-  font-size:20px;
-  font-weight:750;
-  text-align:center;
-  margin:18px 0;
-}
-
-.answers{
-  display:grid;
-  gap:10px;
-}
-
-.answer{
-  background:white;
-  border:2px solid var(--line);
-  border-radius:16px;
-  padding:15px;
-  text-align:left;
-  font-size:17px;
-}
-
-.answer.correct{
-  border-color:var(--green);
-  background:#ecfff8;
-}
-
-.answer.wrong{
-  border-color:#ff8b9e;
-  background:#fff0f3;
-}
-
-.feedback{
-  border-radius:17px;
-  padding:13px;
-  margin-top:12px;
-  line-height:1.45;
-  display:none;
-}
-
-.feedback.show{display:block}
-
-.feedback.good{
-  background:#eafff6;
-  color:#23765b;
-}
-
-.feedback.try{
-  background:#fff2f5;
-  color:#9c4256;
-}
-
-.voice-box{
-  text-align:center;
+  border-radius:25px;
   padding:20px;
+  margin:14px 0;
+  box-shadow:0 8px 25px #00000010;
+}
+h1,h2,h3{margin-top:0}
+button{
+  border:0;
+  border-radius:17px;
+  padding:13px 17px;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+}
+.primary{background:#7b61ff;color:white}
+.secondary{background:#f1edff;color:#5b46c6}
+.green{background:#e5f8ed;color:#197344}
+.pink{background:#ffe7f1;color:#c33870}
+.full{width:100%;margin-top:10px}
+
+.stats{
+ display:flex;
+ justify-content:space-around;
+ background:#fff;
+ border-radius:20px;
+ padding:14px;
+ box-shadow:0 6px 20px #00000008;
+}
+.stat{text-align:center;font-weight:800}
+.stat small{display:block;color:#888;font-weight:500}
+
+.buddies{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:12px;
+}
+.buddy{
+ padding:18px 10px;
+ text-align:center;
+ border-radius:22px;
+ background:#faf9ff;
+ border:2px solid transparent;
+}
+.buddy.active{border-color:#8067ff;background:#f2efff}
+.avatar{
+ width:76px;height:76px;
+ margin:auto;
+ border-radius:50%;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:42px;
+ background:#eee9ff;
+}
+.buddy h3{margin:8px 0 2px}
+.buddy p{margin:0;color:#777;font-size:13px}
+
+.hidden{display:none}
+.korean{
+ font-size:32px;
+ font-weight:900;
+ text-align:center;
+ margin:15px 0;
+}
+.translation{
+ text-align:center;
+ font-size:18px;
+ color:#666;
+}
+.listen{
+ display:block;
+ margin:12px auto;
+ background:#fff0f6;
+ color:#c83e73;
 }
 
-.mic{
-  width:90px;
-  height:90px;
-  border-radius:50%;
-  background:var(--pink);
-  color:white;
-  font-size:38px;
-  box-shadow:0 8px 25px rgba(255,111,174,.3);
+.progress{
+ height:10px;
+ background:#eee;
+ border-radius:20px;
+ overflow:hidden;
+}
+.progress div{
+ height:100%;
+ width:0%;
+ background:#7b61ff;
+ transition:.3s;
 }
 
-.mic.listening{
-  animation:pulse 1s infinite;
-  background:#e34c65;
+.option{
+ width:100%;
+ margin:7px 0;
+ background:#f7f5ff;
+ text-align:left;
 }
-
-@keyframes pulse{
-  0%{transform:scale(1)}
-  50%{transform:scale(1.09)}
-  100%{transform:scale(1)}
-}
-
-.listening-text{
-  min-height:25px;
-  margin:15px 0 5px;
-  font-weight:750;
-}
-
-.transcript{
-  background:#f7f5fb;
-  border-radius:15px;
-  padding:12px;
-  min-height:48px;
-  margin-top:10px;
-}
-
-.hangul-levels{
-  display:flex;
-  overflow-x:auto;
-  gap:8px;
-  padding-bottom:5px;
-}
-
-.level-btn{
-  flex:0 0 auto;
-  background:white;
-  border:1px solid var(--line);
-  padding:9px 13px;
-  border-radius:999px;
-}
-
-.level-btn.active{
-  background:var(--purple);
-  color:white;
-}
-
-.hangul-main{
-  text-align:center;
-}
-
-.hangul-char{
-  font-size:100px;
-  font-weight:800;
-  line-height:1;
-  margin:10px;
-}
-
-.hangul-name{
-  font-weight:800;
-  font-size:19px;
-}
-
-.hangul-sound{
-  color:var(--muted);
-}
-
-.practice-wrap{
-  position:relative;
-  width:100%;
-  height:260px;
-  margin-top:15px;
-  border:2px dashed #d9d5e8;
-  border-radius:20px;
-  overflow:hidden;
-  background:white;
-  touch-action:none;
-}
-
-.guide{
-  position:absolute;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:180px;
-  font-weight:800;
-  color:#e8e5ef;
-  pointer-events:none;
-}
-
-canvas{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  touch-action:none;
-}
-
-.practice-buttons{
-  display:flex;
-  gap:8px;
-}
-
-.practice-buttons .btn{
-  flex:1;
-}
-
-.print-sheet{
-  display:none;
-}
-
-.flash-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
+.option.correct{background:#dff7e8;color:#176b3e}
+.option.wrong{background:#ffe2e2;color:#a22}
 
 .flash{
-  background:white;
-  border:1px solid var(--line);
-  border-radius:20px;
-  padding:18px;
-  text-align:center;
+ text-align:center;
+ padding:25px;
+ border-radius:24px;
+ background:linear-gradient(135deg,#fff,#f4efff);
+}
+.flash .word{font-size:42px;font-weight:900}
+.flash .meaning{font-size:20px;color:#666}
+
+.hangul-grid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:10px;
+}
+.letter{
+ background:#faf8ff;
+ padding:18px 5px;
+ text-align:center;
+ border-radius:18px;
+ font-size:32px;
+ font-weight:900;
+}
+.letter small{
+ display:block;
+ font-size:12px;
+ color:#777;
+ margin-top:5px;
 }
 
-.flash-icon{
-  font-size:46px;
+.speakBox{
+ text-align:center;
+ padding:20px;
+ background:#f7f4ff;
+ border-radius:22px;
+}
+.mic{
+ width:90px;height:90px;
+ border-radius:50%;
+ background:#7b61ff;
+ color:white;
+ font-size:40px;
+}
+.status{
+ margin-top:12px;
+ font-weight:700;
+ min-height:25px;
 }
 
-.flash-korean{
-  font-size:31px;
-  font-weight:850;
-  margin:7px;
+nav{
+ position:fixed;
+ bottom:0;
+ left:0;
+ right:0;
+ background:white;
+ box-shadow:0 -5px 20px #0001;
+ padding:8px;
+ display:flex;
+ justify-content:space-around;
+ z-index:20;
 }
-
-.progressbar{
-  height:10px;
-  border-radius:20px;
-  background:#eceaf2;
-  overflow:hidden;
+nav button{
+ background:none;
+ padding:8px 5px;
+ font-size:12px;
+ color:#666;
 }
+nav button span{display:block;font-size:22px}
 
-.progressbar span{
-  display:block;
-  height:100%;
-  background:linear-gradient(90deg,var(--pink),var(--purple));
-  width:0%;
-}
-
-.nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  z-index:30;
-  background:rgba(255,255,255,.96);
-  border-top:1px solid var(--line);
-  backdrop-filter:blur(12px);
-}
-
-.nav-inner{
-  max-width:760px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(6,1fr);
-}
-
-.nav button{
-  background:none;
-  padding:9px 3px 12px;
-  color:#888497;
-  font-size:10px;
-}
-
-.nav button span{
-  display:block;
-  font-size:21px;
-  margin-bottom:2px;
-}
-
-.nav button.active{
-  color:var(--purple);
-  font-weight:800;
-}
-
-.notice{
-  background:#fff8df;
-  border:1px solid #f4e4a8;
-  border-radius:17px;
-  padding:13px;
-  font-size:13px;
-  line-height:1.45;
-}
-
-.unlock{
-  background:linear-gradient(135deg,#eafff7,#edf0ff);
-  border-radius:20px;
-  padding:18px;
-  text-align:center;
-  display:none;
-}
-
-.unlock.show{display:block}
-
-@media(min-width:650px){
-  .flash-grid{grid-template-columns:repeat(3,1fr)}
-}
-
-@media print{
-  body{background:white}
-  header,.nav,main>.page:not(#hangulPage){display:none!important}
-  #hangulPage{display:block!important}
-  .practice-wrap{display:none}
-  .print-sheet{display:block}
-  .no-print{display:none!important}
+.badge{
+ display:inline-block;
+ background:#eee9ff;
+ color:#6049c8;
+ border-radius:20px;
+ padding:6px 10px;
+ font-size:12px;
+ font-weight:800;
 }
 </style>
 </head>
@@ -529,1170 +203,573 @@ canvas{
 <div class="app">
 
 <header>
-  <div class="brand">
-    <h1>🌸 Korean Buddy</h1>
-    <div>🇰🇷</div>
-  </div>
-
-  <div class="stats">
-    <div class="pill">🔥 Día <b id="streak">105</b></div>
-    <div class="pill">⭐ <b id="xp">0</b> XP</div>
-    <div class="pill">🎯 <b id="skills">0</b> habilidades</div>
-  </div>
+  <div class="logo">Korean Buddy 🌸</div>
+  <div class="subtitle">Aprende coreano de verdad</div>
 </header>
 
-<main>
+<div class="stats">
+ <div class="stat">🔥 <span id="streak">1</span><small>días</small></div>
+ <div class="stat">⭐ <span id="xp">0</span><small>XP</small></div>
+ <div class="stat">🇰🇷 <span id="skills">0</span><small>habilidades</small></div>
+</div>
 
-<!-- INICIO -->
-<section id="homePage" class="page active">
+<!-- HOME -->
+<section id="home">
 
-  <div class="hero">
-    <h2>안녕하세요, Suhail! 🌸</h2>
-    <p>
-      Aprende coreano para poder <b>usarlo de verdad</b>.
-      Primero aprendemos. Después practicamos. Finalmente hablamos.
-    </p>
-  </div>
+<div class="card">
+ <span class="badge">BIENVENIDA</span>
+ <h2>¡Conoce a tus Buddies!</h2>
+ <p>
+ No tienes que escoger para siempre. Puedes cambiar de Buddy
+ cuando quieras y tu progreso se queda guardado.
+ </p>
+</div>
 
-  <h2 class="section-title">🌸 Conoce a tus Buddies</h2>
+<div class="buddies">
 
-  <div class="buddy-grid" id="buddyGrid"></div>
+<div class="buddy" onclick="showBuddy('sora')">
+ <div class="avatar">🌸</div>
+ <h3>Sora</h3>
+ <p>Paciente y dulce</p>
+ <button class="secondary full">Conocer</button>
+</div>
 
-  <div class="card">
-    <h3>🧠 Tu progreso real</h3>
-    <p>La meta no es solamente ganar XP.</p>
-    <p>La meta es poder decir cosas que antes no podías decir.</p>
+<div class="buddy" onclick="showBuddy('jin')">
+ <div class="avatar">🔥</div>
+ <h3>Jin</h3>
+ <p>Desafiante</p>
+ <button class="secondary full">Conocer</button>
+</div>
 
-    <div class="progressbar">
-      <span id="homeProgress"></span>
-    </div>
+<div class="buddy" onclick="showBuddy('mina')">
+ <div class="avatar">😂</div>
+ <h3>Mina</h3>
+ <p>Divertida</p>
+ <button class="secondary full">Conocer</button>
+</div>
 
-    <p id="progressText">Comenzando tu primera habilidad...</p>
-  </div>
+<div class="buddy" onclick="showBuddy('hana')">
+ <div class="avatar">👩🏻‍🏫</div>
+ <h3>Hana</h3>
+ <p>Profesora</p>
+ <button class="secondary full">Conocer</button>
+</div>
 
-</section>
+</div>
 
-
-<!-- LECCIONES -->
-<section id="lessonsPage" class="page">
-
-  <div class="hero">
-    <h2>📚 Lección 1</h2>
-    <p><b>¡Hola! Soy Suhail</b></p>
-    <p>Vamos a aprender antes de evaluarte. 😊</p>
-  </div>
-
-  <div class="card">
-    <div class="lesson-step">
-      <div class="step-number">1</div>
-      <div>
-        <b>Aprende</b>
-        <p>Escucha y entiende la frase.</p>
-      </div>
-    </div>
-
-    <div class="phrase">안녕하세요</div>
-    <div class="translation">Hola / Buenos días</div>
-    <div class="roman">annyeonghaseyo</div>
-
-    <button class="btn audio" onclick="speak('안녕하세요',0.75)">
-      🔊 Escuchar
-    </button>
-  </div>
-
-  <div class="card">
-    <div class="phrase">저는 수하일이에요</div>
-    <div class="translation">Yo soy Suhail</div>
-    <div class="roman">jeoneun Suhail-ieyo</div>
-
-    <button class="btn audio" onclick="speak('저는 수하일이에요',0.72)">
-      🔊 Escuchar
-    </button>
-  </div>
-
-  <div class="card">
-    <div class="phrase">잘 지냈어요?</div>
-    <div class="translation">¿Has estado bien?</div>
-    <div class="roman">jal jinaesseoyo?</div>
-
-    <button class="btn audio" onclick="speak('잘 지냈어요?',0.72)">
-      🔊 Escuchar
-    </button>
-  </div>
-
-  <div class="card">
-    <div class="lesson-step">
-      <div class="step-number">2</div>
-      <div>
-        <b>Ahora practica</b>
-        <p>¿Cómo responderías?</p>
-      </div>
-    </div>
-
-    <div class="question">잘 지냈어요?</div>
-
-    <div class="answers">
-      <button class="answer" onclick="answer(this,false)">
-        안녕하세요
-      </button>
-
-      <button class="answer" onclick="answer(this,true)">
-        네, 잘 지냈어요.
-      </button>
-
-      <button class="answer" onclick="answer(this,false)">
-        감사합니다
-      </button>
-    </div>
-
-    <div id="quizFeedback" class="feedback"></div>
-  </div>
-
-  <div id="unlock" class="unlock">
-    <h2>🔓 ¡Habilidad desbloqueada!</h2>
-    <p>Ahora puedes responder a <b>잘 지냈어요?</b></p>
-    <button class="btn green" onclick="go('talk')">
-      🎙️ Probar hablando
-    </button>
-  </div>
+<div class="card">
+ <h2>🇰🇷 Lección 1</h2>
+ <p><b>¡Hola! Soy Suhail</b></p>
+ <p>Primero aprenderás. Después practicarás. Finalmente hablaremos.</p>
+ <button class="primary full" onclick="startLesson()">▶️ Comenzar lección</button>
+</div>
 
 </section>
 
 
-<!-- HABLAR -->
-<section id="talkPage" class="page">
+<!-- BUDDY -->
+<section id="buddyPage" class="hidden">
 
-  <div class="hero">
-    <h2>🎙️ Habla con tu Buddy</h2>
-    <p>No tienes que mantener presionado.</p>
-    <p><b>Toca el micrófono, habla toda la frase y termina.</b></p>
-  </div>
+<div class="card" id="buddyCard"></div>
 
-  <div class="card voice-box">
+<button class="secondary full" onclick="speakCurrentBuddy()">🔊 Escuchar otra vez</button>
+<button class="primary full" onclick="startLesson()">📚 Probar una mini lección</button>
+<button class="secondary full" onclick="goHome()">← Volver</button>
 
-    <div id="talkBuddyAvatar" style="font-size:55px">🌸</div>
+</section>
 
-    <h3 id="talkBuddyName">Sora</h3>
 
-    <div class="phrase" style="font-size:24px">
-      잘 지냈어요?
-    </div>
+<!-- LESSON -->
+<section id="lesson" class="hidden">
 
-    <div class="translation">
-      ¿Has estado bien?
-    </div>
+<div class="card">
+ <span class="badge">LECCIÓN 1 · PARTE <span id="lessonPart">1</span>/3</span>
+ <div class="progress"><div id="lessonProgress"></div></div>
 
-    <br>
+ <h2 id="lessonTitle"></h2>
+ <div class="korean" id="lessonKorean"></div>
+ <div class="translation" id="lessonTranslation"></div>
 
-    <button id="micButton" class="mic" onclick="startVoice()">
-      🎙️
-    </button>
+ <button class="listen" onclick="speakLesson()">🔊 Escuchar coreano</button>
 
-    <div id="listeningText" class="listening-text">
-      🎙️ Toca para hablar
-    </div>
+ <p id="lessonExplanation"></p>
 
-    <div id="transcript" class="transcript">
-      Aquí aparecerá lo que el sistema escuchó.
-    </div>
+ <button class="primary full" id="lessonNext" onclick="nextLesson()">Entendido →</button>
+</div>
 
-    <div id="voiceFeedback" class="feedback"></div>
+<div id="quizBox" class="card hidden">
+ <h3 id="quizQuestion"></h3>
+ <div id="options"></div>
+</div>
 
-    <button class="btn audio" onclick="speak('잘 지냈어요?',0.72)">
-      🔊 Escuchar la pregunta
-    </button>
+</section>
 
-  </div>
 
-  <div class="notice">
-    💡 <b>Modo evaluación:</b> Korean Buddy no te dará un punto si solamente
-    reconoce una parte de tu respuesta. Primero tiene que recibir tu respuesta completa.
-  </div>
+<!-- SPEAK -->
+<section id="speak" class="hidden">
+
+<div class="card">
+ <span class="badge">🗣️ PRONUNCIACIÓN</span>
+ <h2>Habla con tu Buddy</h2>
+ <p>
+ <b>Regla de Korean Buddy:</b> no te damos el punto hasta que
+ termines de hablar. ❤️
+ </p>
+</div>
+
+<div class="speakBox">
+
+<div class="korean">안녕하세요</div>
+<div class="translation">Annyeonghaseyo · Hola</div>
+
+<button class="listen" onclick="speak('안녕하세요')">🔊 Escuchar</button>
+
+<button class="mic" onclick="startSpeech()">🎙️</button>
+
+<div class="status" id="speechStatus">
+ Toca el micrófono y habla la frase completa.
+</div>
+
+</div>
+
+<div class="card">
+ <h3>🎯 Evaluación</h3>
+ <p id="speechResult">
+ Aún no hemos evaluado tu respuesta.
+ </p>
+</div>
 
 </section>
 
 
 <!-- HANGUL -->
-<section id="hangulPage" class="page">
+<section id="hangul" class="hidden">
 
-  <div class="hero">
-    <h2>✍️ Hangul</h2>
-    <p>Aprende a reconocer, escuchar y escribir coreano.</p>
-  </div>
+<div class="card">
+ <span class="badge">✍️ HANGUL</span>
+ <h2>Aprende a escribir coreano</h2>
+ <p>
+ Modelo → observa → escucha → copia → escribe sola.
+ </p>
+</div>
 
-  <div class="hangul-levels">
-    <button class="level-btn active" onclick="hangulLevel(0,this)">1 · Consonantes</button>
-    <button class="level-btn" onclick="hangulLevel(1,this)">2 · Vocales</button>
-    <button class="level-btn" onclick="hangulLevel(2,this)">3 · Sílabas</button>
-    <button class="level-btn" onclick="hangulLevel(3,this)">4 · Palabras</button>
-    <button class="level-btn" onclick="hangulLevel(4,this)">5 · Frases</button>
-  </div>
+<div class="card">
+ <h3>Consonantes básicas</h3>
 
-  <div class="card hangul-main">
+<div class="hangul-grid">
 
-    <div class="hangul-char" id="hangulChar">ㄱ</div>
+<div class="letter" onclick="speak('기역')">ㄱ<small>기역 · giyeok 🔊</small></div>
+<div class="letter" onclick="speak('니은')">ㄴ<small>니은 · nieun 🔊</small></div>
+<div class="letter" onclick="speak('디귿')">ㄷ<small>디귿 · digeut 🔊</small></div>
+<div class="letter" onclick="speak('리을')">ㄹ<small>리을 · rieul 🔊</small></div>
+<div class="letter" onclick="speak('미음')">ㅁ<small>미음 · mieum 🔊</small></div>
+<div class="letter" onclick="speak('비읍')">ㅂ<small>비읍 · bieup 🔊</small></div>
+<div class="letter" onclick="speak('시옷')">ㅅ<small>시옷 · siot 🔊</small></div>
+<div class="letter" onclick="speak('이응')">ㅇ<small>이응 · ieung 🔊</small></div>
+<div class="letter" onclick="speak('지읒')">ㅈ<small>지읒 · jieut 🔊</small></div>
 
-    <div class="hangul-name" id="hangulName">기역</div>
-    <div class="hangul-sound" id="hangulSound">giyeok</div>
+</div>
+</div>
 
-    <button class="btn audio" onclick="speakHangul()">
-      🔊 Escuchar pronunciación
-    </button>
+<div class="card">
+ <h3>📝 Práctica</h3>
+ <p>Comienza mirando la letra y luego intenta escribirla tú.</p>
 
-    <div class="practice-wrap" id="practiceWrap">
-      <div class="guide" id="guide">ㄱ</div>
-      <canvas id="drawCanvas"></canvas>
-    </div>
+<div class="flash">
+ <div class="word">ㄱ</div>
+ <div class="meaning">기역 · giyeok</div>
+ <button class="listen" onclick="speak('기역')">🔊 Escuchar</button>
+</div>
 
-    <div class="practice-buttons">
-      <button class="btn secondary" onclick="clearCanvas()">🧹 Borrar</button>
-      <button class="btn green" onclick="finishWriting()">✓ Terminé</button>
-    </div>
-
-    <p id="writingMessage" style="color:#777"></p>
-
-  </div>
-
-  <div class="card no-print">
-    <h3>📝 Cómo practicar</h3>
-    <p>1️⃣ Mira el modelo.</p>
-    <p>2️⃣ Escucha cómo se pronuncia.</p>
-    <p>3️⃣ Traza con tu dedo o Apple Pencil.</p>
-    <p>4️⃣ Después intenta escribirla tú sola/o.</p>
-
-    <button class="btn pink" onclick="window.print()">
-      🖨️ IMPRIMIR HOJA
-    </button>
-  </div>
-
-  <div class="print-sheet">
-    <h1>🌸 Korean Buddy — Hoja de Hangul</h1>
-    <h2 id="printTitle">Practica ㄱ</h2>
-
-    <div style="font-size:100px;color:#ccc">
-      <span id="printChar">ㄱ</span>
-      <span id="printChar2">ㄱ</span>
-      <span id="printChar3">ㄱ</span>
-    </div>
-
-    <hr>
-
-    <h3>✍️ Traza</h3>
-    <div style="font-size:100px;color:#ddd">
-      <span id="printTrace">ㄱ ㄱ ㄱ</span>
-    </div>
-
-    <h3>✍️ Copia</h3>
-    <div style="height:130px;border-bottom:2px solid #999"></div>
-
-    <h3>✍️ Escribe sola/o</h3>
-    <div style="height:180px;border-bottom:2px solid #999"></div>
-  </div>
+<p><b>Próximamente:</b> hojas de trazado imprimibles y práctica de escritura con lápiz/táctil.</p>
+</div>
 
 </section>
 
 
-<!-- LAMINAS -->
-<section id="flashPage" class="page">
+<!-- FLASHCARDS -->
+<section id="flash" class="hidden">
 
-  <div class="hero">
-    <h2>🖼️ Láminas</h2>
-    <p>Aprende palabras relacionándolas con imágenes.</p>
-  </div>
+<div class="card">
+ <span class="badge">🖼️ LÁMINAS</span>
+ <h2>Aprende con imágenes</h2>
+ <p>Toca una palabra para escuchar cómo se pronuncia.</p>
+</div>
 
-  <div class="flash-grid" id="flashGrid"></div>
+<div class="card flash">
+ <div style="font-size:65px">☕</div>
+ <div class="word">커피</div>
+ <div class="meaning">Café · keopi</div>
+ <button class="primary" onclick="speak('커피')">🔊 Escuchar</button>
+</div>
 
-</section>
+<div class="card flash">
+ <div style="font-size:65px">💧</div>
+ <div class="word">물</div>
+ <div class="meaning">Agua · mul</div>
+ <button class="primary" onclick="speak('물')">🔊 Escuchar</button>
+</div>
 
+<div class="card flash">
+ <div style="font-size:65px">🍰</div>
+ <div class="word">케이크</div>
+ <div class="meaning">Pastel · keikeu</div>
+ <button class="primary" onclick="speak('케이크')">🔊 Escuchar</button>
+</div>
 
-<!-- PROGRESO -->
-<section id="progressPage" class="page">
-
-  <div class="hero">
-    <h2>🏆 Tu progreso</h2>
-    <p>Aquí importa lo que realmente puedes hacer.</p>
-  </div>
-
-  <div class="card">
-    <h3>🔥 Constancia</h3>
-    <div style="font-size:34px;font-weight:850">Día 105</div>
-    <p>¡La racha continúa!</p>
-  </div>
-
-  <div class="card">
-    <h3>⭐ XP</h3>
-    <div style="font-size:34px;font-weight:850" id="progressXP">0</div>
-  </div>
-
-  <div class="card">
-    <h3>🧠 Lo que YA puedes hacer</h3>
-    <div id="skillsList">
-      <p>🔒 Saludar en coreano</p>
-      <p>🔒 Decir tu nombre</p>
-      <p>🔒 Preguntar cómo está alguien</p>
-      <p>🔒 Responder cómo estás</p>
-    </div>
-  </div>
+<div class="card flash">
+ <div style="font-size:65px">🥬</div>
+ <div class="word">김치</div>
+ <div class="meaning">Kimchi · gimchi</div>
+ <button class="primary" onclick="speak('김치')">🔊 Escuchar</button>
+</div>
 
 </section>
 
-</main>
 
+<!-- PROGRESS -->
+<section id="progress" class="hidden">
 
-<nav class="nav">
-  <div class="nav-inner">
+<div class="card">
+ <h2>🏆 Mi progreso</h2>
+ <p>Tu progreso se guarda en este dispositivo.</p>
 
-    <button onclick="go('home')" class="active" id="nav-home">
-      <span>🏠</span>Inicio
-    </button>
+ <div class="stats">
+  <div class="stat">⭐ <span id="xp2">0</span><small>XP</small></div>
+  <div class="stat">🇰🇷 <span id="skills2">0</span><small>habilidades</small></div>
+ </div>
+</div>
 
-    <button onclick="go('lessons')" id="nav-lessons">
-      <span>📚</span>Lecciones
-    </button>
+<div class="card">
+ <h3>🧠 Lo que ya puedes hacer</h3>
+ <p>⬜ Saludar en coreano</p>
+ <p>⬜ Decir tu nombre</p>
+ <p>⬜ Entender una pregunta básica</p>
+ <p>⬜ Pedir algo</p>
+ <p>⬜ Reconocer Hangul</p>
+</div>
 
-    <button onclick="go('talk')" id="nav-talk">
-      <span>🎙️</span>Hablar
-    </button>
-
-    <button onclick="go('hangul')" id="nav-hangul">
-      <span>✍️</span>Hangul
-    </button>
-
-    <button onclick="go('flash')" id="nav-flash">
-      <span>🖼️</span>Láminas
-    </button>
-
-    <button onclick="go('progress')" id="nav-progress">
-      <span>🏆</span>Progreso
-    </button>
-
-  </div>
-</nav>
+</section>
 
 </div>
 
 
+<nav>
+<button onclick="showSection('home')"><span>🏠</span>Inicio</button>
+<button onclick="showSection('lesson')"><span>📚</span>Lecciones</button>
+<button onclick="showSection('speak')"><span>🗣️</span>Hablar</button>
+<button onclick="showSection('hangul')"><span>✍️</span>Hangul</button>
+<button onclick="showSection('flash')"><span>🖼️</span>Láminas</button>
+<button onclick="showSection('progress')"><span>🏆</span>Progreso</button>
+</nav>
+
+
 <script>
 
-/* =========================
-   DATOS
-========================= */
+let xp=Number(localStorage.getItem("kb_xp")||0);
+let skills=Number(localStorage.getItem("kb_skills")||0);
+let currentBuddy="sora";
+let lessonStep=0;
 
-const buddies = [
-
- {
-  id:"sora",
+const buddies={
+ sora:{
   name:"Sora",
+  emoji:"🌸",
   korean:"안녕하세요! 저는 소라예요.",
-  spanish:"¡Hola! Soy Sora. Me gusta enseñar con paciencia y ayudarte paso a paso.",
-  avatar:"🌸",
-  style:"Dulce · paciente · tranquila",
-  pitch:1.22,
-  rate:.88
+  translation:"¡Hola! Soy Sora. Me encanta aprender contigo. Iremos paso a paso. 💕",
+  style:"Paciente, dulce y tranquila.",
+  rate:.78,
+  pitch:1.25
  },
-
- {
-  id:"jin",
+ jin:{
   name:"Jin",
+  emoji:"🔥",
   korean:"안녕하세요! 저는 진이에요.",
-  spanish:"¡Hola! Soy Jin. Vamos a esforzarnos. No mires la respuesta demasiado rápido. 😏",
-  avatar:"🔥",
-  style:"Energético · retador · motivador",
-  pitch:.88,
-  rate:1.05
+  translation:"¡Hola! Soy Jin. Prepárate para aprender y superarte. 😏",
+  style:"Energético, exigente y motivador.",
+  rate:1.05,
+  pitch:.9
  },
-
- {
-  id:"mina",
+ mina:{
   name:"Mina",
+  emoji:"😂",
   korean:"안녕하세요! 저는 미나예요!",
-  spanish:"¡Hola! Soy Mina. Vamos a aprender sin aburrirnos. 😂",
-  avatar:"😂",
-  style:"Divertida · juguetona · creativa",
-  pitch:1.3,
-  rate:1.03
+  translation:"¡Hola! Soy Mina. ¡Vamos a aprender coreano sin aburrirnos! 😂",
+  style:"Divertida, juguetona y espontánea.",
+  rate:1,
+  pitch:1.35
  },
-
- {
-  id:"hana",
+ hana:{
   name:"Hana",
+  emoji:"👩🏻‍🏫",
   korean:"안녕하세요. 저는 하나예요.",
-  spanish:"Hola. Soy Hana. Te explicaré el coreano de forma clara y ordenada.",
-  avatar:"👩🏻‍🏫",
-  style:"Profesora · estructurada · clara",
-  pitch:1,
-  rate:.9
+  translation:"Hola. Soy Hana. Te explicaré el coreano de forma clara y ordenada.",
+  style:"Estructurada, clara y profesional.",
+  rate:.82,
+  pitch:1.05
+ }
+};
+
+const lesson=[
+ {
+  korean:"안녕하세요",
+  translation:"Hola",
+  explanation:"Esta es una de las formas más importantes de saludar en coreano. Es educada y puedes usarla con casi cualquier persona."
+ },
+ {
+  korean:"저는 수하일이에요",
+  translation:"Soy Suhail / Mi nombre es Suhail",
+  explanation:"저는 significa 'yo'. 수하일 es Suhail. 이에요 es una forma educada de decir 'soy/es'."
+ },
+ {
+  korean:"잘 지냈어요?",
+  translation:"¿Has estado bien?",
+  explanation:"Ahora ya puedes iniciar una pequeña conversación. Escucha primero y después intentaremos responder."
  }
 ];
 
-const flashcards = [
-
- {icon:"💧",word:"물",roman:"mul",meaning:"agua"},
- {icon:"☕",word:"커피",roman:"keopi",meaning:"café"},
- {icon:"🍰",word:"케이크",roman:"keikeu",meaning:"pastel"},
- {icon:"🥬",word:"김치",roman:"gimchi",meaning:"kimchi"},
- {icon:"⬜",word:"두부",roman:"dubu",meaning:"tofu"},
- {icon:"🧑‍🤝‍🧑",word:"친구",roman:"chingu",meaning:"amigo/a"},
- {icon:"🍎",word:"사과",roman:"sagwa",meaning:"manzana"},
- {icon:"🏫",word:"학교",roman:"hakgyo",meaning:"escuela"}
-];
-
-const hangulData = [
-
- [
-  {char:"ㄱ",name:"기역",sound:"giyeok",speak:"기역"},
-  {char:"ㄴ",name:"니은",sound:"nieun",speak:"니은"},
-  {char:"ㄷ",name:"디귿",sound:"digeut",speak:"디귿"},
-  {char:"ㄹ",name:"리을",sound:"rieul",speak:"리을"},
-  {char:"ㅁ",name:"미음",sound:"mieum",speak:"미음"},
-  {char:"ㅂ",name:"비읍",sound:"bieup",speak:"비읍"},
-  {char:"ㅅ",name:"시옷",sound:"siot",speak:"시옷"},
-  {char:"ㅇ",name:"이응",sound:"ieung",speak:"이응"}
- ],
-
- [
-  {char:"ㅏ",name:"아",sound:"a",speak:"아"},
-  {char:"ㅑ",name:"야",sound:"ya",speak:"야"},
-  {char:"ㅓ",name:"어",sound:"eo",speak:"어"},
-  {char:"ㅕ",name:"여",sound:"yeo",speak:"여"},
-  {char:"ㅗ",name:"오",sound:"o",speak:"오"},
-  {char:"ㅛ",name:"요",sound:"yo",speak:"요"},
-  {char:"ㅜ",name:"우",sound:"u",speak:"우"},
-  {char:"ㅠ",name:"유",sound:"yu",speak:"유"}
- ],
-
- [
-  {char:"가",name:"가",sound:"ga",speak:"가"},
-  {char:"나",name:"나",sound:"na",speak:"나"},
-  {char:"다",name:"다",sound:"da",speak:"다"},
-  {char:"라",name:"라",sound:"ra",speak:"라"},
-  {char:"마",name:"마",sound:"ma",speak:"마"},
-  {char:"바",name:"바",sound:"ba",speak:"바"},
-  {char:"사",name:"사",sound:"sa",speak:"사"}
- ],
-
- [
-  {char:"물",name:"물",sound:"mul",speak:"물"},
-  {char:"커피",name:"커피",sound:"keopi",speak:"커피"},
-  {char:"친구",name:"친구",sound:"chingu",speak:"친구"},
-  {char:"케이크",name:"케이크",sound:"keikeu",speak:"케이크"}
- ],
-
- [
-  {char:"안녕하세요",name:"안녕하세요",sound:"annyeonghaseyo",speak:"안녕하세요"},
-  {char:"감사합니다",name:"감사합니다",sound:"gamsahamnida",speak:"감사합니다"},
-  {char:"저는 수하일이에요",name:"저는 수하일이에요",sound:"jeoneun Suhail-ieyo",speak:"저는 수하일이에요"}
- ]
-
-];
-
-
-/* =========================
-   ESTADO
-========================= */
-
-let selectedBuddy =
- localStorage.getItem("kb_buddy") || "sora";
-
-let xp =
- Number(localStorage.getItem("kb_xp") || 0);
-
-let skillCount =
- Number(localStorage.getItem("kb_skills") || 0);
-
-let currentHangulLevel=0;
-let currentHangulIndex=0;
-
-let recognition=null;
-let listening=false;
-
-let canvas;
-let ctx;
-let drawing=false;
-
-
-/* =========================
-   NAVEGACION
-========================= */
-
-function go(page){
-
- document.querySelectorAll(".page")
- .forEach(p=>p.classList.remove("active"));
-
- document.getElementById(page+"Page")
- .classList.add("active");
-
- document.querySelectorAll(".nav button")
- .forEach(b=>b.classList.remove("active"));
-
- const nav=document.getElementById("nav-"+page);
-
- if(nav) nav.classList.add("active");
-
- window.scrollTo({top:0,behavior:"smooth"});
+function updateStats(){
+ document.getElementById("xp").textContent=xp;
+ document.getElementById("xp2").textContent=xp;
+ document.getElementById("skills").textContent=skills;
+ document.getElementById("skills2").textContent=skills;
 }
 
-
-/* =========================
-   BUDDIES
-========================= */
-
-function renderBuddies(){
-
- const grid=document.getElementById("buddyGrid");
-
- grid.innerHTML=buddies.map(b=>`
-
- <div class="buddy ${selectedBuddy===b.id?"selected":""}" id="buddy-${b.id}">
-
-   <span class="avatar">${b.avatar}</span>
-
-   <div class="buddy-name">${b.name}</div>
-
-   <div class="buddy-style">${b.style}</div>
-
-   <button class="btn secondary"
-     onclick="introduceBuddy('${b.id}')">
-     👋 Conocer
-   </button>
-
-   <button class="btn"
-     onclick="chooseBuddy('${b.id}')">
-     ${selectedBuddy===b.id?"✓ Mi Buddy":"Elegir"}
-   </button>
-
- </div>
-
- `).join("");
-
- updateTalkBuddy();
+function save(){
+ localStorage.setItem("kb_xp",xp);
+ localStorage.setItem("kb_skills",skills);
+ updateStats();
 }
 
-function chooseBuddy(id){
-
- selectedBuddy=id;
-
- localStorage.setItem("kb_buddy",id);
-
- renderBuddies();
-
- const b=buddies.find(x=>x.id===id);
-
- addXP(5);
-
- setTimeout(()=>{
-   speak(b.korean,b.rate,b.pitch);
- },100);
-}
-
-function introduceBuddy(id){
-
- const b=buddies.find(x=>x.id===id);
-
- const el=document.getElementById("buddy-"+id);
-
- if(el) el.classList.add("talking");
-
- speak(b.korean,b.rate,b.pitch,()=>{
-
-   if(el) el.classList.remove("talking");
-
-   alert(
-     b.korean+
-     "\n\n🇪🇸 "+b.spanish+
-     "\n\n"+b.name+" puede ser tu Buddy. Puedes cambiarlo cuando quieras."
-   );
-
- });
-
-}
-
-function updateTalkBuddy(){
-
- const b=buddies.find(x=>x.id===selectedBuddy);
-
- if(!b)return;
-
- document.getElementById("talkBuddyAvatar").textContent=b.avatar;
- document.getElementById("talkBuddyName").textContent=b.name;
-}
-
-
-/* =========================
-   VOZ
-========================= */
-
-function koreanVoice(){
-
- const voices=window.speechSynthesis?
- window.speechSynthesis.getVoices():[];
-
- return voices.find(v=>
-   v.lang && v.lang.toLowerCase().startsWith("ko")
- ) || null;
-}
-
-function speak(text,rate=.8,pitch=1,done){
-
- if(!window.speechSynthesis){
-
-   if(done)done();
-
-   return;
+function speak(text,rate=0.85,pitch=1){
+ if(!("speechSynthesis" in window)){
+  alert("Tu navegador no permite reproducir voz aquí.");
+  return;
  }
-
- window.speechSynthesis.cancel();
-
+ speechSynthesis.cancel();
  const u=new SpeechSynthesisUtterance(text);
-
  u.lang="ko-KR";
  u.rate=rate;
  u.pitch=pitch;
-
- const v=koreanVoice();
-
- if(v)u.voice=v;
-
- u.onend=()=>{
-
-   if(done)done();
-
- };
-
- window.speechSynthesis.speak(u);
+ speechSynthesis.speak(u);
 }
 
-if(window.speechSynthesis){
- window.speechSynthesis.onvoiceschanged=()=>{};
+function speakCurrentBuddy(){
+ const b=buddies[currentBuddy];
+ speak(b.korean,b.rate,b.pitch);
 }
 
+function showBuddy(id){
+ currentBuddy=id;
+ const b=buddies[id];
 
-/* =========================
-   LECCION
-========================= */
+ document.getElementById("home").classList.add("hidden");
+ document.getElementById("buddyPage").classList.remove("hidden");
 
-function answer(button,correct){
+ document.getElementById("buddyCard").innerHTML=`
+   <div style="text-align:center">
+    <div class="avatar" style="width:110px;height:110px;font-size:65px">${b.emoji}</div>
+    <h1>${b.name}</h1>
+    <span class="badge">${b.style}</span>
+    <div class="korean">${b.korean}</div>
+    <div class="translation">${b.translation}</div>
+    <button class="listen" onclick="speakCurrentBuddy()">🔊 Escuchar a ${b.name}</button>
+    <p><b>Así aprenderás conmigo:</b><br>${b.style}</p>
+   </div>
+ `;
 
- document
- .querySelectorAll(".answer")
- .forEach(b=>b.disabled=true);
+ setTimeout(speakCurrentBuddy,400);
+}
 
- const feedback=document.getElementById("quizFeedback");
+function goHome(){
+ document.getElementById("buddyPage").classList.add("hidden");
+ document.getElementById("home").classList.remove("hidden");
+}
 
- feedback.className="feedback show";
+function showSection(id){
+ document.querySelectorAll("section").forEach(s=>s.classList.add("hidden"));
+ document.getElementById(id).classList.remove("hidden");
 
- if(correct){
+ if(id==="lesson" && lessonStep===0) loadLesson();
+}
 
-   button.classList.add("correct");
+function startLesson(){
+ lessonStep=0;
+ showSection("lesson");
+ loadLesson();
+}
 
-   feedback.classList.add("good");
+function loadLesson(){
+ const item=lesson[lessonStep];
 
-   feedback.innerHTML=
-   "🎉 <b>¡Correcto!</b><br>"+
-   "네, 잘 지냈어요. significa “Sí, he estado bien”.";
+ document.getElementById("lessonPart").textContent=lessonStep+1;
+ document.getElementById("lessonProgress").style.width=((lessonStep+1)/3*100)+"%";
+ document.getElementById("lessonKorean").textContent=item.korean;
+ document.getElementById("lessonTranslation").textContent=item.translation;
+ document.getElementById("lessonExplanation").textContent=item.explanation;
 
-   addXP(15);
+ document.getElementById("quizBox").classList.add("hidden");
+ document.getElementById("lessonNext").textContent=
+   lessonStep===2 ? "Practicar →" : "Ya entendí →";
 
-   document.getElementById("unlock")
-   .classList.add("show");
+ setTimeout(speakLesson,350);
+}
 
+function speakLesson(){
+ const item=lesson[lessonStep];
+ speak(item.korean,buddies[currentBuddy].rate,buddies[currentBuddy].pitch);
+}
+
+function nextLesson(){
+ if(lessonStep<2){
+  lessonStep++;
+  loadLesson();
  }else{
-
-   button.classList.add("wrong");
-
-   feedback.classList.add("try");
-
-   feedback.innerHTML=
-   "😊 Casi. La pregunta <b>잘 지냈어요?</b> significa “¿Has estado bien?”.<br><br>"+
-   "Una respuesta natural es <b>네, 잘 지냈어요.</b>";
-
-   setTimeout(()=>{
-
-     document
-     .querySelectorAll(".answer")
-     .forEach(b=>b.disabled=false);
-
-   },1000);
+  startQuiz();
  }
 }
 
+function startQuiz(){
+ document.getElementById("lessonNext").classList.add("hidden");
+ document.getElementById("quizBox").classList.remove("hidden");
 
-/* =========================
-   HABLAR
-========================= */
+ document.getElementById("quizQuestion").textContent=
+ "¿Cómo respondes a “잘 지냈어요?”";
 
-function startVoice(){
+ const options=[
+  ["감사합니다","wrong"],
+  ["잘 지냈어요","correct"],
+  ["안녕하세요","wrong"]
+ ];
 
- if(listening)return;
+ document.getElementById("options").innerHTML=
+ options.map((o,i)=>
+ `<button class="option" onclick="answer(${i})">${o[0]}</button>`
+ ).join("");
+}
+
+function answer(i){
+ const buttons=document.querySelectorAll(".option");
+
+ if(i===1){
+  buttons[i].classList.add("correct");
+  xp+=10;
+  skills++;
+  save();
+
+  document.getElementById("quizBox").innerHTML=`
+   <h2>🎉 ¡Muy bien!</h2>
+   <p>Ahora puedes responder:</p>
+   <div class="korean">잘 지냈어요</div>
+   <p style="text-align:center">Has desbloqueado una habilidad real.</p>
+   <button class="primary full" onclick="showSection('speak')">🗣️ Ahora quiero hablar</button>
+  `;
+ }else{
+  buttons[i].classList.add("wrong");
+  document.getElementById("quizQuestion").textContent=
+   "Casi. No pasa nada. Escucha otra vez y prueba nuevamente. ❤️";
+  speak("잘 지냈어요");
+ }
+}
+
+function startSpeech(){
+
+ const status=document.getElementById("speechStatus");
+ const result=document.getElementById("speechResult");
 
  const SpeechRecognition=
- window.SpeechRecognition ||
- window.webkitSpeechRecognition;
+   window.SpeechRecognition ||
+   window.webkitSpeechRecognition;
 
  if(!SpeechRecognition){
-
-   showVoiceError(
-    "⚠️ Este navegador no ofrece reconocimiento de voz aquí. "+
-    "Puedes usar el botón de escuchar para practicar."
-   );
-
-   return;
+  status.textContent="⚠️ Este navegador no ofrece reconocimiento de voz aquí.";
+  result.textContent="Puedes usar el botón 🔊 para escuchar y practicar.";
+  return;
  }
 
- recognition=new SpeechRecognition();
+ const recognition=new SpeechRecognition();
 
  recognition.lang="ko-KR";
  recognition.continuous=false;
- recognition.interimResults=false;
+ recognition.interimResults=true;
  recognition.maxAlternatives=3;
 
- listening=true;
+ status.textContent="🔴 ESCUCHANDO… Habla la frase completa.";
+ result.textContent="Estoy esperando que termines…";
 
- const mic=document.getElementById("micButton");
-
- mic.classList.add("listening");
-
- document.getElementById("listeningText").textContent=
- "🔴 ESCUCHANDO… Habla ahora";
-
- document.getElementById("transcript").textContent=
- "Escuchando tu respuesta completa…";
-
- document.getElementById("voiceFeedback").className="feedback";
-
- try{
-
-   recognition.start();
-
- }catch(e){
-
-   listening=false;
-
-   mic.classList.remove("listening");
-
-   showVoiceError("No pude iniciar el micrófono. Toca nuevamente.");
-
- }
- 
+ recognition.start();
 
  recognition.onresult=function(event){
 
-   let text="";
+  let transcript="";
 
-   for(let i=0;i<event.results.length;i++){
+  for(let i=0;i<event.results.length;i++){
+   transcript+=event.results[i][0].transcript+" ";
+  }
 
-     text += event.results[i][0].transcript+" ";
+  transcript=transcript.trim();
 
-   }
+  if(event.results[event.results.length-1].isFinal){
 
-   text=text.trim();
+   status.textContent="🧠 Procesando tu respuesta…";
 
-   document.getElementById("transcript").textContent=
-   "👂 Reconocí: "+text;
-
-   recognition.finalText=text;
-
+   setTimeout(()=>{
+    evaluateSpeech(transcript,status,result);
+   },700);
+  }
  };
 
  recognition.onerror=function(event){
-
-   listening=false;
-
-   mic.classList.remove("listening");
-
-   if(event.error==="not-allowed"){
-
-     showVoiceError(
-       "🎙️ El micrófono no tiene permiso para este sitio."
-     );
-
-   }else if(event.error==="no-speech"){
-
-     showVoiceError(
-       "No escuché una respuesta completa. Toca el micrófono y vuelve a intentarlo."
-     );
-
-   }else{
-
-     showVoiceError(
-       "No pude entender la grabación. Vamos otra vez."
-     );
-
-   }
-
+  status.textContent="😕 No pude escucharte.";
+  result.textContent=
+   "Prueba nuevamente hablando un poco más cerca del micrófono.";
  };
 
  recognition.onend=function(){
-
-   listening=false;
-
-   mic.classList.remove("listening");
-
-   document.getElementById("listeningText").textContent=
-   "Procesando tu respuesta…";
-
-   const text=(recognition.finalText||"").trim();
-
-   setTimeout(()=>{
-
-     evaluateSpeech(text);
-
-   },450);
-
+  if(status.textContent.includes("ESCUCHANDO")){
+   status.textContent="👂 Esperando…";
+  }
  };
-
 }
 
-function normalizeKorean(text){
-
+function normalize(text){
  return text
  .toLowerCase()
- .replace(/[.,!?。，？！]/g,"")
+ .replace(/[.,!?¿¡]/g,"")
  .replace(/\s+/g,"")
  .trim();
 }
 
-function evaluateSpeech(text){
+function evaluateSpeech(transcript,status,result){
 
- const feedback=document.getElementById("voiceFeedback");
+ const normalized=normalize(transcript);
 
- feedback.className="feedback show";
-
- document.getElementById("listeningText").textContent=
- "🎙️ Toca para hablar";
-
- if(!text){
-
-   feedback.classList.add("try");
-
-   feedback.innerHTML=
-   "😊 No recibí una respuesta completa. Inténtalo otra vez.";
-
-   return;
- }
-
- const normalized=normalizeKorean(text);
-
- const accepted=[
-  "네잘지냈어요",
-  "네잘지냈어요",
-  "네잘지냈어"
+ const targets=[
+  normalize("안녕하세요"),
+  normalize("안녕하세요."),
+  normalize("안녕하세용")
  ];
 
- const tooShort=
- normalized.length<4;
+ let good=targets.some(t=>normalized.includes(t));
 
- if(tooShort){
-
-   feedback.classList.add("try");
-
-   feedback.innerHTML=
-   "🧐 Escuché solo una parte: <b>"+text+
-   "</b><br><br>"+
-   "No voy a darte el punto todavía. Di la frase completa:<br>"+
-   "<b>네, 잘 지냈어요.</b>";
-
-   return;
+ if(good){
+  xp+=5;
+  save();
+  status.textContent="🎉 ¡Terminaste la frase!";
+  result.innerHTML=
+   "✅ <b>Muy bien.</b> Escuché: "+transcript+
+   "<br><br>⭐ +5 XP";
+ }else{
+  status.textContent="💜 Vamos otra vez.";
+  result.innerHTML=
+   "Escuché: <b>"+transcript+"</b><br><br>"+
+   "No te voy a regalar el punto. 😏 Escucha el modelo y vuelve a intentarlo.";
+  speak("안녕하세요");
  }
-
- if(accepted.includes(normalized)){
-
-   feedback.classList.add("good");
-
-   feedback.innerHTML=
-   "🎉 <b>¡Respuesta completa!</b><br>"+
-   "Reconocí: <b>"+text+"</b><br><br>"+
-   "Esta vez sí cuenta. ⭐";
-
-   addXP(20);
-
-   return;
- }
-
- feedback.classList.add("try");
-
- feedback.innerHTML=
- "💡 Reconocí: <b>"+text+"</b><br><br>"+
- "Todavía no la voy a marcar como correcta. "+
- "Escucha otra vez y trata de decir la frase completa.";
-
 }
 
-
-/* =========================
-   ERROR DE VOZ
-========================= */
-
-function showVoiceError(message){
-
- const feedback=document.getElementById("voiceFeedback");
-
- feedback.className="feedback show try";
- feedback.innerHTML=message;
-
- document.getElementById("listeningText").textContent=
- "🎙️ Toca para hablar";
-}
-
-
-/* =========================
-   HANGUL
-========================= */
-
-function hangulLevel(level,button){
-
- currentHangulLevel=level;
- currentHangulIndex=0;
-
- document
- .querySelectorAll(".level-btn")
- .forEach(b=>b.classList.remove("active"));
-
- button.classList.add("active");
-
- loadHangul();
-
-}
-
-function loadHangul(){
-
- const item=
- hangulData[currentHangulLevel][currentHangulIndex];
-
- document.getElementById("hangulChar").textContent=item.char;
- document.getElementById("hangulName").textContent=item.name;
- document.getElementById("hangulSound").textContent=item.sound;
-
- document.getElementById("guide").textContent=item.char;
-
- document.getElementById("printChar").textContent=item.char;
- document.getElementById("printChar2").textContent=item.char;
- document.getElementById("printChar3").textContent=item.char;
- document.getElementById("printTrace").textContent=
- item.char+"   "+item.char+"   "+item.char;
- document.getElementById("printTitle").textContent=
- "Practica "+item.char;
-
- clearCanvas();
-
- document.getElementById("writingMessage").textContent="";
-}
-
-function speakHangul(){
-
- const item=
- hangulData[currentHangulLevel][currentHangulIndex];
-
- speak(item.speak,.75,1);
-}
-
-function nextHangul(){
-
- currentHangulIndex++;
-
- if(currentHangulIndex>=hangulData[currentHangulLevel].length){
-
-   currentHangulIndex=0;
-
- }
-
- loadHangul();
-}
-
-function finishWriting(){
-
- document.getElementById("writingMessage").textContent=
- "🌸 ¡Muy bien! Ahora intenta hacerlo otra vez sin mirar el modelo.";
-
- addXP(5);
-
- setTimeout(nextHangul,900);
-}
-
-
-/* =========================
-   CANVAS ESCRITURA
-========================= */
-
-function setupCanvas(){
-
- canvas=document.getElementById("drawCanvas");
-
- ctx=canvas.getContext("2d");
-
- resizeCanvas();
-
- window.addEventListener("resize",resizeCanvas);
-
- canvas.addEventListener("pointerdown",startDraw);
- canvas.addEventListener("pointermove",draw);
- canvas.addEventListener("pointerup",endDraw);
- canvas.addEventListener("pointercancel",endDraw);
- canvas.addEventListener("pointerleave",endDraw);
-}
-
-function resizeCanvas(){
-
- if(!canvas)return;
-
- const rect=canvas.getBoundingClientRect();
-
- const ratio=window.devicePixelRatio||1;
-
- canvas.width=rect.width*ratio;
- canvas.height=rect.height*ratio;
-
- ctx.scale(ratio,ratio);
-
- ctx.lineWidth=5;
- ctx.lineCap="round";
- ctx.lineJoin="round";
-}
-
-function position(e){
-
- const rect=canvas.getBoundingClientRect();
-
- return{
-   x:e.clientX-rect.left,
-   y:e.clientY-rect.top
- };
-
-}
-
-function startDraw(e){
-
- drawing=true;
-
- canvas.setPointerCapture(e.pointerId);
-
- const p=position(e);
-
- ctx.beginPath();
- ctx.moveTo(p.x,p.y);
-}
-
-function draw(e){
-
- if(!drawing)return;
-
- const p=position(e);
-
- ctx.lineTo(p.x,p.y);
- ctx.stroke();
-}
-
-function endDraw(){
-
- drawing=false;
-}
-
-function clearCanvas(){
-
- if(!canvas||!ctx)return;
-
- const rect=canvas.getBoundingClientRect();
-
- ctx.clearRect(0,0,rect.width,rect.height);
-}
-
-
-/* =========================
-   LAMINAS
-========================= */
-
-function renderFlashcards(){
-
- const grid=document.getElementById("flashGrid");
-
- grid.innerHTML=flashcards.map((f,i)=>`
-
- <div class="flash">
-
-   <div class="flash-icon">${f.icon}</div>
-
-   <div class="flash-korean">${f.word}</div>
-
-   <div>${f.meaning}</div>
-
-   <div class="roman">${f.roman}</div>
-
-   <button class="btn audio"
-     onclick="speak('${f.word}',.68)">
-     🔊 Escuchar
-   </button>
-
-   <button class="btn secondary"
-     onclick="repeatWord('${f.word}')">
-     🗣️ Repetir
-   </button>
-
- </div>
-
- `).join("");
-}
-
-function repeatWord(word){
-
- go("talk");
-
- setTimeout(()=>{
-
-   speak(word,.68);
-
- },250);
-
-}
-
-
-/* =========================
-   XP
-========================= */
-
-function addXP(amount){
-
- xp+=amount;
-
- localStorage.setItem("kb_xp",xp);
-
- updateStats();
-}
-
-function updateStats(){
-
- document.getElementById("xp").textContent=xp;
- document.getElementById("progressXP").textContent=xp;
-
- const progress=Math.min(100,xp/2);
-
- document.getElementById("homeProgress")
- .style.width=progress+"%";
-
- document.getElementById("skills").textContent=skillCount;
-
- document.getElementById("progressText").textContent=
- xp>0
- ?"¡Ya empezaste a construir habilidades reales! 🌸"
- :"Comienza tu primera habilidad.";
-
-}
-
-
-/* =========================
-   INICIALIZAR
-========================= */
-
-renderBuddies();
-renderFlashcards();
-loadHangul();
 updateStats();
 
-window.addEventListener("load",()=>{
-
- setupCanvas();
-
-});
 </script>
 
 </body>
