@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Korean Buddy 🌸</title>
+<title>Korean Buddy 🌸🇰🇷</title>
 
 <style>
 *{
@@ -11,25 +11,11 @@
   -webkit-tap-highlight-color:transparent;
 }
 
-:root{
-  --purple:#7357e8;
-  --purple2:#9b83f5;
-  --pink:#ff8fc8;
-  --pink2:#ffd9ec;
-  --text:#40366b;
-  --muted:#8b83a5;
-  --bg1:#fff7fb;
-  --bg2:#f4f0ff;
-  --card:#ffffff;
-  --green:#63c88b;
-  --yellow:#ffd86b;
-}
-
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  color:var(--text);
-  background:linear-gradient(145deg,var(--bg1),var(--bg2));
+  background:linear-gradient(145deg,#fff7fb,#f4f0ff);
+  color:#433968;
 }
 
 button{
@@ -41,7 +27,7 @@ button{
 .app{
   width:min(520px,100%);
   margin:auto;
-  padding:18px 14px 95px;
+  padding:16px 14px 100px;
 }
 
 header{
@@ -52,41 +38,38 @@ header{
 .logo{
   font-size:34px;
   font-weight:900;
-  color:var(--purple);
-  letter-spacing:-1px;
+  color:#7357e8;
 }
 
 .subtitle{
-  margin-top:3px;
-  color:#70679b;
+  color:#8b83a5;
+  font-size:14px;
   font-weight:600;
 }
 
 .stats{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:8px;
-  background:rgba(255,255,255,.85);
-  border:1px solid #eee7ff;
-  border-radius:25px;
-  padding:10px;
-  box-shadow:0 8px 30px rgba(103,74,170,.08);
-  margin-bottom:16px;
+  background:white;
+  border-radius:24px;
+  padding:8px;
+  box-shadow:0 8px 25px rgba(90,60,150,.08);
+  margin-bottom:15px;
 }
 
 .stat{
   text-align:center;
-  padding:9px 4px;
+  padding:9px 3px;
 }
 
 .stat strong{
   display:block;
-  font-size:19px;
+  font-size:18px;
 }
 
 .stat span{
-  font-size:11px;
-  color:var(--muted);
+  font-size:10px;
+  color:#8b83a5;
 }
 
 .page{
@@ -98,56 +81,59 @@ header{
 }
 
 .card{
-  background:var(--card);
-  border-radius:24px;
+  background:white;
+  border-radius:25px;
   padding:18px;
   margin-bottom:14px;
-  box-shadow:0 8px 28px rgba(83,61,145,.08);
-  border:1px solid #eee9fa;
-}
-
-.section-title{
-  font-size:21px;
-  font-weight:900;
-  margin-bottom:6px;
-}
-
-.section-sub{
-  color:var(--muted);
-  font-size:14px;
-  line-height:1.5;
+  box-shadow:0 8px 28px rgba(80,55,140,.08);
+  border:1px solid #eee8fa;
 }
 
 .badge{
-  display:inline-flex;
+  display:inline-block;
   padding:7px 12px;
-  background:#f1eaff;
-  color:var(--purple);
-  border-radius:99px;
-  font-size:12px;
-  font-weight:800;
+  background:#f0eaff;
+  color:#7357e8;
+  border-radius:50px;
+  font-size:11px;
+  font-weight:900;
 }
 
-/* BUDDIES */
+.section-title{
+  font-size:22px;
+  font-weight:900;
+  margin:9px 0 5px;
+}
+
+.section-sub{
+  color:#8b83a5;
+  line-height:1.5;
+  font-size:14px;
+}
+
+/* =====================================================
+   WEBTOON BUDDIES
+   ===================================================== */
 
 .buddy-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:12px;
+  margin-top:15px;
 }
 
 .buddy-card{
-  border:2px solid #eee8ff;
   background:white;
+  border:2px solid #eee8fa;
   border-radius:22px;
-  padding:9px;
+  padding:7px;
   text-align:center;
   transition:.2s;
 }
 
 .buddy-card.selected{
-  border-color:var(--purple);
-  box-shadow:0 8px 22px rgba(115,87,232,.16);
+  border-color:#7357e8;
+  box-shadow:0 8px 25px rgba(115,87,232,.18);
 }
 
 .avatar{
@@ -155,80 +141,66 @@ header{
   aspect-ratio:1;
   border-radius:18px;
   overflow:hidden;
-  background:linear-gradient(145deg,#fff0f8,#f0ebff);
-  position:relative;
+  background:#f7f1ff;
 }
 
 .avatar svg{
+  display:block;
   width:100%;
   height:100%;
-  display:block;
 }
 
 .buddy-name{
-  font-weight:900;
-  margin-top:8px;
   font-size:17px;
+  font-weight:900;
+  margin-top:7px;
 }
 
 .buddy-role{
-  color:var(--muted);
+  color:#958cae;
   font-size:11px;
 }
 
-.choose-btn{
-  margin-top:7px;
+.choose{
   width:100%;
+  margin-top:7px;
   padding:9px;
   border-radius:13px;
-  background:#f2edff;
-  color:var(--purple);
-  font-weight:800;
+  background:#f1edff;
+  color:#7357e8;
+  font-weight:900;
 }
 
-.choose-btn.selected{
-  background:var(--purple);
+.choose.selected{
+  background:#7357e8;
   color:white;
 }
 
-/* TALKING AVATAR */
-
-.talking-area{
-  text-align:center;
-}
+/* =====================================================
+   BIG WEBTOON
+   ===================================================== */
 
 .big-avatar{
-  width:min(290px,85vw);
-  margin:auto;
+  width:min(315px,88vw);
   aspect-ratio:1;
+  margin:12px auto;
   border-radius:32px;
   overflow:hidden;
-  background:linear-gradient(145deg,#fff0f8,#eee8ff);
+  background:#f7f1ff;
 }
 
 .big-avatar svg{
   width:100%;
   height:100%;
+  display:block;
 }
 
 .speech-bubble{
-  position:relative;
   background:white;
   border-radius:22px;
-  padding:15px;
-  margin:14px 8px 8px;
-  box-shadow:0 6px 22px rgba(73,55,126,.08);
-}
-
-.speech-bubble:before{
-  content:"";
-  position:absolute;
-  top:-10px;
-  left:50%;
-  transform:translateX(-50%);
-  border-left:10px solid transparent;
-  border-right:10px solid transparent;
-  border-bottom:10px solid white;
+  padding:16px;
+  text-align:center;
+  box-shadow:0 7px 20px rgba(70,50,120,.08);
 }
 
 .korean{
@@ -237,62 +209,82 @@ header{
 }
 
 .roman{
-  color:#887fa2;
+  color:#8c83a5;
+  margin-top:4px;
   font-size:13px;
-  margin-top:5px;
 }
 
 .translation{
-  margin-top:6px;
-  font-weight:600;
+  margin-top:7px;
+  font-weight:700;
+  line-height:1.4;
 }
 
-.action-row{
+.actions{
   display:flex;
   gap:8px;
   margin-top:12px;
 }
 
-.primary{
-  flex:1;
-  padding:13px;
-  border-radius:16px;
-  background:linear-gradient(135deg,#7357e8,#967cf2);
-  color:white;
-  font-weight:900;
-}
-
+.primary,
 .secondary{
   flex:1;
   padding:13px;
   border-radius:16px;
-  background:#f2edff;
-  color:var(--purple);
   font-weight:900;
 }
 
-/* SPEECH */
+.primary{
+  color:white;
+  background:linear-gradient(135deg,#7357e8,#9a7cf4);
+}
 
-.speak-box{
+.secondary{
+  color:#7357e8;
+  background:#f1edff;
+}
+
+/* =====================================================
+   TALKING
+   ===================================================== */
+
+.speaking .mouth{
+  animation:talk .16s infinite alternate;
+}
+
+@keyframes talk{
+  from{transform:scaleY(.35)}
+  to{transform:scaleY(1)}
+}
+
+.eye{
+  animation:blink 4.5s infinite;
+  transform-origin:center;
+}
+
+@keyframes blink{
+  0%,92%,100%{transform:scaleY(1)}
+  94%{transform:scaleY(.08)}
+}
+
+/* =====================================================
+   SPEAK
+   ===================================================== */
+
+.speak{
   text-align:center;
 }
 
-.listen-status{
-  min-height:25px;
-  margin:10px 0;
-  color:var(--muted);
-  font-size:13px;
-  font-weight:700;
-}
-
 .mic{
-  width:88px;
-  height:88px;
+  width:90px;
+  height:90px;
   border-radius:50%;
-  background:linear-gradient(145deg,#ff8fc8,#9a80f4);
+  background:linear-gradient(145deg,#ff8fc8,#8e73ed);
   color:white;
-  font-size:35px;
-  box-shadow:0 10px 25px rgba(126,87,220,.25);
+  font-size:34px;
+  margin:15px auto;
+  display:block;
+  box-shadow:0 10px 28px rgba(100,70,180,.25);
 }
 
 .mic.listening{
@@ -303,10 +295,15 @@ header{
   50%{transform:scale(1.08)}
 }
 
+.status{
+  color:#8b83a5;
+  font-size:13px;
+  min-height:20px;
+}
+
 .result{
-  margin-top:14px;
-  padding:13px;
   background:#faf8ff;
+  padding:14px;
   border-radius:16px;
   min-height:50px;
   font-weight:700;
@@ -314,33 +311,29 @@ header{
 
 .feedback{
   margin-top:10px;
-  font-size:14px;
-}
-
-/* HANGUL */
-
-.hangul-letter{
-  font-size:70px;
-  font-weight:900;
-  text-align:center;
-  color:var(--purple);
-  margin:8px;
-}
-
-.hangul-example{
-  text-align:center;
-  font-size:18px;
   font-weight:800;
+}
+
+/* =====================================================
+   HANGUL
+   ===================================================== */
+
+.hangul{
+  font-size:76px;
+  text-align:center;
+  font-weight:900;
+  color:#7357e8;
+  margin:15px;
 }
 
 canvas{
   width:100%;
   height:210px;
-  border:2px dashed #d9d0f6;
+  border:2px dashed #d8cff4;
   border-radius:18px;
-  background:#fff;
   touch-action:none;
-  margin-top:12px;
+  background:white;
+  margin-top:15px;
 }
 
 .canvas-actions{
@@ -349,27 +342,29 @@ canvas{
   margin-top:8px;
 }
 
-canvas + .canvas-actions button{
+.canvas-actions button{
   flex:1;
 }
 
-/* FLASHCARDS */
+/* =====================================================
+   FLASHCARDS
+   ===================================================== */
 
 .flash{
   text-align:center;
-  padding:25px 15px;
+  background:linear-gradient(145deg,#fff4fa,#f2eeff);
   border-radius:25px;
-  background:linear-gradient(145deg,#fff5fb,#f1edff);
+  padding:25px 15px;
 }
 
 .flash-word{
-  font-size:50px;
+  font-size:52px;
   font-weight:900;
-  color:var(--purple);
+  color:#7357e8;
 }
 
 .flash-rom{
-  color:#8c83a6;
+  color:#8d84a5;
 }
 
 .flash-meaning{
@@ -377,20 +372,21 @@ canvas + .canvas-actions button{
   margin-top:5px;
 }
 
-.flash-buttons{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:9px;
+.flash-actions{
+  display:flex;
+  gap:8px;
   margin-top:18px;
 }
 
-/* PROGRESS */
+/* =====================================================
+   PROGRESS
+   ===================================================== */
 
-.progress-row{
-  margin:15px 0;
+.progress{
+  margin:16px 0;
 }
 
-.progress-top{
+.progress-head{
   display:flex;
   justify-content:space-between;
   font-size:13px;
@@ -400,45 +396,20 @@ canvas + .canvas-actions button{
 .bar{
   height:10px;
   background:#eeeafa;
-  border-radius:99px;
-  overflow:hidden;
+  border-radius:50px;
   margin-top:6px;
+  overflow:hidden;
 }
 
 .fill{
   height:100%;
+  border-radius:50px;
   background:linear-gradient(90deg,#7357e8,#ff8fc8);
-  border-radius:99px;
 }
 
-/* VOICE SETTINGS */
-
-.voice-list{
-  max-height:260px;
-  overflow:auto;
-  margin-top:10px;
-}
-
-.voice-option{
-  width:100%;
-  text-align:left;
-  padding:11px;
-  margin-bottom:6px;
-  border-radius:13px;
-  background:#f6f3ff;
-  color:var(--text);
-}
-
-.voice-option:hover{
-  background:#ece6ff;
-}
-
-.voice-option small{
-  display:block;
-  color:var(--muted);
-}
-
-/* NAV */
+/* =====================================================
+   NAV
+   ===================================================== */
 
 .bottom-nav{
   position:fixed;
@@ -446,61 +417,39 @@ canvas + .canvas-actions button{
   bottom:10px;
   transform:translateX(-50%);
   width:min(520px,calc(100% - 20px));
+  background:rgba(255,255,255,.96);
+  border:1px solid #eee8fa;
+  border-radius:23px;
+  padding:7px;
   display:grid;
   grid-template-columns:repeat(5,1fr);
-  background:rgba(255,255,255,.96);
-  border:1px solid #eee8fb;
-  border-radius:22px;
-  padding:7px;
-  box-shadow:0 8px 35px rgba(65,45,120,.15);
+  box-shadow:0 8px 30px rgba(60,40,110,.15);
   z-index:20;
 }
 
-.nav-btn{
+.nav{
   background:transparent;
+  color:#9189a8;
   padding:7px 2px;
   border-radius:15px;
-  color:#9189a9;
-  font-size:11px;
-  font-weight:800;
+  font-size:10px;
+  font-weight:900;
 }
 
-.nav-btn.active{
+.nav.active{
+  color:#7357e8;
   background:#f0eaff;
-  color:var(--purple);
 }
 
-.nav-icon{
+.nav span{
   display:block;
   font-size:20px;
   margin-bottom:2px;
 }
 
-/* ANIMATION */
-
-.speaking .mouth{
-  animation:mouth .22s infinite alternate;
-}
-
-@keyframes mouth{
-  from{transform:scaleY(.35)}
-  to{transform:scaleY(1)}
-}
-
-.blink{
-  animation:blink 4s infinite;
-  transform-origin:center;
-}
-
-@keyframes blink{
-  0%,93%,100%{transform:scaleY(1)}
-  95%{transform:scaleY(.12)}
-}
-
 @media(max-width:360px){
   .logo{font-size:29px}
   .buddy-grid{gap:8px}
-  .card{padding:14px}
 }
 </style>
 </head>
@@ -511,13 +460,13 @@ canvas + .canvas-actions button{
 
 <header>
   <div class="logo">Korean Buddy 🌸</div>
-  <div class="subtitle">Aprende coreano de verdad 💜</div>
+  <div class="subtitle">Aprende coreano de verdad 🇰🇷</div>
 </header>
 
 <div class="stats">
   <div class="stat">
     <strong>🔥 1</strong>
-    <span>Días seguidos</span>
+    <span>Día</span>
   </div>
   <div class="stat">
     <strong>⭐ 83</strong>
@@ -529,912 +478,1240 @@ canvas + .canvas-actions button{
   </div>
 </div>
 
-<!-- HOME -->
+<!-- =====================================================
+     HOME
+     ===================================================== -->
+
 <section id="home" class="page active">
 
-  <div class="card">
-    <span class="badge">🌸 CONOCE A TUS BUDDIES</span>
+<div class="card">
 
-    <h2 class="section-title">¿Quién te acompañará hoy?</h2>
+<span class="badge">🌸 CONOCE A TUS BUDDIES</span>
 
-    <p class="section-sub">
-      Puedes cambiar de Buddy cuando quieras.
-      Tu progreso siempre permanece contigo. 💕
-    </p>
+<h2 class="section-title">¡Ellos te acompañarán!</h2>
 
-    <div class="buddy-grid">
+<p class="section-sub">
+Escucha cómo hablan, conoce sus personalidades
+y cambia de Buddy cuando quieras.
+</p>
 
-      <div class="buddy-card" data-buddy="sora">
-        <div class="avatar" id="avatar-sora"></div>
-        <div class="buddy-name">Sora 🌸</div>
-        <div class="buddy-role">Dulce y paciente</div>
-        <button class="choose-btn">Elegir</button>
-      </div>
+<div class="buddy-grid">
 
-      <div class="buddy-card" data-buddy="jin">
-        <div class="avatar" id="avatar-jin"></div>
-        <div class="buddy-name">Jin 🔥</div>
-        <div class="buddy-role">Retador y motivador</div>
-        <button class="choose-btn">Elegir</button>
-      </div>
+<div class="buddy-card" data-buddy="sora">
+<div class="avatar" id="soraAvatar"></div>
+<div class="buddy-name">Sora 🌸</div>
+<div class="buddy-role">Dulce y paciente</div>
+<button class="choose">Conocer</button>
+</div>
 
-      <div class="buddy-card" data-buddy="mina">
-        <div class="avatar" id="avatar-mina"></div>
-        <div class="buddy-name">Mina 😂</div>
-        <div class="buddy-role">Divertida y traviesa</div>
-        <button class="choose-btn">Elegir</button>
-      </div>
+<div class="buddy-card" data-buddy="jin">
+<div class="avatar" id="jinAvatar"></div>
+<div class="buddy-name">Jin 🔥</div>
+<div class="buddy-role">Retador y motivador</div>
+<button class="choose">Conocer</button>
+</div>
 
-      <div class="buddy-card" data-buddy="hana">
-        <div class="avatar" id="avatar-hana"></div>
-        <div class="buddy-name">Hana 👩🏻‍🏫</div>
-        <div class="buddy-role">Tu profesora</div>
-        <button class="choose-btn">Elegir</button>
-      </div>
+<div class="buddy-card" data-buddy="mina">
+<div class="avatar" id="minaAvatar"></div>
+<div class="buddy-name">Mina 😂</div>
+<div class="buddy-role">Divertida y traviesa</div>
+<button class="choose">Conocer</button>
+</div>
 
-    </div>
-  </div>
+<div class="buddy-card" data-buddy="hana">
+<div class="avatar" id="hanaAvatar"></div>
+<div class="buddy-name">Hana 👩🏻‍🏫</div>
+<div class="buddy-role">Profesora</div>
+<button class="choose">Conocer</button>
+</div>
 
-  <div class="card">
-    <span class="badge">🇰🇷 LECCIÓN 1</span>
-    <h2 class="section-title">¡Hola! Soy Suhail</h2>
-    <p class="section-sub">
-      Hoy aprenderás a saludar y presentarte en coreano.
-    </p>
+</div>
+</div>
 
-    <div style="margin-top:12px;font-size:20px;font-weight:900;">
-      안녕하세요.
-    </div>
-    <div style="color:#8b83a5;">Annyeonghaseyo.</div>
-    <div>Hola.</div>
+<div class="card">
 
-    <div style="margin-top:14px;font-size:20px;font-weight:900;">
-      저는 수하일이에요.
-    </div>
-    <div style="color:#8b83a5;">Jeoneun Suhail-ieyo.</div>
-    <div>Soy Suhail.</div>
+<span class="badge">🇰🇷 LECCIÓN 1</span>
 
-    <button class="primary" style="margin-top:15px;width:100%;" onclick="openPage('lesson')">
-      🚀 Empezar lección
-    </button>
-  </div>
+<h2 class="section-title">¡Hola! Soy Suhail</h2>
+
+<p class="section-sub">
+Aprende tu primera mini conversación en coreano.
+</p>
+
+<div style="margin-top:15px;font-size:23px;font-weight:900;">
+안녕하세요.
+</div>
+
+<div style="color:#8b83a5;">
+Annyeonghaseyo.
+</div>
+
+<div>Hola.</div>
+
+<button class="primary"
+style="width:100%;margin-top:15px;"
+onclick="openPage('lesson')">
+🚀 Empezar
+</button>
+
+</div>
 
 </section>
 
-<!-- BUDDY -->
+<!-- =====================================================
+     BUDDY
+     ===================================================== -->
+
 <section id="buddy" class="page">
 
-  <div class="card talking-area">
+<div class="card" style="text-align:center">
 
-    <span class="badge" id="buddyBadge">🌸 SORA</span>
+<span class="badge" id="buddyBadge">
+🌸 SORA
+</span>
 
-    <div class="big-avatar" id="bigAvatar"></div>
+<div class="big-avatar" id="bigAvatar"></div>
 
-    <div class="speech-bubble">
-      <div class="korean" id="buddyKorean"></div>
-      <div class="roman" id="buddyRoman"></div>
-      <div class="translation" id="buddySpanish"></div>
-    </div>
+<div class="speech-bubble">
 
-    <div class="action-row">
-      <button class="primary" id="speakBuddyBtn">
-        🔊 Escuchar
-      </button>
+<div class="korean" id="buddyKorean"></div>
 
-      <button class="secondary" id="nextBuddyBtn">
-        ➡️ Siguiente
-      </button>
-    </div>
+<div class="roman" id="buddyRoman"></div>
 
-    <button class="secondary" style="width:100%;margin-top:8px;" id="voiceSettingsBtn">
-      🎙️ Configurar voces
-    </button>
+<div class="translation" id="buddyTranslation"></div>
 
-  </div>
+</div>
 
-  <div class="card">
-    <h2 class="section-title">💜 Tu Buddy</h2>
-    <p class="section-sub">
-      No tienes que escoger uno para siempre.
-      Cambia entre Sora, Jin, Mina y Hana cuando quieras.
-    </p>
-  </div>
+<div class="actions">
+
+<button class="primary" id="speakBuddy">
+🔊 Escuchar
+</button>
+
+<button class="secondary" id="nextBuddy">
+➡️ Siguiente
+</button>
+
+</div>
+
+</div>
 
 </section>
 
-<!-- LESSON -->
+<!-- =====================================================
+     LESSON
+     ===================================================== -->
+
 <section id="lesson" class="page">
 
-  <div class="card">
-    <span class="badge">🇰🇷 LECCIÓN 1</span>
-    <h2 class="section-title">¡Hola! Soy Suhail</h2>
+<div class="card">
 
-    <div style="text-align:center;margin:25px 0;">
-      <div class="hangul-letter" style="font-size:45px;">
-        안녕하세요
-      </div>
-      <div style="font-size:20px;font-weight:800;">
-        Annyeonghaseyo
-      </div>
-      <div style="color:#8b83a5;">Hola</div>
-      <button class="secondary" style="margin-top:12px;" onclick="speakKorean('안녕하세요')">
-        🔊 Escuchar pronunciación
-      </button>
-    </div>
+<span class="badge">🇰🇷 LECCIÓN 1</span>
 
-    <hr style="border:0;border-top:1px solid #eee;margin:20px 0;">
+<h2 class="section-title">
+¡Hola! Soy Suhail
+</h2>
 
-    <div style="text-align:center;">
-      <div class="hangul-letter" style="font-size:38px;">
-        저는 수하일이에요
-      </div>
-      <div style="font-weight:800;">
-        Jeoneun Suhail-ieyo
-      </div>
-      <div style="color:#8b83a5;">Soy Suhail</div>
+<div style="text-align:center;margin:25px 0">
 
-      <button class="secondary" style="margin-top:12px;" onclick="speakKorean('저는 수하일이에요')">
-        🔊 Escuchar pronunciación
-      </button>
-    </div>
+<div class="hangul" style="font-size:45px">
+안녕하세요
+</div>
 
-    <button class="primary" style="width:100%;margin-top:20px;" onclick="openPage('speak')">
-      🎙️ Ahora inténtalo tú
-    </button>
-  </div>
+<div style="font-weight:800">
+Annyeonghaseyo
+</div>
+
+<div style="color:#8b83a5">
+Hola
+</div>
+
+<button class="secondary"
+style="margin-top:12px"
+onclick="speakKorean('안녕하세요')">
+🔊 Escuchar
+</button>
+
+</div>
+
+<hr style="border:0;border-top:1px solid #eee">
+
+<div style="text-align:center;margin:25px 0">
+
+<div class="hangul" style="font-size:39px">
+저는 수하일이에요
+</div>
+
+<div style="font-weight:800">
+Jeoneun Suhail-ieyo
+</div>
+
+<div style="color:#8b83a5">
+Soy Suhail
+</div>
+
+<button class="secondary"
+style="margin-top:12px"
+onclick="speakKorean('저는 수하일이에요')">
+🔊 Escuchar
+</button>
+
+</div>
+
+<button class="primary"
+style="width:100%"
+onclick="openPage('speak')">
+🎙️ Ahora tú
+</button>
+
+</div>
 
 </section>
 
-<!-- SPEAK -->
+<!-- =====================================================
+     SPEAK
+     ===================================================== -->
+
 <section id="speak" class="page">
 
-  <div class="card speak-box">
+<div class="card speak">
 
-    <span class="badge">🎙️ HABLA</span>
+<span class="badge">🎙️ HABLA</span>
 
-    <h2 class="section-title">Ahora tú</h2>
+<h2 class="section-title">
+Ahora tú
+</h2>
 
-    <p class="section-sub">
-      Escucha la frase completa y después dilo tú.
-      <strong>No te voy a aprobar antes de que termines.</strong> 😏
-    </p>
+<p class="section-sub">
+Di la frase completa. Korean Buddy esperará
+hasta que termines antes de evaluarte.
+</p>
 
-    <div class="speech-bubble">
-      <div class="korean">안녕하세요.</div>
-      <div class="roman">Annyeonghaseyo.</div>
-      <div>Hola.</div>
-    </div>
+<div class="speech-bubble">
 
-    <div class="listen-status" id="listenStatus">
-      Presiona el micrófono cuando estés lista.
-    </div>
+<div class="korean">
+안녕하세요.
+</div>
 
-    <button class="mic" id="micButton" type="button">
-      🎙️
-    </button>
+<div class="roman">
+Annyeonghaseyo.
+</div>
 
-    <div class="result" id="speechResult">
-      Aquí aparecerá lo que dijiste.
-    </div>
+<div>
+Hola.
+</div>
 
-    <div class="feedback" id="speechFeedback"></div>
+</div>
 
-    <button class="secondary" style="width:100%;margin-top:12px;" onclick="speakKorean('안녕하세요')">
-      🔊 Escuchar otra vez
-    </button>
+<div class="status" id="status">
+Presiona el micrófono para comenzar.
+</div>
 
-  </div>
+<button class="mic" id="mic">
+🎙️
+</button>
 
-</section>
+<div class="result" id="speechResult">
+Aquí aparecerá lo que dijiste.
+</div>
 
-<!-- HANGUL -->
-<section id="hangul" class="page">
+<div class="feedback" id="feedback"></div>
 
-  <div class="card">
-
-    <span class="badge">✍️ HANGUL</span>
-
-    <h2 class="section-title">Aprende a escribir</h2>
-
-    <p class="section-sub">
-      Modelo → traza → copia → escribe sola.
-      No necesitas teclado coreano. 💕
-    </p>
-
-    <div class="hangul-letter" id="hangulLetter">ㄱ</div>
-
-    <div class="hangul-example" id="hangulExample">
-      기역 — gieok
-    </div>
-
-    <button class="secondary" style="width:100%;margin-top:12px;" id="hangulAudio">
-      🔊 Escuchar
-    </button>
-
-    <canvas id="drawCanvas" width="900" height="500"></canvas>
-
-    <div class="canvas-actions">
-      <button class="secondary" id="clearCanvas">
-        🧹 Borrar
-      </button>
-      <button class="primary" id="nextHangul">
-        ➡️ Siguiente
-      </button>
-    </div>
-
-  </div>
+</div>
 
 </section>
 
-<!-- FLASH -->
-<section id="flash" class="page">
+<!-- =====================================================
+     HANGUL
+     ===================================================== -->
 
-  <div class="card">
+<section id="hangulPage" class="page">
 
-    <span class="badge">🃏 LÁMINAS</span>
+<div class="card">
 
-    <h2 class="section-title">Escucha y repite</h2>
+<span class="badge">✍️ HANGUL</span>
 
-    <div class="flash">
+<h2 class="section-title">
+Aprende a escribir
+</h2>
 
-      <div class="flash-word" id="flashWord">
-        커피
-      </div>
+<p class="section-sub">
+Modelo → traza → copia → escribe sola.
+</p>
 
-      <div class="flash-rom" id="flashRoman">
-        keopi
-      </div>
+<div class="hangul" id="hangulLetter">
+ㄱ
+</div>
 
-      <div class="flash-meaning" id="flashMeaning">
-        café
-      </div>
+<div style="text-align:center;font-weight:800" id="hangulName">
+기역 — gieok
+</div>
 
-      <div class="flash-buttons">
+<button class="secondary"
+style="width:100%;margin-top:12px"
+id="hangulSound">
+🔊 Escuchar
+</button>
 
-        <button class="primary" id="flashListen">
-          🔊 Escuchar
-        </button>
+<canvas id="canvas" width="900" height="500"></canvas>
 
-        <button class="secondary" id="flashRepeat">
-          🎙️ Repítela
-        </button>
+<div class="canvas-actions">
 
-      </div>
+<button class="secondary" id="clear">
+🧹 Borrar
+</button>
 
-      <button class="secondary" style="width:100%;margin-top:9px;" id="flashNext">
-        ➡️ Otra palabra
-      </button>
+<button class="primary" id="nextHangul">
+➡️ Siguiente
+</button>
 
-      <div id="flashFeedback" style="margin-top:10px;font-weight:800;"></div>
+</div>
 
-    </div>
-
-  </div>
+</div>
 
 </section>
 
-<!-- PROGRESS -->
+<!-- =====================================================
+     FLASH
+     ===================================================== -->
+
+<section id="flashPage" class="page">
+
+<div class="card">
+
+<span class="badge">🃏 LÁMINAS</span>
+
+<h2 class="section-title">
+Escucha y repite
+</h2>
+
+<div class="flash">
+
+<div class="flash-word" id="flashWord">
+커피
+</div>
+
+<div class="flash-rom" id="flashRom">
+keopi
+</div>
+
+<div class="flash-meaning" id="flashMeaning">
+café
+</div>
+
+<div class="flash-actions">
+
+<button class="primary" id="flashListen">
+🔊 Escuchar
+</button>
+
+<button class="secondary" id="flashSpeak">
+🎙️ Repetir
+</button>
+
+</div>
+
+<button class="secondary"
+style="width:100%;margin-top:8px"
+id="flashNext">
+➡️ Otra
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =====================================================
+     PROGRESS
+     ===================================================== -->
+
 <section id="progress" class="page">
 
-  <div class="card">
+<div class="card">
 
-    <span class="badge">📈 PROGRESO REAL</span>
+<span class="badge">📈 PROGRESO REAL</span>
 
-    <h2 class="section-title">Lo que YA puedes hacer</h2>
+<h2 class="section-title">
+Lo que YA puedes hacer
+</h2>
 
-    <p class="section-sub">
-      Korean Buddy mide habilidades, no solamente puntos.
-    </p>
+<p class="section-sub">
+No medimos solamente cuánto tocaste una pantalla.
+Medimos lo que realmente puedes hacer.
+</p>
 
-    <div class="progress-row">
-      <div class="progress-top">
-        <span>🗣️ Conversaciones</span>
-        <span>37</span>
-      </div>
-      <div class="bar">
-        <div class="fill" style="width:72%"></div>
-      </div>
-    </div>
+<div class="progress">
+<div class="progress-head">
+<span>🗣️ Conversaciones</span>
+<span>37</span>
+</div>
+<div class="bar">
+<div class="fill" style="width:72%"></div>
+</div>
+</div>
 
-    <div class="progress-row">
-      <div class="progress-top">
-        <span>🎧 Comprensión</span>
-        <span>82</span>
-      </div>
-      <div class="bar">
-        <div class="fill" style="width:64%"></div>
-      </div>
-    </div>
+<div class="progress">
+<div class="progress-head">
+<span>🎧 Comprensión</span>
+<span>82</span>
+</div>
+<div class="bar">
+<div class="fill" style="width:64%"></div>
+</div>
+</div>
 
-    <div class="progress-row">
-      <div class="progress-top">
-        <span>✍️ Escritura</span>
-        <span>146</span>
-      </div>
-      <div class="bar">
-        <div class="fill" style="width:45%"></div>
-      </div>
-    </div>
+<div class="progress">
+<div class="progress-head">
+<span>✍️ Escritura</span>
+<span>146</span>
+</div>
+<div class="bar">
+<div class="fill" style="width:45%"></div>
+</div>
+</div>
 
-    <div class="progress-row">
-      <div class="progress-top">
-        <span>🇰🇷 Situaciones</span>
-        <span>18</span>
-      </div>
-      <div class="bar">
-        <div class="fill" style="width:38%"></div>
-      </div>
-    </div>
+</div>
 
-  </div>
+<div class="card">
 
-  <div class="card">
+<h2 class="section-title">
+🧠 Ya puedes...
+</h2>
 
-    <h2 class="section-title">🧠 Ya puedes...</h2>
+<p>✅ Saludar</p>
+<p>✅ Decir tu nombre</p>
+<p>✅ Reconocer palabras básicas</p>
+<p>⬜ Pedir en una cafetería</p>
+<p>⬜ Tener una mini conversación</p>
 
-    <p>✅ Saludar en coreano</p>
-    <p>✅ Decir tu nombre</p>
-    <p>✅ Reconocer palabras básicas</p>
-    <p>⬜ Pedir algo en una cafetería</p>
-    <p>⬜ Tener una mini conversación</p>
-
-  </div>
+</div>
 
 </section>
 
 </div>
 
-<!-- BOTTOM NAV -->
+<!-- =====================================================
+     NAVIGATION
+     ===================================================== -->
 
 <nav class="bottom-nav">
 
-  <button class="nav-btn active" data-page="home">
-    <span class="nav-icon">🏠</span>
-    Inicio
-  </button>
+<button class="nav active" data-page="home">
+<span>🏠</span>
+Inicio
+</button>
 
-  <button class="nav-btn" data-page="buddy">
-    <span class="nav-icon">💜</span>
-    Buddy
-  </button>
+<button class="nav" data-page="buddy">
+<span>💜</span>
+Buddy
+</button>
 
-  <button class="nav-btn" data-page="lesson">
-    <span class="nav-icon">📚</span>
-    Lección
-  </button>
+<button class="nav" data-page="lesson">
+<span>📚</span>
+Lección
+</button>
 
-  <button class="nav-btn" data-page="hangul">
-    <span class="nav-icon">✍️</span>
-    Hangul
-  </button>
+<button class="nav" data-page="hangulPage">
+<span>✍️</span>
+Hangul
+</button>
 
-  <button class="nav-btn" data-page="progress">
-    <span class="nav-icon">📈</span>
-    Progreso
-  </button>
+<button class="nav" data-page="progress">
+<span>📈</span>
+Progreso
+</button>
 
 </nav>
 
 <script>
 
 /* =========================================================
-   KOREAN BUDDY
+   BUDDIES
    ========================================================= */
 
-const buddies = {
+const buddies={
 
-  sora:{
-    id:"sora",
-    name:"Sora",
-    emoji:"🌸",
-    korean:"안녕하세요! 저는 소라예요.",
-    roman:"Annyeonghaseyo! Jeoneun Sora-yeyo.",
-    speech:"¡Hola! Soy Sora. Vamos a aprender coreano juntas, paso a paso. 💕",
-    voiceType:"female",
-    color:"#ffb5d8"
-  },
+sora:{
+name:"Sora",
+emoji:"🌸",
+korean:"안녕하세요! 저는 소라예요.",
+roman:"Annyeonghaseyo! Jeoneun Sora-yeyo.",
+speech:"¡Hola! Soy Sora. Vamos a aprender coreano juntas, paso a paso.",
+type:"female"
+},
 
-  jin:{
-    id:"jin",
-    name:"Jin",
-    emoji:"🔥",
-    korean:"안녕하세요! 저는 진이에요.",
-    roman:"Annyeonghaseyo! Jeoneun Jin-ieyo.",
-    speech:"¡Hola! Soy Jin. Prepárate. Aquí vamos a aprender coreano de verdad. 😏",
-    voiceType:"male",
-    color:"#7771a9"
-  },
+jin:{
+name:"Jin",
+emoji:"🔥",
+korean:"안녕하세요! 저는 진이에요.",
+roman:"Annyeonghaseyo! Jeoneun Jin-ieyo.",
+speech:"¡Hola! Soy Jin. Prepárate. Vamos a aprender coreano de verdad.",
+type:"male"
+},
 
-  mina:{
-    id:"mina",
-    name:"Mina",
-    emoji:"😂",
-    korean:"안녕하세요! 저는 미나예요!",
-    roman:"Annyeonghaseyo! Jeoneun Mina-yeyo!",
-    speech:"¡Hola! Soy Mina. Vamos a aprender coreano sin aburrirnos, porque eso sería criminal. 😂",
-    voiceType:"female",
-    color:"#c49aff"
-  },
+mina:{
+name:"Mina",
+emoji:"😂",
+korean:"안녕하세요! 저는 미나예요!",
+roman:"Annyeonghaseyo! Jeoneun Mina-yeyo!",
+speech:"¡Hola! Soy Mina. Vamos a aprender coreano sin aburrirnos.",
+type:"female"
+},
 
-  hana:{
-    id:"hana",
-    name:"Hana",
-    emoji:"👩🏻‍🏫",
-    korean:"안녕하세요. 저는 하나예요.",
-    roman:"Annyeonghaseyo. Jeoneun Hana-yeyo.",
-    speech:"Hola. Soy Hana. Yo te ayudaré a entender el coreano paso a paso.",
-    voiceType:"female",
-    color:"#83b6e8"
-  }
+hana:{
+name:"Hana",
+emoji:"👩🏻‍🏫",
+korean:"안녕하세요. 저는 하나예요.",
+roman:"Annyeonghaseyo. Jeoneun Hana-yeyo.",
+speech:"Hola. Soy Hana. Yo te ayudaré a entender el coreano paso a paso.",
+type:"female"
+}
 
 };
 
-let currentBuddy = "sora";
-let buddySpeechIndex = 0;
+let currentBuddy="sora";
 
 /* =========================================================
-   AVATAR SVG
+   BEAUTIFUL WEBTOON AVATARS
    ========================================================= */
 
-function avatarSVG(type){
+function webtoonAvatar(type){
 
-  const common = `
-    <defs>
-      <linearGradient id="bg${type}" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#fff4fa"/>
-        <stop offset="100%" stop-color="#eee9ff"/>
-      </linearGradient>
-    </defs>
-    <rect width="300" height="300" rx="35" fill="url(#bg${type})"/>
-  `;
+if(type==="sora"){
 
-  if(type==="sora"){
-    return `
-    <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-      ${common}
+return `
+<svg viewBox="0 0 320 320"
+xmlns="http://www.w3.org/2000/svg">
 
-      <circle cx="150" cy="155" r="83" fill="#f7c9b5"/>
+<defs>
+<linearGradient id="soraBG" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#fff1f8"/>
+<stop offset="1" stop-color="#eee7ff"/>
+</linearGradient>
 
-      <path d="M70 142 Q60 45 150 43 Q245 47 232 153
-               Q215 102 187 92 Q153 119 96 90 Q83 120 70 142"
-            fill="#3c2c42"/>
+<linearGradient id="soraHair" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#5b405e"/>
+<stop offset="1" stop-color="#291d31"/>
+</linearGradient>
 
-      <path d="M79 103 Q68 198 98 238 Q68 226 60 177
-               Q54 130 79 103" fill="#3c2c42"/>
+<linearGradient id="soraDress" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#ffb7d8"/>
+<stop offset="1" stop-color="#e982b7"/>
+</linearGradient>
+</defs>
 
-      <path d="M221 103 Q234 190 202 239 Q232 222 240 175
-               Q246 130 221 103" fill="#3c2c42"/>
+<rect width="320" height="320" rx="38" fill="url(#soraBG)"/>
 
-      <ellipse class="blink" cx="118" cy="155" rx="6" ry="9" fill="#332a40"/>
-      <ellipse class="blink" cx="182" cy="155" rx="6" ry="9" fill="#332a40"/>
+<!-- shoulders -->
+<path d="M57 320 Q62 245 160 232 Q258 245 263 320"
+fill="url(#soraDress)"/>
 
-      <circle cx="116" cy="158" r="2" fill="white"/>
-      <circle cx="180" cy="158" r="2" fill="white"/>
+<!-- neck -->
+<path d="M136 217 L136 246 Q160 258 184 246 L184 217"
+fill="#f3c1a9"/>
 
-      <path d="M137 184 Q150 194 163 184"
-            fill="none" stroke="#9d5064" stroke-width="4" stroke-linecap="round"/>
+<!-- hair behind -->
+<path d="M75 142 Q54 73 105 38 Q160 2 216 42 Q270 80 246 169
+Q238 228 203 248 Q224 184 214 122
+Q190 88 160 92 Q119 91 94 126
+Q89 178 105 244 Q73 219 75 142Z"
+fill="url(#soraHair)"/>
 
-      <path d="M82 227 Q150 205 218 227 L236 300 H64Z"
-            fill="#ff9ecb"/>
+<!-- face -->
+<ellipse cx="160" cy="150" rx="73" ry="88" fill="#f4c5ad"/>
 
-      <circle cx="83" cy="184" r="11" fill="#ffb3c9" opacity=".55"/>
-      <circle cx="217" cy="184" r="11" fill="#ffb3c9" opacity=".55"/>
+<!-- bangs -->
+<path d="M86 116 Q101 43 161 48 Q218 42 235 113
+Q207 87 183 88
+Q158 113 124 91
+Q106 103 86 116Z"
+fill="url(#soraHair)"/>
 
-      <path d="M112 105 Q150 128 188 105"
-            fill="none" stroke="#ffb7d5" stroke-width="5"/>
+<!-- eyes -->
+<ellipse class="eye" cx="130" cy="153" rx="7" ry="10" fill="#34283d"/>
+<ellipse class="eye" cx="190" cy="153" rx="7" ry="10" fill="#34283d"/>
 
-      <path class="mouth" d="M140 184 Q150 190 160 184"
-            fill="#c55b78"/>
-    </svg>`;
-  }
+<circle cx="128" cy="150" r="2.7" fill="white"/>
+<circle cx="188" cy="150" r="2.7" fill="white"/>
 
-  if(type==="jin"){
-    return `
-    <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-      ${common}
+<!-- blush -->
+<ellipse cx="112" cy="183" rx="15" ry="8" fill="#ef91aa" opacity=".42"/>
+<ellipse cx="208" cy="183" rx="15" ry="8" fill="#ef91aa" opacity=".42"/>
 
-      <circle cx="150" cy="150" r="83" fill="#f3c4aa"/>
+<!-- nose -->
+<path d="M157 158 Q151 173 160 175"
+fill="none" stroke="#d79587" stroke-width="3"/>
 
-      <path d="M70 143 Q57 47 150 39 Q245 43 231 145
-               Q207 101 182 84 Q143 113 100 85 Q86 112 70 143"
-            fill="#241f2d"/>
+<!-- smile -->
+<path class="mouth"
+d="M145 190 Q160 203 175 190"
+fill="#c45e78"/>
 
-      <path d="M76 90 Q116 52 157 68 Q194 46 225 90
-               Q195 67 172 84 Q134 105 98 83Z"
-            fill="#342c40"/>
+<!-- hair shine -->
+<path d="M101 76 Q137 38 178 51"
+fill="none" stroke="#8c6a8f" stroke-width="8"
+stroke-linecap="round" opacity=".55"/>
 
-      <ellipse class="blink" cx="119" cy="151" rx="6" ry="8" fill="#27202e"/>
-      <ellipse class="blink" cx="181" cy="151" rx="6" ry="8" fill="#27202e"/>
+<!-- flower -->
+<circle cx="238" cy="86" r="7" fill="#ff91c5"/>
+<circle cx="249" cy="77" r="7" fill="#ffb1d5"/>
+<circle cx="251" cy="94" r="7" fill="#ff91c5"/>
+<circle cx="239" cy="99" r="7" fill="#ffb1d5"/>
+<circle cx="245" cy="87" r="5" fill="#ffd86e"/>
 
-      <circle cx="120" cy="153" r="2" fill="white"/>
-      <circle cx="182" cy="153" r="2" fill="white"/>
+</svg>`;
+}
 
-      <path d="M136 181 Q150 188 165 180"
-            fill="none" stroke="#9a4e57" stroke-width="4" stroke-linecap="round"/>
+if(type==="jin"){
 
-      <path d="M75 225 Q150 201 225 225 L250 300 H50Z"
-            fill="#292735"/>
+return `
+<svg viewBox="0 0 320 320"
+xmlns="http://www.w3.org/2000/svg">
 
-      <path d="M117 224 L150 270 L183 224"
-            fill="#ffffff"/>
+<defs>
+<linearGradient id="jinBG" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#eeeaff"/>
+<stop offset="1" stop-color="#e8f3ff"/>
+</linearGradient>
 
-      <path d="M143 224 L150 255 L157 224"
-            fill="#d94b6c"/>
+<linearGradient id="jinHair" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#30283a"/>
+<stop offset="1" stop-color="#17131d"/>
+</linearGradient>
 
-      <path class="mouth" d="M140 181 Q151 188 161 180"
-            fill="#7e3547"/>
-    </svg>`;
-  }
+<linearGradient id="jinJacket" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#36334a"/>
+<stop offset="1" stop-color="#181824"/>
+</linearGradient>
+</defs>
 
-  if(type==="mina"){
-    return `
-    <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-      ${common}
+<rect width="320" height="320" rx="38" fill="url(#jinBG)"/>
 
-      <circle cx="150" cy="153" r="82" fill="#f3c2ab"/>
+<!-- jacket -->
+<path d="M43 320 Q52 244 129 231 L160 264 L191 231
+Q268 244 277 320"
+fill="url(#jinJacket)"/>
 
-      <path d="M67 147 Q52 58 146 43 Q244 42 234 149
-               Q214 105 185 94 Q152 114 105 89 Q87 120 67 147"
-            fill="#5b3a68"/>
+<!-- shirt -->
+<path d="M125 231 L160 278 L195 231"
+fill="white"/>
 
-      <path d="M75 104 Q45 170 79 231 Q57 213 51 169 Q48 125 75 104"
-            fill="#7b4d91"/>
+<!-- red detail -->
+<path d="M151 255 L160 282 L169 255"
+fill="#d94d6c"/>
 
-      <path d="M225 104 Q253 170 220 232 Q245 211 248 167 Q248 126 225 104"
-            fill="#7b4d91"/>
+<!-- neck -->
+<path d="M139 211 L139 242 Q160 253 181 242 L181 211"
+fill="#eebca4"/>
 
-      <ellipse class="blink" cx="118" cy="153" rx="7" ry="9" fill="#3d2b49"/>
-      <ellipse class="blink" cx="181" cy="153" rx="7" ry="9" fill="#3d2b49"/>
+<!-- back hair -->
+<path d="M78 147 Q62 65 112 39 Q160 10 210 39
+Q259 68 243 150 L218 231
+Q235 174 215 116
+Q187 89 161 95
+Q126 91 98 119
+Q87 166 103 231
+Q78 208 78 147Z"
+fill="url(#jinHair)"/>
 
-      <circle cx="118" cy="155" r="2.5" fill="white"/>
-      <circle cx="181" cy="155" r="2.5" fill="white"/>
+<!-- face -->
+<ellipse cx="160" cy="148" rx="72" ry="87" fill="#efbea4"/>
 
-      <path d="M132 181 Q150 199 169 181"
-            fill="none" stroke="#a84e71" stroke-width="5" stroke-linecap="round"/>
+<!-- modern hair -->
+<path d="M88 110 Q100 45 158 46
+Q212 39 232 106
+Q207 84 181 82
+Q157 108 126 92
+Q106 102 88 110Z"
+fill="url(#jinHair)"/>
 
-      <path d="M75 225 Q150 204 225 225 L248 300 H52Z"
-            fill="#ffc857"/>
+<!-- side lock -->
+<path d="M89 103 Q72 137 88 183 Q101 159 106 119"
+fill="#241e2c"/>
 
-      <circle cx="83" cy="185" r="10" fill="#ff9fbd" opacity=".55"/>
-      <circle cx="216" cy="185" r="10" fill="#ff9fbd" opacity=".55"/>
+<path d="M231 104 Q248 139 232 183 Q219 158 214 119"
+fill="#241e2c"/>
 
-      <path class="mouth" d="M132 181 Q150 198 169 181"
-            fill="#c9577b"/>
-    </svg>`;
-  }
+<!-- brows -->
+<path d="M108 133 Q129 120 145 132"
+stroke="#342b3d" stroke-width="6"
+fill="none" stroke-linecap="round"/>
 
-  return `
-  <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-    ${common}
+<path d="M175 132 Q192 120 212 133"
+stroke="#342b3d" stroke-width="6"
+fill="none" stroke-linecap="round"/>
 
-    <circle cx="150" cy="150" r="83" fill="#f1c3ab"/>
+<!-- eyes -->
+<ellipse class="eye" cx="128" cy="151" rx="7" ry="9" fill="#241d2b"/>
+<ellipse class="eye" cx="192" cy="151" rx="7" ry="9" fill="#241d2b"/>
 
-    <path d="M69 142 Q59 46 150 40 Q240 43 231 144
-             Q210 98 185 88 Q151 109 102 86 Q85 115 69 142"
-          fill="#3b3040"/>
+<circle cx="126" cy="149" r="2.5" fill="white"/>
+<circle cx="190" cy="149" r="2.5" fill="white"/>
 
-    <path d="M77 107 Q64 170 82 227 Q61 204 58 165
-             Q57 130 77 107" fill="#3b3040"/>
+<!-- nose -->
+<path d="M158 157 Q152 174 161 176"
+fill="none" stroke="#d18d7e" stroke-width="3"/>
 
-    <path d="M223 107 Q237 170 218 227 Q239 203 242 165
-             Q242 130 223 107" fill="#3b3040"/>
+<!-- smirk -->
+<path class="mouth"
+d="M145 190 Q160 197 177 188"
+fill="#85394d"/>
 
-    <ellipse class="blink" cx="118" cy="152" rx="6" ry="8" fill="#30263a"/>
-    <ellipse class="blink" cx="182" cy="152" rx="6" ry="8" fill="#30263a"/>
+<!-- ear -->
+<ellipse cx="88" cy="159" rx="9" ry="17" fill="#e8ae99"/>
+<ellipse cx="232" cy="159" rx="9" ry="17" fill="#e8ae99"/>
 
-    <circle cx="118" cy="154" r="2" fill="white"/>
-    <circle cx="182" cy="154" r="2" fill="white"/>
+<!-- hair shine -->
+<path d="M108 69 Q145 38 181 53"
+stroke="#575064" stroke-width="7"
+stroke-linecap="round" fill="none" opacity=".55"/>
 
-    <path d="M136 182 Q150 190 164 182"
-          fill="none" stroke="#9c5365" stroke-width="4" stroke-linecap="round"/>
+</svg>`;
+}
 
-    <rect x="99" y="138" width="42" height="27"
-          rx="8" fill="none" stroke="#5b5471" stroke-width="4"/>
-    <rect x="159" y="138" width="42" height="27"
-          rx="8" fill="none" stroke="#5b5471" stroke-width="4"/>
-    <path d="M141 150 H159" stroke="#5b5471" stroke-width="4"/>
+if(type==="mina"){
 
-    <path d="M76 225 Q150 202 224 225 L247 300 H53Z"
-          fill="#83b6e8"/>
+return `
+<svg viewBox="0 0 320 320"
+xmlns="http://www.w3.org/2000/svg">
 
-    <path class="mouth" d="M139 182 Q150 189 161 182"
-          fill="#a34e64"/>
-  </svg>`;
+<defs>
+<linearGradient id="minaBG" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#fff2fa"/>
+<stop offset="1" stop-color="#f0e9ff"/>
+</linearGradient>
+
+<linearGradient id="minaHair" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#8e5bb3"/>
+<stop offset="1" stop-color="#4d2f68"/>
+</linearGradient>
+
+<linearGradient id="minaTop" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#ffd45f"/>
+<stop offset="1" stop-color="#ff9e52"/>
+</linearGradient>
+</defs>
+
+<rect width="320" height="320" rx="38" fill="url(#minaBG)"/>
+
+<!-- clothing -->
+<path d="M49 320 Q57 247 128 232
+L160 267 L192 232
+Q263 247 271 320"
+fill="url(#minaTop)"/>
+
+<!-- neck -->
+<path d="M138 215 L138 243 Q160 254 182 243 L182 215"
+fill="#f1bea6"/>
+
+<!-- hair behind -->
+<path d="M70 151 Q53 70 109 38
+Q160 10 214 39 Q269 70 249 159
+Q254 216 214 254
+Q223 185 210 121
+Q188 89 158 94
+Q121 89 94 122
+Q85 181 105 252
+Q67 219 70 151Z"
+fill="url(#minaHair)"/>
+
+<!-- face -->
+<ellipse cx="160" cy="150" rx="73" ry="87"
+fill="#f3c2aa"/>
+
+<!-- bangs -->
+<path d="M86 113 Q99 47 158 46
+Q214 42 235 111
+Q209 88 183 87
+Q159 112 126 92
+Q105 101 86 113Z"
+fill="url(#minaHair)"/>
+
+<!-- eyes -->
+<ellipse class="eye" cx="128" cy="153" rx="8" ry="11" fill="#3a2448"/>
+<ellipse class="eye" cx="192" cy="153" rx="8" ry="11" fill="#3a2448"/>
+
+<circle cx="126" cy="150" r="3" fill="white"/>
+<circle cx="190" cy="150" r="3" fill="white"/>
+
+<!-- blush -->
+<ellipse cx="111" cy="185" rx="17" ry="9"
+fill="#f18ea9" opacity=".48"/>
+<ellipse cx="209" cy="185" rx="17" ry="9"
+fill="#f18ea9" opacity=".48"/>
+
+<!-- playful mouth -->
+<path class="mouth"
+d="M140 187 Q160 207 181 187
+Q162 198 140 187Z"
+fill="#bd4c76"/>
+
+<!-- hair clips -->
+<path d="M88 100 L103 87 L111 104Z"
+fill="#ff79b5"/>
+
+<path d="M224 100 L239 87 L247 104Z"
+fill="#ff79b5"/>
+
+</svg>`;
+}
+
+return `
+<svg viewBox="0 0 320 320"
+xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+<linearGradient id="hanaBG" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#edf8ff"/>
+<stop offset="1" stop-color="#f2edff"/>
+</linearGradient>
+
+<linearGradient id="hanaHair" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#42374d"/>
+<stop offset="1" stop-color="#211b28"/>
+</linearGradient>
+
+<linearGradient id="hanaTop" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#8fc6f1"/>
+<stop offset="1" stop-color="#637fe0"/>
+</linearGradient>
+</defs>
+
+<rect width="320" height="320" rx="38" fill="url(#hanaBG)"/>
+
+<!-- clothing -->
+<path d="M48 320 Q57 247 128 232
+L160 266 L192 232
+Q263 247 272 320"
+fill="url(#hanaTop)"/>
+
+<!-- neck -->
+<path d="M138 215 L138 243 Q160 254 182 243 L182 215"
+fill="#efbea6"/>
+
+<!-- back hair -->
+<path d="M72 147 Q56 70 107 40
+Q160 9 213 41 Q265 71 246 153
+Q249 218 213 252
+Q222 183 211 120
+Q186 89 159 95
+Q122 90 95 122
+Q86 180 105 250
+Q70 218 72 147Z"
+fill="url(#hanaHair)"/>
+
+<!-- face -->
+<ellipse cx="160" cy="150" rx="72" ry="87"
+fill="#f0c0a8"/>
+
+<!-- bangs -->
+<path d="M88 111 Q102 46 159 46
+Q213 42 234 111
+Q208 88 183 87
+Q159 110 126 91
+Q106 101 88 111Z"
+fill="url(#hanaHair)"/>
+
+<!-- glasses -->
+<rect x="99" y="136" width="47" height="29"
+rx="9" fill="none" stroke="#4d4660" stroke-width="4"/>
+
+<rect x="174" y="136" width="47" height="29"
+rx="9" fill="none" stroke="#4d4660" stroke-width="4"/>
+
+<path d="M146 149 H174"
+stroke="#4d4660" stroke-width="4"/>
+
+<!-- eyes -->
+<ellipse class="eye" cx="122" cy="151" rx="6" ry="8" fill="#2d2635"/>
+<ellipse class="eye" cx="198" cy="151" rx="6" ry="8" fill="#2d2635"/>
+
+<circle cx="120" cy="149" r="2" fill="white"/>
+<circle cx="196" cy="149" r="2" fill="white"/>
+
+<!-- nose -->
+<path d="M158 157 Q153 173 161 175"
+fill="none" stroke="#cf8e7d" stroke-width="3"/>
+
+<!-- smile -->
+<path class="mouth"
+d="M145 189 Q160 198 175 189"
+fill="#a94f66"/>
+
+<!-- small teacher hair detail -->
+<path d="M103 75 Q142 38 182 52"
+stroke="#65566f"
+stroke-width="7"
+stroke-linecap="round"
+fill="none"
+opacity=".5"/>
+
+</svg>`;
 }
 
 /* =========================================================
-   RENDER AVATARS
+   LOAD AVATARS
    ========================================================= */
 
-["sora","jin","mina","hana"].forEach(id=>{
-  const el=document.getElementById("avatar-"+id);
-  if(el) el.innerHTML=avatarSVG(id);
-});
+document.getElementById("soraAvatar").innerHTML=webtoonAvatar("sora");
+document.getElementById("jinAvatar").innerHTML=webtoonAvatar("jin");
+document.getElementById("minaAvatar").innerHTML=webtoonAvatar("mina");
+document.getElementById("hanaAvatar").innerHTML=webtoonAvatar("hana");
 
-document.getElementById("bigAvatar").innerHTML=avatarSVG("sora");
+document.getElementById("bigAvatar").innerHTML=webtoonAvatar("sora");
 
 /* =========================================================
    PAGE NAVIGATION
    ========================================================= */
 
-function openPage(page){
+function openPage(id){
 
-  document.querySelectorAll(".page").forEach(p=>{
-    p.classList.remove("active");
-  });
+document.querySelectorAll(".page")
+.forEach(p=>p.classList.remove("active"));
 
-  const target=document.getElementById(page);
+document.getElementById(id)
+.classList.add("active");
 
-  if(target) target.classList.add("active");
+document.querySelectorAll(".nav")
+.forEach(n=>{
+n.classList.toggle(
+"active",
+n.dataset.page===id
+);
+});
 
-  document.querySelectorAll(".nav-btn").forEach(btn=>{
-    btn.classList.toggle("active",btn.dataset.page===page);
-  });
+window.scrollTo(0,0);
 
-  window.scrollTo({top:0,behavior:"smooth"});
 }
 
-document.querySelectorAll(".nav-btn").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    openPage(btn.dataset.page);
-  });
+document.querySelectorAll(".nav")
+.forEach(btn=>{
+btn.addEventListener("click",()=>{
+openPage(btn.dataset.page);
+});
 });
 
 /* =========================================================
-   BUDDY
+   SELECT BUDDY
    ========================================================= */
 
 function renderBuddy(){
 
-  const b=buddies[currentBuddy];
+const b=buddies[currentBuddy];
 
-  document.getElementById("buddyBadge").textContent=
-    b.emoji+" "+b.name.toUpperCase();
+document.getElementById("buddyBadge")
+.textContent=b.emoji+" "+b.name.toUpperCase();
 
-  document.getElementById("bigAvatar").innerHTML=
-    avatarSVG(currentBuddy);
+document.getElementById("bigAvatar")
+.innerHTML=webtoonAvatar(currentBuddy);
 
-  document.getElementById("buddyKorean").textContent=b.korean;
-  document.getElementById("buddyRoman").textContent=b.roman;
-  document.getElementById("buddySpanish").textContent=b.speech;
+document.getElementById("buddyKorean")
+.textContent=b.korean;
 
-  document.querySelectorAll(".buddy-card").forEach(card=>{
-    const selected=card.dataset.buddy===currentBuddy;
+document.getElementById("buddyRoman")
+.textContent=b.roman;
 
-    card.classList.toggle("selected",selected);
+/*
+IMPORTANT:
+This text may contain no emojis.
+The emoji is displayed separately.
+*/
 
-    const btn=card.querySelector(".choose-btn");
+document.getElementById("buddyTranslation")
+.textContent=b.speech;
 
-    if(selected){
-      btn.textContent="✓ Tu Buddy";
-      btn.classList.add("selected");
-    }else{
-      btn.textContent="Elegir";
-      btn.classList.remove("selected");
-    }
-  });
+document.querySelectorAll(".buddy-card")
+.forEach(card=>{
+
+const selected=
+card.dataset.buddy===currentBuddy;
+
+card.classList.toggle("selected",selected);
+
+const button=
+card.querySelector(".choose");
+
+if(selected){
+button.textContent="✓ Tu Buddy";
+button.classList.add("selected");
+}else{
+button.textContent="Conocer";
+button.classList.remove("selected");
 }
 
-document.querySelectorAll(".buddy-card").forEach(card=>{
-  card.addEventListener("click",()=>{
-    currentBuddy=card.dataset.buddy;
-    renderBuddy();
-    openPage("buddy");
-  });
 });
 
-document.getElementById("nextBuddyBtn").addEventListener("click",()=>{
+}
 
-  const ids=Object.keys(buddies);
+document.querySelectorAll(".buddy-card")
+.forEach(card=>{
 
-  const index=ids.indexOf(currentBuddy);
+card.addEventListener("click",()=>{
 
-  currentBuddy=ids[(index+1)%ids.length];
+currentBuddy=card.dataset.buddy;
 
-  renderBuddy();
+renderBuddy();
+
+openPage("buddy");
+
+});
+
 });
 
 /* =========================================================
-   SPEECH SYNTHESIS
+   EMOJI REMOVER
+   ========================================================= */
+
+/*
+THIS IS THE IMPORTANT FIX.
+
+Anything passed to the speech engine goes through
+removeEmojis() first.
+
+So the voice cannot say:
+
+"dos corazones"
+"flor"
+"fuego"
+"cara riendo"
+
+etc.
+*/
+
+function removeEmojis(text){
+
+if(!text)return "";
+
+return text
+
+.replace(
+/[\u{1F000}-\u{1FAFF}]/gu,
+""
+)
+
+.replace(
+/[\u{2600}-\u{27BF}]/gu,
+""
+)
+
+.replace(
+/[\u{FE00}-\u{FE0F}]/gu,
+""
+)
+
+.replace(
+/[\u{200D}]/gu,
+""
+)
+
+.replace(/\s+/g," ")
+.trim();
+
+}
+
+/* =========================================================
+   VOICES
    ========================================================= */
 
 let voices=[];
-let selectedJinVoice=null;
 
 function loadVoices(){
 
-  voices=window.speechSynthesis
-    ? window.speechSynthesis.getVoices()
-    : [];
+if(!("speechSynthesis" in window))return;
+
+voices=
+window.speechSynthesis.getVoices();
 
 }
+
+loadVoices();
 
 if("speechSynthesis" in window){
 
-  loadVoices();
-
-  window.speechSynthesis.onvoiceschanged=loadVoices;
+window.speechSynthesis.onvoiceschanged=
+loadVoices;
 
 }
 
-/*
-  IMPORTANT:
-  Web Speech API does NOT expose a reliable gender property.
-
-  Therefore we use name heuristics for Jin.
-  If the device offers a Korean male voice with a name
-  indicating male/man/남성/남, it gets priority.
-*/
-
 function koreanVoices(){
 
-  return voices.filter(v=>
-    (v.lang||"").toLowerCase().startsWith("ko")
-  );
+return voices.filter(v=>
+(v.lang||"")
+.toLowerCase()
+.startsWith("ko")
+);
 
 }
 
 function chooseVoice(type){
 
-  const ko=koreanVoices();
+const ko=koreanVoices();
 
-  if(!ko.length) return null;
+if(!ko.length)return null;
 
-  if(type==="male"){
+if(type==="male"){
 
-    const maleWords=[
-      "male",
-      "man",
-      "남",
-      "남성",
-      "male korean",
-      "minjun",
-      "junho",
-      "seung",
-      "hyun"
-    ];
+const maleHints=[
+"male",
+"man",
+"남",
+"남성",
+"minjun",
+"junho",
+"seung",
+"hyun",
+"jin"
+];
 
-    const male=ko.find(v=>{
-      const n=(v.name||"").toLowerCase();
+const male=ko.find(v=>{
 
-      return maleWords.some(word=>
-        n.includes(word.toLowerCase())
-      );
-    });
+const name=
+(v.name||"").toLowerCase();
 
-    if(male){
-      selectedJinVoice=male;
-      return male;
-    }
-  }
+return maleHints.some(h=>
+name.includes(h.toLowerCase())
+);
 
-  return ko[0];
+});
+
+if(male)return male;
+
 }
 
-function speakKorean(text, type="female"){
+return ko[0];
 
-  if(!("speechSynthesis" in window)){
-    alert("Tu dispositivo no permite reproducción de voz en este navegador.");
-    return;
-  }
-
-  window.speechSynthesis.cancel();
-
-  const utterance=new SpeechSynthesisUtterance(text);
-
-  utterance.lang="ko-KR";
-  utterance.rate=.88;
-
-  const voice=chooseVoice(type);
-
-  if(voice){
-    utterance.voice=voice;
-  }
-
-  utterance.onstart=()=>{
-
-    document.getElementById("bigAvatar")
-      ?.classList.add("speaking");
-
-  };
-
-  utterance.onend=()=>{
-
-    document.getElementById("bigAvatar")
-      ?.classList.remove("speaking");
-
-  };
-
-  window.speechSynthesis.speak(utterance);
 }
 
-/*
-  Spanish translation is intentionally NOT sent to the
-  Korean voice here.
+/* =========================================================
+   SPEAK KOREAN
+   ========================================================= */
 
-  Emojis are never spoken.
-*/
+function speakKorean(text,type="female"){
+
+if(!("speechSynthesis" in window)){
+alert("La voz no está disponible en este navegador.");
+return;
+}
+
+window.speechSynthesis.cancel();
+
+const cleanText=
+removeEmojis(text);
+
+const utterance=
+new SpeechSynthesisUtterance(cleanText);
+
+utterance.lang="ko-KR";
+utterance.rate=.88;
+
+const voice=
+chooseVoice(type);
+
+if(voice){
+utterance.voice=voice;
+}
+
+window.speechSynthesis.speak(utterance);
+
+}
+
+/* =========================================================
+   SPEAK BUDDY
+   ========================================================= */
 
 function speakBuddy(){
 
-  const b=buddies[currentBuddy];
+const b=buddies[currentBuddy];
 
-  if(!("speechSynthesis" in window)){
-    alert("Este navegador no tiene síntesis de voz disponible.");
-    return;
-  }
+if(!("speechSynthesis" in window)){
+return;
+}
 
-  window.speechSynthesis.cancel();
+window.speechSynthesis.cancel();
 
-  const avatar=document.getElementById("bigAvatar");
+const avatar=
+document.getElementById("bigAvatar");
 
-  avatar.classList.add("speaking");
+avatar.classList.add("speaking");
 
-  const korean=new SpeechSynthesisUtterance(b.korean);
+/*
+KOREAN:
+Only Korean.
+NO emoji.
+*/
 
-  korean.lang="ko-KR";
-  korean.rate=.88;
+const koreanText=
+removeEmojis(b.korean);
 
-  const koreanVoice=chooseVoice(b.voiceType);
+const korean=
+new SpeechSynthesisUtterance(
+koreanText
+);
 
-  if(koreanVoice){
-    korean.voice=koreanVoice;
-  }
+korean.lang="ko-KR";
+korean.rate=.88;
 
-  const spanish=new SpeechSynthesisUtterance(b.speech);
+const koreanVoice=
+chooseVoice(b.type);
 
-  spanish.lang="es-PR";
-  spanish.rate=.92;
+if(koreanVoice){
+korean.voice=koreanVoice;
+}
 
-  korean.onend=()=>{
+/*
+SPANISH:
+Only Spanish.
+NO emoji.
+*/
 
-    setTimeout(()=>{
-      window.speechSynthesis.speak(spanish);
-    },250);
+const spanishText=
+removeEmojis(b.speech);
 
-  };
+const spanish=
+new SpeechSynthesisUtterance(
+spanishText
+);
 
-  spanish.onend=()=>{
-    avatar.classList.remove("speaking");
-  };
+spanish.lang="es-PR";
+spanish.rate=.92;
 
-  window.speechSynthesis.speak(korean);
+korean.onend=()=>{
+
+setTimeout(()=>{
+window.speechSynthesis.speak(spanish);
+},250);
+
+};
+
+spanish.onend=()=>{
+avatar.classList.remove("speaking");
+};
+
+window.speechSynthesis.speak(korean);
 
 }
 
-document.getElementById("speakBuddyBtn")
-  .addEventListener("click",speakBuddy);
+document.getElementById("speakBuddy")
+.addEventListener("click",speakBuddy);
 
-/* =========================================================
-   VOICE SETTINGS
-   ========================================================= */
-
-document.getElementById("voiceSettingsBtn")
+document.getElementById("nextBuddy")
 .addEventListener("click",()=>{
 
-  loadVoices();
+const ids=Object.keys(buddies);
 
-  const ko=koreanVoices();
+let index=ids.indexOf(currentBuddy);
 
-  let message="Voces coreanas disponibles:\n\n";
+index++;
 
-  if(!ko.length){
+if(index>=ids.length){
+index=0;
+}
 
-    message+="No encontré voces coreanas disponibles en este dispositivo.\n\n";
+currentBuddy=ids[index];
 
-  }else{
-
-    ko.forEach((v,i)=>{
-      message+=(i+1)+". "+v.name+
-        " — "+v.lang+"\n";
-    });
-
-  }
-
-  message+=
-    "\nPara Jin, Korean Buddy intentará escoger automáticamente una voz masculina coreana cuando el dispositivo la identifique.";
-
-  alert(message);
+renderBuddy();
 
 });
 
@@ -1442,328 +1719,363 @@ document.getElementById("voiceSettingsBtn")
    SPEECH RECOGNITION
    ========================================================= */
 
-const SpeechRecognition=
-  window.SpeechRecognition ||
-  window.webkitSpeechRecognition;
+const Recognition=
+window.SpeechRecognition ||
+window.webkitSpeechRecognition;
 
 let recognition=null;
-let recognizing=false;
+let listening=false;
 
-const micButton=document.getElementById("micButton");
-const listenStatus=document.getElementById("listenStatus");
-const speechResult=document.getElementById("speechResult");
-const speechFeedback=document.getElementById("speechFeedback");
+const mic=
+document.getElementById("mic");
 
-if(SpeechRecognition){
+if(Recognition){
 
-  recognition=new SpeechRecognition();
+recognition=new Recognition();
 
-  recognition.lang="ko-KR";
-  recognition.continuous=false;
-  recognition.interimResults=false;
-  recognition.maxAlternatives=3;
+recognition.lang="ko-KR";
 
-  recognition.onstart=()=>{
+recognition.continuous=false;
 
-    recognizing=true;
+recognition.interimResults=false;
 
-    micButton.classList.add("listening");
+recognition.maxAlternatives=3;
 
-    listenStatus.textContent=
-      "🔴 Te estoy escuchando… di la frase completa.";
+recognition.onstart=()=>{
 
-    speechFeedback.textContent="";
+listening=true;
 
-  };
+mic.classList.add("listening");
 
-  recognition.onresult=(event)=>{
+document.getElementById("status")
+.textContent=
+"🔴 Te estoy escuchando… di la frase completa.";
 
-    const transcript=
-      event.results[0][0].transcript.trim();
+};
 
-    speechResult.textContent=
-      "Tú dijiste: "+transcript;
+recognition.onresult=(event)=>{
 
-    evaluateSpeech(transcript);
+const transcript=
+event.results[0][0]
+.transcript
+.trim();
 
-  };
+document.getElementById("speechResult")
+.textContent=
+"Tú dijiste: "+transcript;
 
-  recognition.onerror=(event)=>{
+evaluateSpeech(transcript);
 
-    recognizing=false;
+};
 
-    micButton.classList.remove("listening");
+recognition.onerror=(event)=>{
 
-    if(event.error==="not-allowed"){
+listening=false;
 
-      listenStatus.textContent=
-        "🎙️ Necesitas permitir el micrófono.";
+mic.classList.remove("listening");
 
-    }else{
+if(event.error==="not-allowed"){
 
-      listenStatus.textContent=
-        "No pude escuchar la frase completa. Inténtalo otra vez.";
-
-    }
-
-  };
-
-  recognition.onend=()=>{
-
-    recognizing=false;
-
-    micButton.classList.remove("listening");
-
-    if(
-      listenStatus.textContent.includes("Te estoy escuchando")
-    ){
-
-      listenStatus.textContent=
-        "Listo. Procesando tu respuesta…";
-
-    }
-
-  };
-
-  micButton.addEventListener("click",()=>{
-
-    if(recognizing){
-
-      recognition.stop();
-      return;
-
-    }
-
-    speechResult.textContent=
-      "Escuchando…";
-
-    try{
-      recognition.start();
-    }catch(e){
-      console.log(e);
-    }
-
-  });
+document.getElementById("status")
+.textContent=
+"🎙️ Necesitas permitir el micrófono.";
 
 }else{
 
-  micButton.disabled=true;
-
-  listenStatus.innerHTML=
-    "🎙️ Este navegador no ofrece reconocimiento de voz. "+
-    "Puedes practicar escuchando la pronunciación.";
+document.getElementById("status")
+.textContent=
+"No pude escucharte. Inténtalo nuevamente.";
 
 }
 
-function normalizeKorean(text){
+};
 
-  return text
-    .replace(/[.,!?。，！？]/g,"")
-    .replace(/\s+/g,"")
-    .trim();
+recognition.onend=()=>{
+
+listening=false;
+
+mic.classList.remove("listening");
+
+};
+
+mic.addEventListener("click",()=>{
+
+if(listening){
+
+recognition.stop();
+
+return;
 
 }
 
-function evaluateSpeech(transcript){
+document.getElementById("status")
+.textContent=
+"🔴 Te estoy escuchando…";
 
-  const expected="안녕하세요";
+try{
 
-  const a=normalizeKorean(transcript);
-  const b=normalizeKorean(expected);
+recognition.start();
 
-  if(a===b){
+}catch(e){
 
-    speechFeedback.innerHTML=
-      "🎉 <strong>¡Muy bien!</strong> Dijiste la frase completa.";
+console.log(e);
 
-  }else{
+}
 
-    speechFeedback.innerHTML=
-      "💜 Casi. No te preocupes. Escucha una vez más y vuelve a intentarlo.";
+});
 
-  }
+}else{
+
+mic.disabled=true;
+
+document.getElementById("status")
+.textContent=
+"Este navegador no ofrece reconocimiento de voz.";
 
 }
 
 /* =========================================================
-   HANGUL DRAWING
+   EVALUATE
    ========================================================= */
 
-const canvas=document.getElementById("drawCanvas");
-const ctx=canvas.getContext("2d");
+function normalize(text){
 
-let drawing=false;
-
-function position(e){
-
-  const rect=canvas.getBoundingClientRect();
-
-  const point=e.touches ? e.touches[0] : e;
-
-  return {
-    x:(point.clientX-rect.left)*(canvas.width/rect.width),
-    y:(point.clientY-rect.top)*(canvas.height/rect.height)
-  };
+return text
+.replace(/[.,!?。，！？]/g,"")
+.replace(/\s+/g,"")
+.trim();
 
 }
 
-function startDrawing(e){
+function evaluateSpeech(text){
 
-  e.preventDefault();
+const expected=
+normalize("안녕하세요");
 
-  drawing=true;
+const actual=
+normalize(text);
 
-  const p=position(e);
+const feedback=
+document.getElementById("feedback");
 
-  ctx.beginPath();
-  ctx.moveTo(p.x,p.y);
+if(actual===expected){
 
-}
+feedback.innerHTML=
+"🎉 ¡Muy bien! Terminaste la frase completa.";
 
-function draw(e){
+}else{
 
-  if(!drawing)return;
-
-  e.preventDefault();
-
-  const p=position(e);
-
-  ctx.lineWidth=10;
-  ctx.lineCap="round";
-  ctx.strokeStyle="#7357e8";
-
-  ctx.lineTo(p.x,p.y);
-  ctx.stroke();
+feedback.innerHTML=
+"💜 Casi. Escúchala otra vez y vuelve a intentarlo.";
 
 }
 
-function stopDrawing(){
+}
 
-  drawing=false;
-  ctx.beginPath();
+/* =========================================================
+   HANGUL
+   ========================================================= */
+
+const letters=[
+["ㄱ","기역 — gieok"],
+["ㄴ","니은 — nieun"],
+["ㄷ","디귿 — digeut"],
+["ㄹ","리을 — rieul"],
+["ㅁ","미음 — mieum"],
+["ㅂ","비읍 — bieup"],
+["ㅅ","시옷 — siot"],
+["ㅇ","이응 — ieung"]
+];
+
+let letterIndex=0;
+
+function renderLetter(){
+
+document.getElementById("hangulLetter")
+.textContent=
+letters[letterIndex][0];
+
+document.getElementById("hangulName")
+.textContent=
+letters[letterIndex][1];
 
 }
 
-canvas.addEventListener("pointerdown",startDrawing);
-canvas.addEventListener("pointermove",draw);
-canvas.addEventListener("pointerup",stopDrawing);
-canvas.addEventListener("pointerleave",stopDrawing);
-
-document.getElementById("clearCanvas")
+document.getElementById("hangulSound")
 .addEventListener("click",()=>{
 
-  ctx.clearRect(0,0,canvas.width,canvas.height);
+speakKorean(
+letters[letterIndex][0]
+);
 
 });
 
-const hangulData=[
-  ["ㄱ","기역 — gieok"],
-  ["ㄴ","니은 — nieun"],
-  ["ㄷ","디귿 — digeut"],
-  ["ㄹ","리을 — rieul"],
-  ["ㅁ","미음 — mieum"],
-  ["ㅂ","비읍 — bieup"],
-  ["ㅅ","시옷 — siot"],
-  ["ㅇ","이응 — ieung"]
-];
+/* =====================================================
+   DRAWING
+   ===================================================== */
 
-let hangulIndex=0;
+const canvas=
+document.getElementById("canvas");
 
-function renderHangul(){
+const ctx=
+canvas.getContext("2d");
 
-  const item=hangulData[hangulIndex];
+let drawing=false;
 
-  document.getElementById("hangulLetter")
-    .textContent=item[0];
+function point(e){
 
-  document.getElementById("hangulExample")
-    .textContent=item[1];
+const r=
+canvas.getBoundingClientRect();
+
+return{
+
+x:(e.clientX-r.left)*
+(canvas.width/r.width),
+
+y:(e.clientY-r.top)*
+(canvas.height/r.height)
+
+};
 
 }
 
-document.getElementById("hangulAudio")
+canvas.addEventListener("pointerdown",e=>{
+
+drawing=true;
+
+const p=point(e);
+
+ctx.beginPath();
+
+ctx.moveTo(p.x,p.y);
+
+});
+
+canvas.addEventListener("pointermove",e=>{
+
+if(!drawing)return;
+
+const p=point(e);
+
+ctx.lineWidth=10;
+
+ctx.lineCap="round";
+
+ctx.strokeStyle="#7357e8";
+
+ctx.lineTo(p.x,p.y);
+
+ctx.stroke();
+
+});
+
+canvas.addEventListener("pointerup",()=>{
+drawing=false;
+});
+
+canvas.addEventListener("pointerleave",()=>{
+drawing=false;
+});
+
+document.getElementById("clear")
 .addEventListener("click",()=>{
 
-  speakKorean(hangulData[hangulIndex][0]);
+ctx.clearRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
 
 });
 
 document.getElementById("nextHangul")
 .addEventListener("click",()=>{
 
-  hangulIndex++;
+letterIndex++;
 
-  if(hangulIndex>=hangulData.length){
-    hangulIndex=0;
-  }
+if(letterIndex>=letters.length){
+letterIndex=0;
+}
 
-  renderHangul();
+renderLetter();
 
-  ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.clearRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
 
 });
 
-/* =========================================================
+/* =====================================================
    FLASHCARDS
-   ========================================================= */
+   ===================================================== */
 
-const flashcards=[
-  ["물","mul","agua"],
-  ["커피","keopi","café"],
-  ["케이크","keikeu","pastel"],
-  ["김치","gimchi","kimchi"],
-  ["친구","chingu","amigo/a"],
-  ["선생님","seonsaengnim","profesor/a"],
-  ["감사합니다","gamsahamnida","gracias"],
-  ["안녕하세요","annyeonghaseyo","hola"]
+const cards=[
+["물","mul","agua"],
+["커피","keopi","café"],
+["케이크","keikeu","pastel"],
+["김치","gimchi","kimchi"],
+["친구","chingu","amigo/a"],
+["선생님","seonsaengnim","profesor/a"],
+["감사합니다","gamsahamnida","gracias"],
+["안녕하세요","annyeonghaseyo","hola"]
 ];
 
 let flashIndex=1;
 
 function renderFlash(){
 
-  const f=flashcards[flashIndex];
+const f=cards[flashIndex];
 
-  document.getElementById("flashWord").textContent=f[0];
-  document.getElementById("flashRoman").textContent=f[1];
-  document.getElementById("flashMeaning").textContent=f[2];
-  document.getElementById("flashFeedback").textContent="";
+document.getElementById("flashWord")
+.textContent=f[0];
+
+document.getElementById("flashRom")
+.textContent=f[1];
+
+document.getElementById("flashMeaning")
+.textContent=f[2];
 
 }
 
 document.getElementById("flashListen")
 .addEventListener("click",()=>{
 
-  speakKorean(flashcards[flashIndex][0]);
+speakKorean(
+cards[flashIndex][0]
+);
 
 });
 
-document.getElementById("flashRepeat")
+document.getElementById("flashSpeak")
 .addEventListener("click",()=>{
 
-  openPage("speak");
+openPage("speak");
 
 });
 
 document.getElementById("flashNext")
 .addEventListener("click",()=>{
 
-  flashIndex++;
+flashIndex++;
 
-  if(flashIndex>=flashcards.length){
-    flashIndex=0;
-  }
+if(flashIndex>=cards.length){
+flashIndex=0;
+}
 
-  renderFlash();
+renderFlash();
 
 });
 
-/* =========================================================
+/* =====================================================
    INITIALIZE
-   ========================================================= */
+   ===================================================== */
 
 renderBuddy();
-renderHangul();
+renderLetter();
 renderFlash();
 
 </script>
