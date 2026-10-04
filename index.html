@@ -6,364 +6,501 @@
 <title>Korean Buddy 🌸</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+:root{
+  --purple:#7357e8;
+  --purple2:#9b83f5;
+  --pink:#ff8fc8;
+  --pink2:#ffd9ec;
+  --text:#40366b;
+  --muted:#8b83a5;
+  --bg1:#fff7fb;
+  --bg2:#f4f0ff;
+  --card:#ffffff;
+  --green:#63c88b;
+  --yellow:#ffd86b;
+}
 
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  background:linear-gradient(180deg,#fff7fb,#f5f2ff);
-  color:#292335;
+  color:var(--text);
+  background:linear-gradient(145deg,var(--bg1),var(--bg2));
+}
+
+button{
+  font:inherit;
+  border:0;
+  cursor:pointer;
 }
 
 .app{
-  max-width:520px;
+  width:min(520px,100%);
   margin:auto;
-  padding:18px 16px 90px;
+  padding:18px 14px 95px;
 }
 
 header{
   text-align:center;
-  padding:12px 0 18px
+  padding:8px 0 18px;
 }
 
 .logo{
-  font-size:30px;
-  font-weight:900
+  font-size:34px;
+  font-weight:900;
+  color:var(--purple);
+  letter-spacing:-1px;
 }
 
 .subtitle{
-  color:#777;
-  margin-top:4px
-}
-
-.card{
-  background:white;
-  border-radius:25px;
-  padding:20px;
-  margin:14px 0;
-  box-shadow:0 8px 25px #00000010;
-}
-
-h1,h2,h3{
-  margin-top:0
-}
-
-button{
-  border:0;
-  border-radius:17px;
-  padding:13px 17px;
-  font-size:16px;
-  font-weight:700;
-  cursor:pointer;
-}
-
-.primary{
-  background:#7b61ff;
-  color:white
-}
-
-.secondary{
-  background:#f1edff;
-  color:#5b46c6
-}
-
-.green{
-  background:#e5f8ed;
-  color:#197344
-}
-
-.pink{
-  background:#ffe7f1;
-  color:#c33870
-}
-
-.full{
-  width:100%;
-  margin-top:10px
+  margin-top:3px;
+  color:#70679b;
+  font-weight:600;
 }
 
 .stats{
- display:flex;
- justify-content:space-around;
- background:#fff;
- border-radius:20px;
- padding:14px;
- box-shadow:0 6px 20px #00000008;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  background:rgba(255,255,255,.85);
+  border:1px solid #eee7ff;
+  border-radius:25px;
+  padding:10px;
+  box-shadow:0 8px 30px rgba(103,74,170,.08);
+  margin-bottom:16px;
 }
 
 .stat{
   text-align:center;
-  font-weight:800
+  padding:9px 4px;
 }
 
-.stat small{
+.stat strong{
   display:block;
-  color:#888;
-  font-weight:500
+  font-size:19px;
 }
 
-.buddies{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:12px;
+.stat span{
+  font-size:11px;
+  color:var(--muted);
 }
 
-.buddy{
- padding:18px 10px;
- text-align:center;
- border-radius:22px;
- background:#faf9ff;
- border:2px solid transparent;
+.page{
+  display:none;
 }
 
-.buddy.active{
- border-color:#8067ff;
- background:#f2efff
+.page.active{
+  display:block;
 }
 
-/* =========================
-   PERSONAJES
-========================= */
-
-.avatar{
- width:76px;
- height:76px;
- margin:auto;
- border-radius:50%;
- display:flex;
- align-items:center;
- justify-content:center;
- background:#eee9ff;
- overflow:hidden;
- position:relative;
+.card{
+  background:var(--card);
+  border-radius:24px;
+  padding:18px;
+  margin-bottom:14px;
+  box-shadow:0 8px 28px rgba(83,61,145,.08);
+  border:1px solid #eee9fa;
 }
 
-.avatar.large{
- width:150px;
- height:150px;
+.section-title{
+  font-size:21px;
+  font-weight:900;
+  margin-bottom:6px;
 }
 
-.character{
- width:100%;
- height:100%;
- display:block;
-}
-
-/* Boca hablando */
-
-.mouth{
- transform-origin:center;
-}
-
-.character-avatar.talking .mouth{
- animation:talkMouth .18s infinite alternate;
-}
-
-@keyframes talkMouth{
- from{
-   transform:scaleY(.35);
- }
- to{
-   transform:scaleY(1);
- }
-}
-
-/* Cabeza con pequeño movimiento al hablar */
-
-.character-avatar.talking .head{
- animation:talkHead .45s infinite alternate;
- transform-origin:center;
-}
-
-@keyframes talkHead{
- from{transform:rotate(-1deg)}
- to{transform:rotate(1deg)}
-}
-
-.character-avatar.talking{
- box-shadow:0 0 0 5px #e9e2ff;
-}
-
-/* ========================= */
-
-.buddy h3{
- margin:8px 0 2px
-}
-
-.buddy p{
- margin:0;
- color:#777;
- font-size:13px
-}
-
-.hidden{
- display:none
-}
-
-.korean{
- font-size:32px;
- font-weight:900;
- text-align:center;
- margin:15px 0;
-}
-
-.translation{
- text-align:center;
- font-size:18px;
- color:#666;
-}
-
-.listen{
- display:block;
- margin:12px auto;
- background:#fff0f6;
- color:#c83e73;
-}
-
-.progress{
- height:10px;
- background:#eee;
- border-radius:20px;
- overflow:hidden;
-}
-
-.progress div{
- height:100%;
- width:0%;
- background:#7b61ff;
- transition:.3s;
-}
-
-.option{
- width:100%;
- margin:7px 0;
- background:#f7f5ff;
- text-align:left;
-}
-
-.option.correct{
- background:#dff7e8;
- color:#176b3e
-}
-
-.option.wrong{
- background:#ffe2e2;
- color:#a22
-}
-
-.flash{
- text-align:center;
- padding:25px;
- border-radius:24px;
- background:linear-gradient(135deg,#fff,#f4efff);
-}
-
-.flash .word{
- font-size:42px;
- font-weight:900
-}
-
-.flash .meaning{
- font-size:20px;
- color:#666
-}
-
-.hangul-grid{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:10px;
-}
-
-.letter{
- background:#faf8ff;
- padding:18px 5px;
- text-align:center;
- border-radius:18px;
- font-size:32px;
- font-weight:900;
-}
-
-.letter small{
- display:block;
- font-size:12px;
- color:#777;
- margin-top:5px
-}
-
-.speakBox{
- text-align:center;
- padding:20px;
- background:#f7f4ff;
- border-radius:22px;
-}
-
-.mic{
- width:90px;
- height:90px;
- border-radius:50%;
- background:#7b61ff;
- color:white;
- font-size:40px;
-}
-
-.status{
- margin-top:12px;
- font-weight:700;
- min-height:25px;
-}
-
-nav{
- position:fixed;
- bottom:0;
- left:0;
- right:0;
- background:white;
- box-shadow:0 -5px 20px #0001;
- padding:8px;
- display:flex;
- justify-content:space-around;
- z-index:20;
-}
-
-nav button{
- background:none;
- padding:8px 5px;
- font-size:12px;
- color:#666;
-}
-
-nav button span{
- display:block;
- font-size:22px
+.section-sub{
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.5;
 }
 
 .badge{
- display:inline-block;
- background:#eee9ff;
- color:#6049c8;
- border-radius:20px;
- padding:6px 10px;
- font-size:12px;
- font-weight:800;
+  display:inline-flex;
+  padding:7px 12px;
+  background:#f1eaff;
+  color:var(--purple);
+  border-radius:99px;
+  font-size:12px;
+  font-weight:800;
 }
 
-/* Nombre del personaje */
+/* BUDDIES */
 
-.character-name{
- font-size:28px;
- font-weight:900;
- margin-top:8px;
+.buddy-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
 }
 
-.talking-label{
- display:none;
- margin-top:8px;
- color:#7b61ff;
- font-weight:800;
+.buddy-card{
+  border:2px solid #eee8ff;
+  background:white;
+  border-radius:22px;
+  padding:9px;
+  text-align:center;
+  transition:.2s;
 }
 
-.character-avatar.talking + .talking-label{
- display:block;
+.buddy-card.selected{
+  border-color:var(--purple);
+  box-shadow:0 8px 22px rgba(115,87,232,.16);
+}
+
+.avatar{
+  width:100%;
+  aspect-ratio:1;
+  border-radius:18px;
+  overflow:hidden;
+  background:linear-gradient(145deg,#fff0f8,#f0ebff);
+  position:relative;
+}
+
+.avatar svg{
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+.buddy-name{
+  font-weight:900;
+  margin-top:8px;
+  font-size:17px;
+}
+
+.buddy-role{
+  color:var(--muted);
+  font-size:11px;
+}
+
+.choose-btn{
+  margin-top:7px;
+  width:100%;
+  padding:9px;
+  border-radius:13px;
+  background:#f2edff;
+  color:var(--purple);
+  font-weight:800;
+}
+
+.choose-btn.selected{
+  background:var(--purple);
+  color:white;
+}
+
+/* TALKING AVATAR */
+
+.talking-area{
+  text-align:center;
+}
+
+.big-avatar{
+  width:min(290px,85vw);
+  margin:auto;
+  aspect-ratio:1;
+  border-radius:32px;
+  overflow:hidden;
+  background:linear-gradient(145deg,#fff0f8,#eee8ff);
+}
+
+.big-avatar svg{
+  width:100%;
+  height:100%;
+}
+
+.speech-bubble{
+  position:relative;
+  background:white;
+  border-radius:22px;
+  padding:15px;
+  margin:14px 8px 8px;
+  box-shadow:0 6px 22px rgba(73,55,126,.08);
+}
+
+.speech-bubble:before{
+  content:"";
+  position:absolute;
+  top:-10px;
+  left:50%;
+  transform:translateX(-50%);
+  border-left:10px solid transparent;
+  border-right:10px solid transparent;
+  border-bottom:10px solid white;
+}
+
+.korean{
+  font-size:23px;
+  font-weight:900;
+}
+
+.roman{
+  color:#887fa2;
+  font-size:13px;
+  margin-top:5px;
+}
+
+.translation{
+  margin-top:6px;
+  font-weight:600;
+}
+
+.action-row{
+  display:flex;
+  gap:8px;
+  margin-top:12px;
+}
+
+.primary{
+  flex:1;
+  padding:13px;
+  border-radius:16px;
+  background:linear-gradient(135deg,#7357e8,#967cf2);
+  color:white;
+  font-weight:900;
+}
+
+.secondary{
+  flex:1;
+  padding:13px;
+  border-radius:16px;
+  background:#f2edff;
+  color:var(--purple);
+  font-weight:900;
+}
+
+/* SPEECH */
+
+.speak-box{
+  text-align:center;
+}
+
+.listen-status{
+  min-height:25px;
+  margin:10px 0;
+  color:var(--muted);
+  font-size:13px;
+  font-weight:700;
+}
+
+.mic{
+  width:88px;
+  height:88px;
+  border-radius:50%;
+  background:linear-gradient(145deg,#ff8fc8,#9a80f4);
+  color:white;
+  font-size:35px;
+  box-shadow:0 10px 25px rgba(126,87,220,.25);
+}
+
+.mic.listening{
+  animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+  50%{transform:scale(1.08)}
+}
+
+.result{
+  margin-top:14px;
+  padding:13px;
+  background:#faf8ff;
+  border-radius:16px;
+  min-height:50px;
+  font-weight:700;
+}
+
+.feedback{
+  margin-top:10px;
+  font-size:14px;
+}
+
+/* HANGUL */
+
+.hangul-letter{
+  font-size:70px;
+  font-weight:900;
+  text-align:center;
+  color:var(--purple);
+  margin:8px;
+}
+
+.hangul-example{
+  text-align:center;
+  font-size:18px;
+  font-weight:800;
+}
+
+canvas{
+  width:100%;
+  height:210px;
+  border:2px dashed #d9d0f6;
+  border-radius:18px;
+  background:#fff;
+  touch-action:none;
+  margin-top:12px;
+}
+
+.canvas-actions{
+  display:flex;
+  gap:8px;
+  margin-top:8px;
+}
+
+canvas + .canvas-actions button{
+  flex:1;
+}
+
+/* FLASHCARDS */
+
+.flash{
+  text-align:center;
+  padding:25px 15px;
+  border-radius:25px;
+  background:linear-gradient(145deg,#fff5fb,#f1edff);
+}
+
+.flash-word{
+  font-size:50px;
+  font-weight:900;
+  color:var(--purple);
+}
+
+.flash-rom{
+  color:#8c83a6;
+}
+
+.flash-meaning{
+  font-weight:800;
+  margin-top:5px;
+}
+
+.flash-buttons{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+  margin-top:18px;
+}
+
+/* PROGRESS */
+
+.progress-row{
+  margin:15px 0;
+}
+
+.progress-top{
+  display:flex;
+  justify-content:space-between;
+  font-size:13px;
+  font-weight:800;
+}
+
+.bar{
+  height:10px;
+  background:#eeeafa;
+  border-radius:99px;
+  overflow:hidden;
+  margin-top:6px;
+}
+
+.fill{
+  height:100%;
+  background:linear-gradient(90deg,#7357e8,#ff8fc8);
+  border-radius:99px;
+}
+
+/* VOICE SETTINGS */
+
+.voice-list{
+  max-height:260px;
+  overflow:auto;
+  margin-top:10px;
+}
+
+.voice-option{
+  width:100%;
+  text-align:left;
+  padding:11px;
+  margin-bottom:6px;
+  border-radius:13px;
+  background:#f6f3ff;
+  color:var(--text);
+}
+
+.voice-option:hover{
+  background:#ece6ff;
+}
+
+.voice-option small{
+  display:block;
+  color:var(--muted);
+}
+
+/* NAV */
+
+.bottom-nav{
+  position:fixed;
+  left:50%;
+  bottom:10px;
+  transform:translateX(-50%);
+  width:min(520px,calc(100% - 20px));
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  background:rgba(255,255,255,.96);
+  border:1px solid #eee8fb;
+  border-radius:22px;
+  padding:7px;
+  box-shadow:0 8px 35px rgba(65,45,120,.15);
+  z-index:20;
+}
+
+.nav-btn{
+  background:transparent;
+  padding:7px 2px;
+  border-radius:15px;
+  color:#9189a9;
+  font-size:11px;
+  font-weight:800;
+}
+
+.nav-btn.active{
+  background:#f0eaff;
+  color:var(--purple);
+}
+
+.nav-icon{
+  display:block;
+  font-size:20px;
+  margin-bottom:2px;
+}
+
+/* ANIMATION */
+
+.speaking .mouth{
+  animation:mouth .22s infinite alternate;
+}
+
+@keyframes mouth{
+  from{transform:scaleY(.35)}
+  to{transform:scaleY(1)}
+}
+
+.blink{
+  animation:blink 4s infinite;
+  transform-origin:center;
+}
+
+@keyframes blink{
+  0%,93%,100%{transform:scaleY(1)}
+  95%{transform:scaleY(.12)}
+}
+
+@media(max-width:360px){
+  .logo{font-size:29px}
+  .buddy-grid{gap:8px}
+  .card{padding:14px}
 }
 </style>
 </head>
@@ -374,1503 +511,1260 @@ nav button span{
 
 <header>
   <div class="logo">Korean Buddy 🌸</div>
-  <div class="subtitle">Aprende coreano de verdad</div>
+  <div class="subtitle">Aprende coreano de verdad 💜</div>
 </header>
 
 <div class="stats">
- <div class="stat">🔥 <span id="streak">1</span><small>días</small></div>
- <div class="stat">⭐ <span id="xp">0</span><small>XP</small></div>
- <div class="stat">🇰🇷 <span id="skills">0</span><small>habilidades</small></div>
-</div>
-
-
-<!-- ================= HOME ================= -->
-
-<section id="home">
-
-<div class="card">
- <span class="badge">BIENVENIDA</span>
-
- <h2>¡Conoce a tus Buddies!</h2>
-
- <p>
- No tienes que escoger para siempre. Puedes cambiar de Buddy
- cuando quieras y tu progreso se queda guardado.
- </p>
-</div>
-
-
-<div class="buddies">
-
-<!-- SORA -->
-
-<div class="buddy" onclick="showBuddy('sora')">
-
- <div class="avatar character-avatar" id="mini-sora">
-   <div id="avatar-sora"></div>
- </div>
-
- <h3>Sora</h3>
- <p>Paciente y dulce 🌸</p>
-
- <button class="secondary full">
-   Conocer
- </button>
-
-</div>
-
-
-<!-- JIN -->
-
-<div class="buddy" onclick="showBuddy('jin')">
-
- <div class="avatar character-avatar" id="mini-jin">
-   <div id="avatar-jin"></div>
- </div>
-
- <h3>Jin</h3>
- <p>Desafiante 🔥</p>
-
- <button class="secondary full">
-   Conocer
- </button>
-
-</div>
-
-
-<!-- MINA -->
-
-<div class="buddy" onclick="showBuddy('mina')">
-
- <div class="avatar character-avatar" id="mini-mina">
-   <div id="avatar-mina"></div>
- </div>
-
- <h3>Mina</h3>
- <p>Divertida 😂</p>
-
- <button class="secondary full">
-   Conocer
- </button>
-
-</div>
-
-
-<!-- HANA -->
-
-<div class="buddy" onclick="showBuddy('hana')">
-
- <div class="avatar character-avatar" id="mini-hana">
-   <div id="avatar-hana"></div>
- </div>
-
- <h3>Hana</h3>
- <p>Profesora 👩🏻‍🏫</p>
-
- <button class="secondary full">
-   Conocer
- </button>
-
-</div>
-
-</div>
-
-
-<div class="card">
-
- <h2>🇰🇷 Lección 1</h2>
-
- <p><b>¡Hola! Soy Suhail</b></p>
-
- <p>
- Primero aprenderás. Después practicarás.
- Finalmente hablaremos.
- </p>
-
- <button class="primary full" onclick="startLesson()">
- ▶️ Comenzar lección
- </button>
-
-</div>
-
-</section>
-
-
-<!-- ================= BUDDY PAGE ================= -->
-
-<section id="buddyPage" class="hidden">
-
-<div class="card" id="buddyCard"></div>
-
-<button class="secondary full" onclick="speakCurrentBuddy()">
- 🔊 Escuchar otra vez
-</button>
-
-<button class="primary full" onclick="startLesson()">
- 📚 Probar una mini lección
-</button>
-
-<button class="secondary full" onclick="goHome()">
- ← Volver
-</button>
-
-</section>
-
-
-<!-- ================= LESSON ================= -->
-
-<section id="lesson" class="hidden">
-
-<div class="card">
-
- <span class="badge">
- LECCIÓN 1 · PARTE <span id="lessonPart">1</span>/3
- </span>
-
- <div class="progress">
-   <div id="lessonProgress"></div>
- </div>
-
- <h2 id="lessonTitle"></h2>
-
- <div class="korean" id="lessonKorean"></div>
-
- <div class="translation" id="lessonTranslation"></div>
-
- <button class="listen" onclick="speakLesson()">
- 🔊 Escuchar coreano
- </button>
-
- <p id="lessonExplanation"></p>
-
- <button class="primary full"
-         id="lessonNext"
-         onclick="nextLesson()">
- Entendido →
- </button>
-
-</div>
-
-
-<div id="quizBox" class="card hidden">
-
- <h3 id="quizQuestion"></h3>
-
- <div id="options"></div>
-
-</div>
-
-</section>
-
-
-<!-- ================= SPEAK ================= -->
-
-<section id="speak" class="hidden">
-
-<div class="card">
-
- <span class="badge">🗣️ PRONUNCIACIÓN</span>
-
- <h2>Habla con tu Buddy</h2>
-
- <p>
- <b>Regla de Korean Buddy:</b>
- no te damos el punto hasta que termines de hablar. ❤️
- </p>
-
-</div>
-
-
-<div class="speakBox">
-
-<div id="speakBuddyAvatar"></div>
-
-<div class="korean">안녕하세요</div>
-
-<div class="translation">
- Annyeonghaseyo · Hola
-</div>
-
-<button class="listen" onclick="speak('안녕하세요')">
- 🔊 Escuchar
-</button>
-
-<br>
-
-<button class="mic" onclick="startSpeech()">
- 🎙️
-</button>
-
-<div class="status" id="speechStatus">
- Toca el micrófono y habla la frase completa.
-</div>
-
-</div>
-
-
-<div class="card">
-
- <h3>🎯 Evaluación</h3>
-
- <p id="speechResult">
- Aún no hemos evaluado tu respuesta.
- </p>
-
-</div>
-
-</section>
-
-
-<!-- ================= HANGUL ================= -->
-
-<section id="hangul" class="hidden">
-
-<div class="card">
-
- <span class="badge">✍️ HANGUL</span>
-
- <h2>Aprende a escribir coreano</h2>
-
- <p>
- Modelo → observa → escucha → copia → escribe sola.
- </p>
-
-</div>
-
-
-<div class="card">
-
- <h3>Consonantes básicas</h3>
-
-<div class="hangul-grid">
-
-<div class="letter" onclick="speak('기역')">
- ㄱ
- <small>기역 · giyeok 🔊</small>
-</div>
-
-<div class="letter" onclick="speak('니은')">
- ㄴ
- <small>니은 · nieun 🔊</small>
-</div>
-
-<div class="letter" onclick="speak('디귿')">
- ㄷ
- <small>디귿 · digeut 🔊</small>
-</div>
-
-<div class="letter" onclick="speak('리을')">
- ㄹ
- <small>리을 · rieul 🔊</small>
-</div>
-
-<div class="letter" onclick="speak('미음')">
- ㅁ
- <small>미음 · mieum 🔊</small>
-</div>
-
-<div class="letter" onclick="speak('비읍')">
- ㅂ
- <small>비읍 · bieup 🔊</small>
-</div>
-
-<div class="letter" onclick="speak('시옷')">
- ㅅ
- <small>시옷 · siot 🔊</small>
-</div>
-
-<div class="letter" onclick="speak('이응')">
- ㅇ
- <small>이응 · ieung 🔊</small>
-</div>
-
-<div class="letter" onclick="speak('지읒')">
- ㅈ
- <small>지읒 · jieut 🔊</small>
-</div>
-
-</div>
-
-</div>
-
-
-<div class="card">
-
- <h3>📝 Práctica</h3>
-
- <p>
- Comienza mirando la letra y luego intenta escribirla tú.
- </p>
-
-<div class="flash">
-
- <div class="word">ㄱ</div>
-
- <div class="meaning">
- 기역 · giyeok
- </div>
-
- <button class="listen"
-         onclick="speak('기역')">
- 🔊 Escuchar
- </button>
-
-</div>
-
-<p>
- <b>Próximamente:</b>
- hojas de trazado imprimibles y práctica de escritura
- con lápiz/táctil.
-</p>
-
-</div>
-
-</section>
-
-
-<!-- ================= FLASHCARDS ================= -->
-
-<section id="flash" class="hidden">
-
-<div class="card">
-
- <span class="badge">🖼️ LÁMINAS</span>
-
- <h2>Aprende con imágenes</h2>
-
- <p>
- Toca una palabra para escuchar cómo se pronuncia.
- </p>
-
-</div>
-
-
-<div class="card flash">
-
- <div style="font-size:65px">☕</div>
-
- <div class="word">커피</div>
-
- <div class="meaning">
- Café · keopi
- </div>
-
- <button class="primary"
-         onclick="speak('커피')">
- 🔊 Escuchar
- </button>
-
-</div>
-
-
-<div class="card flash">
-
- <div style="font-size:65px">💧</div>
-
- <div class="word">물</div>
-
- <div class="meaning">
- Agua · mul
- </div>
-
- <button class="primary"
-         onclick="speak('물')">
- 🔊 Escuchar
- </button>
-
-</div>
-
-
-<div class="card flash">
-
- <div style="font-size:65px">🍰</div>
-
- <div class="word">케이크</div>
-
- <div class="meaning">
- Pastel · keikeu
- </div>
-
- <button class="primary"
-         onclick="speak('케이크')">
- 🔊 Escuchar
- </button>
-
-</div>
-
-
-<div class="card flash">
-
- <div style="font-size:65px">🥬</div>
-
- <div class="word">김치</div>
-
- <div class="meaning">
- Kimchi · gimchi
- </div>
-
- <button class="primary"
-         onclick="speak('김치')">
- 🔊 Escuchar
- </button>
-
-</div>
-
-</section>
-
-
-<!-- ================= PROGRESS ================= -->
-
-<section id="progress" class="hidden">
-
-<div class="card">
-
- <h2>🏆 Mi progreso</h2>
-
- <p>
- Tu progreso se guarda en este dispositivo.
- </p>
-
- <div class="stats">
-
   <div class="stat">
-   ⭐ <span id="xp2">0</span>
-   <small>XP</small>
+    <strong>🔥 1</strong>
+    <span>Días seguidos</span>
+  </div>
+  <div class="stat">
+    <strong>⭐ 83</strong>
+    <span>Puntos reales</span>
+  </div>
+  <div class="stat">
+    <strong>🇰🇷 18</strong>
+    <span>Situaciones</span>
+  </div>
+</div>
+
+<!-- HOME -->
+<section id="home" class="page active">
+
+  <div class="card">
+    <span class="badge">🌸 CONOCE A TUS BUDDIES</span>
+
+    <h2 class="section-title">¿Quién te acompañará hoy?</h2>
+
+    <p class="section-sub">
+      Puedes cambiar de Buddy cuando quieras.
+      Tu progreso siempre permanece contigo. 💕
+    </p>
+
+    <div class="buddy-grid">
+
+      <div class="buddy-card" data-buddy="sora">
+        <div class="avatar" id="avatar-sora"></div>
+        <div class="buddy-name">Sora 🌸</div>
+        <div class="buddy-role">Dulce y paciente</div>
+        <button class="choose-btn">Elegir</button>
+      </div>
+
+      <div class="buddy-card" data-buddy="jin">
+        <div class="avatar" id="avatar-jin"></div>
+        <div class="buddy-name">Jin 🔥</div>
+        <div class="buddy-role">Retador y motivador</div>
+        <button class="choose-btn">Elegir</button>
+      </div>
+
+      <div class="buddy-card" data-buddy="mina">
+        <div class="avatar" id="avatar-mina"></div>
+        <div class="buddy-name">Mina 😂</div>
+        <div class="buddy-role">Divertida y traviesa</div>
+        <button class="choose-btn">Elegir</button>
+      </div>
+
+      <div class="buddy-card" data-buddy="hana">
+        <div class="avatar" id="avatar-hana"></div>
+        <div class="buddy-name">Hana 👩🏻‍🏫</div>
+        <div class="buddy-role">Tu profesora</div>
+        <button class="choose-btn">Elegir</button>
+      </div>
+
+    </div>
   </div>
 
-  <div class="stat">
-   🇰🇷 <span id="skills2">0</span>
-   <small>habilidades</small>
+  <div class="card">
+    <span class="badge">🇰🇷 LECCIÓN 1</span>
+    <h2 class="section-title">¡Hola! Soy Suhail</h2>
+    <p class="section-sub">
+      Hoy aprenderás a saludar y presentarte en coreano.
+    </p>
+
+    <div style="margin-top:12px;font-size:20px;font-weight:900;">
+      안녕하세요.
+    </div>
+    <div style="color:#8b83a5;">Annyeonghaseyo.</div>
+    <div>Hola.</div>
+
+    <div style="margin-top:14px;font-size:20px;font-weight:900;">
+      저는 수하일이에요.
+    </div>
+    <div style="color:#8b83a5;">Jeoneun Suhail-ieyo.</div>
+    <div>Soy Suhail.</div>
+
+    <button class="primary" style="margin-top:15px;width:100%;" onclick="openPage('lesson')">
+      🚀 Empezar lección
+    </button>
   </div>
 
- </div>
+</section>
 
-</div>
+<!-- BUDDY -->
+<section id="buddy" class="page">
 
+  <div class="card talking-area">
 
-<div class="card">
+    <span class="badge" id="buddyBadge">🌸 SORA</span>
 
- <h3>🧠 Lo que ya puedes hacer</h3>
+    <div class="big-avatar" id="bigAvatar"></div>
 
- <p>⬜ Saludar en coreano</p>
- <p>⬜ Decir tu nombre</p>
- <p>⬜ Entender una pregunta básica</p>
- <p>⬜ Pedir algo</p>
- <p>⬜ Reconocer Hangul</p>
+    <div class="speech-bubble">
+      <div class="korean" id="buddyKorean"></div>
+      <div class="roman" id="buddyRoman"></div>
+      <div class="translation" id="buddySpanish"></div>
+    </div>
 
-</div>
+    <div class="action-row">
+      <button class="primary" id="speakBuddyBtn">
+        🔊 Escuchar
+      </button>
+
+      <button class="secondary" id="nextBuddyBtn">
+        ➡️ Siguiente
+      </button>
+    </div>
+
+    <button class="secondary" style="width:100%;margin-top:8px;" id="voiceSettingsBtn">
+      🎙️ Configurar voces
+    </button>
+
+  </div>
+
+  <div class="card">
+    <h2 class="section-title">💜 Tu Buddy</h2>
+    <p class="section-sub">
+      No tienes que escoger uno para siempre.
+      Cambia entre Sora, Jin, Mina y Hana cuando quieras.
+    </p>
+  </div>
+
+</section>
+
+<!-- LESSON -->
+<section id="lesson" class="page">
+
+  <div class="card">
+    <span class="badge">🇰🇷 LECCIÓN 1</span>
+    <h2 class="section-title">¡Hola! Soy Suhail</h2>
+
+    <div style="text-align:center;margin:25px 0;">
+      <div class="hangul-letter" style="font-size:45px;">
+        안녕하세요
+      </div>
+      <div style="font-size:20px;font-weight:800;">
+        Annyeonghaseyo
+      </div>
+      <div style="color:#8b83a5;">Hola</div>
+      <button class="secondary" style="margin-top:12px;" onclick="speakKorean('안녕하세요')">
+        🔊 Escuchar pronunciación
+      </button>
+    </div>
+
+    <hr style="border:0;border-top:1px solid #eee;margin:20px 0;">
+
+    <div style="text-align:center;">
+      <div class="hangul-letter" style="font-size:38px;">
+        저는 수하일이에요
+      </div>
+      <div style="font-weight:800;">
+        Jeoneun Suhail-ieyo
+      </div>
+      <div style="color:#8b83a5;">Soy Suhail</div>
+
+      <button class="secondary" style="margin-top:12px;" onclick="speakKorean('저는 수하일이에요')">
+        🔊 Escuchar pronunciación
+      </button>
+    </div>
+
+    <button class="primary" style="width:100%;margin-top:20px;" onclick="openPage('speak')">
+      🎙️ Ahora inténtalo tú
+    </button>
+  </div>
+
+</section>
+
+<!-- SPEAK -->
+<section id="speak" class="page">
+
+  <div class="card speak-box">
+
+    <span class="badge">🎙️ HABLA</span>
+
+    <h2 class="section-title">Ahora tú</h2>
+
+    <p class="section-sub">
+      Escucha la frase completa y después dilo tú.
+      <strong>No te voy a aprobar antes de que termines.</strong> 😏
+    </p>
+
+    <div class="speech-bubble">
+      <div class="korean">안녕하세요.</div>
+      <div class="roman">Annyeonghaseyo.</div>
+      <div>Hola.</div>
+    </div>
+
+    <div class="listen-status" id="listenStatus">
+      Presiona el micrófono cuando estés lista.
+    </div>
+
+    <button class="mic" id="micButton" type="button">
+      🎙️
+    </button>
+
+    <div class="result" id="speechResult">
+      Aquí aparecerá lo que dijiste.
+    </div>
+
+    <div class="feedback" id="speechFeedback"></div>
+
+    <button class="secondary" style="width:100%;margin-top:12px;" onclick="speakKorean('안녕하세요')">
+      🔊 Escuchar otra vez
+    </button>
+
+  </div>
+
+</section>
+
+<!-- HANGUL -->
+<section id="hangul" class="page">
+
+  <div class="card">
+
+    <span class="badge">✍️ HANGUL</span>
+
+    <h2 class="section-title">Aprende a escribir</h2>
+
+    <p class="section-sub">
+      Modelo → traza → copia → escribe sola.
+      No necesitas teclado coreano. 💕
+    </p>
+
+    <div class="hangul-letter" id="hangulLetter">ㄱ</div>
+
+    <div class="hangul-example" id="hangulExample">
+      기역 — gieok
+    </div>
+
+    <button class="secondary" style="width:100%;margin-top:12px;" id="hangulAudio">
+      🔊 Escuchar
+    </button>
+
+    <canvas id="drawCanvas" width="900" height="500"></canvas>
+
+    <div class="canvas-actions">
+      <button class="secondary" id="clearCanvas">
+        🧹 Borrar
+      </button>
+      <button class="primary" id="nextHangul">
+        ➡️ Siguiente
+      </button>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FLASH -->
+<section id="flash" class="page">
+
+  <div class="card">
+
+    <span class="badge">🃏 LÁMINAS</span>
+
+    <h2 class="section-title">Escucha y repite</h2>
+
+    <div class="flash">
+
+      <div class="flash-word" id="flashWord">
+        커피
+      </div>
+
+      <div class="flash-rom" id="flashRoman">
+        keopi
+      </div>
+
+      <div class="flash-meaning" id="flashMeaning">
+        café
+      </div>
+
+      <div class="flash-buttons">
+
+        <button class="primary" id="flashListen">
+          🔊 Escuchar
+        </button>
+
+        <button class="secondary" id="flashRepeat">
+          🎙️ Repítela
+        </button>
+
+      </div>
+
+      <button class="secondary" style="width:100%;margin-top:9px;" id="flashNext">
+        ➡️ Otra palabra
+      </button>
+
+      <div id="flashFeedback" style="margin-top:10px;font-weight:800;"></div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- PROGRESS -->
+<section id="progress" class="page">
+
+  <div class="card">
+
+    <span class="badge">📈 PROGRESO REAL</span>
+
+    <h2 class="section-title">Lo que YA puedes hacer</h2>
+
+    <p class="section-sub">
+      Korean Buddy mide habilidades, no solamente puntos.
+    </p>
+
+    <div class="progress-row">
+      <div class="progress-top">
+        <span>🗣️ Conversaciones</span>
+        <span>37</span>
+      </div>
+      <div class="bar">
+        <div class="fill" style="width:72%"></div>
+      </div>
+    </div>
+
+    <div class="progress-row">
+      <div class="progress-top">
+        <span>🎧 Comprensión</span>
+        <span>82</span>
+      </div>
+      <div class="bar">
+        <div class="fill" style="width:64%"></div>
+      </div>
+    </div>
+
+    <div class="progress-row">
+      <div class="progress-top">
+        <span>✍️ Escritura</span>
+        <span>146</span>
+      </div>
+      <div class="bar">
+        <div class="fill" style="width:45%"></div>
+      </div>
+    </div>
+
+    <div class="progress-row">
+      <div class="progress-top">
+        <span>🇰🇷 Situaciones</span>
+        <span>18</span>
+      </div>
+      <div class="bar">
+        <div class="fill" style="width:38%"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="card">
+
+    <h2 class="section-title">🧠 Ya puedes...</h2>
+
+    <p>✅ Saludar en coreano</p>
+    <p>✅ Decir tu nombre</p>
+    <p>✅ Reconocer palabras básicas</p>
+    <p>⬜ Pedir algo en una cafetería</p>
+    <p>⬜ Tener una mini conversación</p>
+
+  </div>
 
 </section>
 
 </div>
 
+<!-- BOTTOM NAV -->
 
-<!-- ================= NAV ================= -->
+<nav class="bottom-nav">
 
-<nav>
+  <button class="nav-btn active" data-page="home">
+    <span class="nav-icon">🏠</span>
+    Inicio
+  </button>
 
-<button onclick="showSection('home')">
- <span>🏠</span>
- Inicio
-</button>
+  <button class="nav-btn" data-page="buddy">
+    <span class="nav-icon">💜</span>
+    Buddy
+  </button>
 
-<button onclick="showSection('lesson')">
- <span>📚</span>
- Lecciones
-</button>
+  <button class="nav-btn" data-page="lesson">
+    <span class="nav-icon">📚</span>
+    Lección
+  </button>
 
-<button onclick="showSection('speak')">
- <span>🗣️</span>
- Hablar
-</button>
+  <button class="nav-btn" data-page="hangul">
+    <span class="nav-icon">✍️</span>
+    Hangul
+  </button>
 
-<button onclick="showSection('hangul')">
- <span>✍️</span>
- Hangul
-</button>
-
-<button onclick="showSection('flash')">
- <span>🖼️</span>
- Láminas
-</button>
-
-<button onclick="showSection('progress')">
- <span>🏆</span>
- Progreso
-</button>
+  <button class="nav-btn" data-page="progress">
+    <span class="nav-icon">📈</span>
+    Progreso
+  </button>
 
 </nav>
-
 
 <script>
 
 /* =========================================================
-   DATOS
-========================================================= */
+   KOREAN BUDDY
+   ========================================================= */
 
-let xp=Number(localStorage.getItem("kb_xp")||0);
-let skills=Number(localStorage.getItem("kb_skills")||0);
+const buddies = {
 
-let currentBuddy="sora";
-let lessonStep=0;
+  sora:{
+    id:"sora",
+    name:"Sora",
+    emoji:"🌸",
+    korean:"안녕하세요! 저는 소라예요.",
+    roman:"Annyeonghaseyo! Jeoneun Sora-yeyo.",
+    speech:"¡Hola! Soy Sora. Vamos a aprender coreano juntas, paso a paso. 💕",
+    voiceType:"female",
+    color:"#ffb5d8"
+  },
 
+  jin:{
+    id:"jin",
+    name:"Jin",
+    emoji:"🔥",
+    korean:"안녕하세요! 저는 진이에요.",
+    roman:"Annyeonghaseyo! Jeoneun Jin-ieyo.",
+    speech:"¡Hola! Soy Jin. Prepárate. Aquí vamos a aprender coreano de verdad. 😏",
+    voiceType:"male",
+    color:"#7771a9"
+  },
 
-const buddies={
+  mina:{
+    id:"mina",
+    name:"Mina",
+    emoji:"😂",
+    korean:"안녕하세요! 저는 미나예요!",
+    roman:"Annyeonghaseyo! Jeoneun Mina-yeyo!",
+    speech:"¡Hola! Soy Mina. Vamos a aprender coreano sin aburrirnos, porque eso sería criminal. 😂",
+    voiceType:"female",
+    color:"#c49aff"
+  },
 
- sora:{
-  name:"Sora",
-  emoji:"🌸",
-  korean:"안녕하세요! 저는 소라예요.",
-  translation:
-  "¡Hola! Soy Sora. Me encanta aprender contigo. Iremos paso a paso. 💕",
-  style:"Paciente, dulce y tranquila.",
-  rate:.78,
-  pitch:1.25
- },
-
- jin:{
-  name:"Jin",
-  emoji:"🔥",
-  korean:"안녕하세요! 저는 진이에요.",
-  translation:
-  "¡Hola! Soy Jin. Prepárate para aprender y superarte. 😏",
-  style:"Energético, exigente y motivador.",
-  rate:1.05,
-  pitch:.9
- },
-
- mina:{
-  name:"Mina",
-  emoji:"😂",
-  korean:"안녕하세요! 저는 미나예요!",
-  translation:
-  "¡Hola! Soy Mina. ¡Vamos a aprender coreano sin aburrirnos! 😂",
-  style:"Divertida, juguetona y espontánea.",
-  rate:1,
-  pitch:1.35
- },
-
- hana:{
-  name:"Hana",
-  emoji:"👩🏻‍🏫",
-  korean:"안녕하세요. 저는 하나예요.",
-  translation:
-  "Hola. Soy Hana. Te explicaré el coreano de forma clara y ordenada.",
-  style:"Estructurada, clara y profesional.",
-  rate:.82,
-  pitch:1.05
- }
+  hana:{
+    id:"hana",
+    name:"Hana",
+    emoji:"👩🏻‍🏫",
+    korean:"안녕하세요. 저는 하나예요.",
+    roman:"Annyeonghaseyo. Jeoneun Hana-yeyo.",
+    speech:"Hola. Soy Hana. Yo te ayudaré a entender el coreano paso a paso.",
+    voiceType:"female",
+    color:"#83b6e8"
+  }
 
 };
 
+let currentBuddy = "sora";
+let buddySpeechIndex = 0;
 
 /* =========================================================
-   PERSONAJES SVG
-========================================================= */
+   AVATAR SVG
+   ========================================================= */
 
 function avatarSVG(type){
 
- if(type==="sora"){
+  const common = `
+    <defs>
+      <linearGradient id="bg${type}" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#fff4fa"/>
+        <stop offset="100%" stop-color="#eee9ff"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="300" rx="35" fill="url(#bg${type})"/>
+  `;
 
- return `
- <svg class="character" viewBox="0 0 200 200">
+  if(type==="sora"){
+    return `
+    <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+      ${common}
 
-   <circle cx="100" cy="100" r="100" fill="#f8ddea"/>
+      <circle cx="150" cy="155" r="83" fill="#f7c9b5"/>
 
-   <!-- cabello -->
-   <path d="M38 105
-            C25 35 65 10 105 18
-            C160 5 180 65 164 125
-            L145 165
-            L55 165
-            Z"
-         fill="#3c2945"/>
+      <path d="M70 142 Q60 45 150 43 Q245 47 232 153
+               Q215 102 187 92 Q153 119 96 90 Q83 120 70 142"
+            fill="#3c2c42"/>
 
-   <!-- cara -->
-   <ellipse class="head"
-            cx="100" cy="100"
-            rx="58" ry="68"
-            fill="#f6c7aa"/>
+      <path d="M79 103 Q68 198 98 238 Q68 226 60 177
+               Q54 130 79 103" fill="#3c2c42"/>
 
-   <!-- flequillo -->
-   <path d="M45 72
-            C55 25 135 20 158 70
-            C140 62 130 70 115 55
-            C95 78 72 65 45 72"
-         fill="#3c2945"/>
+      <path d="M221 103 Q234 190 202 239 Q232 222 240 175
+               Q246 130 221 103" fill="#3c2c42"/>
 
-   <!-- ojos -->
-   <circle cx="78" cy="103" r="5" fill="#352534"/>
-   <circle cx="122" cy="103" r="5" fill="#352534"/>
+      <ellipse class="blink" cx="118" cy="155" rx="6" ry="9" fill="#332a40"/>
+      <ellipse class="blink" cx="182" cy="155" rx="6" ry="9" fill="#332a40"/>
 
-   <!-- boca -->
-   <ellipse class="mouth"
-            cx="100"
-            cy="128"
-            rx="9"
-            ry="4"
-            fill="#b84f75"/>
+      <circle cx="116" cy="158" r="2" fill="white"/>
+      <circle cx="180" cy="158" r="2" fill="white"/>
 
-   <!-- ropa -->
-   <path d="M50 170 Q100 145 150 170 L175 200 L25 200 Z"
-         fill="#e98bb2"/>
+      <path d="M137 184 Q150 194 163 184"
+            fill="none" stroke="#9d5064" stroke-width="4" stroke-linecap="round"/>
 
- </svg>`;
- }
+      <path d="M82 227 Q150 205 218 227 L236 300 H64Z"
+            fill="#ff9ecb"/>
 
+      <circle cx="83" cy="184" r="11" fill="#ffb3c9" opacity=".55"/>
+      <circle cx="217" cy="184" r="11" fill="#ffb3c9" opacity=".55"/>
 
- if(type==="jin"){
+      <path d="M112 105 Q150 128 188 105"
+            fill="none" stroke="#ffb7d5" stroke-width="5"/>
 
- return `
- <svg class="character" viewBox="0 0 200 200">
+      <path class="mouth" d="M140 184 Q150 190 160 184"
+            fill="#c55b78"/>
+    </svg>`;
+  }
 
-   <circle cx="100" cy="100" r="100" fill="#ffe2d5"/>
+  if(type==="jin"){
+    return `
+    <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+      ${common}
 
-   <!-- cabello -->
-   <path d="M35 85
-            C35 20 155 5 170 78
-            L155 115
-            L45 115 Z"
-         fill="#20202a"/>
+      <circle cx="150" cy="150" r="83" fill="#f3c4aa"/>
 
-   <!-- cara -->
-   <ellipse class="head"
-            cx="100" cy="105"
-            rx="58" ry="68"
-            fill="#f0b991"/>
+      <path d="M70 143 Q57 47 150 39 Q245 43 231 145
+               Q207 101 182 84 Q143 113 100 85 Q86 112 70 143"
+            fill="#241f2d"/>
 
-   <!-- cabello frontal -->
-   <path d="M42 72
-            Q75 25 105 52
-            Q130 30 158 65
-            L145 82
-            Q115 60 95 73
-            Q65 58 42 72"
-         fill="#20202a"/>
+      <path d="M76 90 Q116 52 157 68 Q194 46 225 90
+               Q195 67 172 84 Q134 105 98 83Z"
+            fill="#342c40"/>
 
-   <!-- cejas -->
-   <path d="M65 94 Q78 87 88 94"
-         stroke="#33252c"
-         stroke-width="5"
-         fill="none"/>
+      <ellipse class="blink" cx="119" cy="151" rx="6" ry="8" fill="#27202e"/>
+      <ellipse class="blink" cx="181" cy="151" rx="6" ry="8" fill="#27202e"/>
 
-   <path d="M112 94 Q125 87 138 94"
-         stroke="#33252c"
-         stroke-width="5"
-         fill="none"/>
+      <circle cx="120" cy="153" r="2" fill="white"/>
+      <circle cx="182" cy="153" r="2" fill="white"/>
 
-   <!-- ojos -->
-   <circle cx="78" cy="105" r="5" fill="#241c25"/>
-   <circle cx="122" cy="105" r="5" fill="#241c25"/>
+      <path d="M136 181 Q150 188 165 180"
+            fill="none" stroke="#9a4e57" stroke-width="4" stroke-linecap="round"/>
 
-   <!-- boca -->
-   <ellipse class="mouth"
-            cx="100"
-            cy="132"
-            rx="10"
-            ry="4"
-            fill="#8d3f4b"/>
+      <path d="M75 225 Q150 201 225 225 L250 300 H50Z"
+            fill="#292735"/>
 
-   <!-- ropa -->
-   <path d="M45 170 Q100 145 155 170 L180 200 L20 200 Z"
-         fill="#292943"/>
+      <path d="M117 224 L150 270 L183 224"
+            fill="#ffffff"/>
 
-   <path d="M75 170 L100 195 L125 170"
-         fill="#e84c62"/>
+      <path d="M143 224 L150 255 L157 224"
+            fill="#d94b6c"/>
 
- </svg>`;
- }
+      <path class="mouth" d="M140 181 Q151 188 161 180"
+            fill="#7e3547"/>
+    </svg>`;
+  }
 
+  if(type==="mina"){
+    return `
+    <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+      ${common}
 
- if(type==="mina"){
+      <circle cx="150" cy="153" r="82" fill="#f3c2ab"/>
 
- return `
- <svg class="character" viewBox="0 0 200 200">
+      <path d="M67 147 Q52 58 146 43 Q244 42 234 149
+               Q214 105 185 94 Q152 114 105 89 Q87 120 67 147"
+            fill="#5b3a68"/>
 
-   <circle cx="100" cy="100" r="100" fill="#f1ddff"/>
+      <path d="M75 104 Q45 170 79 231 Q57 213 51 169 Q48 125 75 104"
+            fill="#7b4d91"/>
 
-   <!-- cabello -->
-   <path d="M30 105
-            C20 40 55 15 100 20
-            C155 15 180 65 165 130
-            L145 170
-            L50 170
-            Z"
-         fill="#70418c"/>
+      <path d="M225 104 Q253 170 220 232 Q245 211 248 167 Q248 126 225 104"
+            fill="#7b4d91"/>
 
-   <!-- cara -->
-   <ellipse class="head"
-            cx="100" cy="103"
-            rx="58" ry="68"
-            fill="#f4c5a9"/>
+      <ellipse class="blink" cx="118" cy="153" rx="7" ry="9" fill="#3d2b49"/>
+      <ellipse class="blink" cx="181" cy="153" rx="7" ry="9" fill="#3d2b49"/>
 
-   <!-- flequillo -->
-   <path d="M40 70
-            Q75 25 110 52
-            Q135 30 160 70
-            Q140 67 120 75
-            Q90 55 65 75 Z"
-         fill="#70418c"/>
+      <circle cx="118" cy="155" r="2.5" fill="white"/>
+      <circle cx="181" cy="155" r="2.5" fill="white"/>
 
-   <!-- ojos -->
-   <circle cx="77" cy="104" r="5" fill="#322238"/>
-   <circle cx="123" cy="104" r="5" fill="#322238"/>
+      <path d="M132 181 Q150 199 169 181"
+            fill="none" stroke="#a84e71" stroke-width="5" stroke-linecap="round"/>
 
-   <!-- boca sonriente -->
-   <ellipse class="mouth"
-            cx="100"
-            cy="130"
-            rx="11"
-            ry="5"
-            fill="#b44970"/>
+      <path d="M75 225 Q150 204 225 225 L248 300 H52Z"
+            fill="#ffc857"/>
 
-   <!-- ropa -->
-   <path d="M45 170 Q100 145 155 170 L180 200 L20 200 Z"
-         fill="#f2c94c"/>
+      <circle cx="83" cy="185" r="10" fill="#ff9fbd" opacity=".55"/>
+      <circle cx="216" cy="185" r="10" fill="#ff9fbd" opacity=".55"/>
 
-   <!-- pequeño lazo -->
-   <circle cx="150" cy="52" r="10" fill="#ff7baa"/>
+      <path class="mouth" d="M132 181 Q150 198 169 181"
+            fill="#c9577b"/>
+    </svg>`;
+  }
 
- </svg>`;
- }
+  return `
+  <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+    ${common}
 
+    <circle cx="150" cy="150" r="83" fill="#f1c3ab"/>
 
- if(type==="hana"){
+    <path d="M69 142 Q59 46 150 40 Q240 43 231 144
+             Q210 98 185 88 Q151 109 102 86 Q85 115 69 142"
+          fill="#3b3040"/>
 
- return `
- <svg class="character" viewBox="0 0 200 200">
+    <path d="M77 107 Q64 170 82 227 Q61 204 58 165
+             Q57 130 77 107" fill="#3b3040"/>
 
-   <circle cx="100" cy="100" r="100" fill="#dfeeff"/>
+    <path d="M223 107 Q237 170 218 227 Q239 203 242 165
+             Q242 130 223 107" fill="#3b3040"/>
 
-   <!-- cabello -->
-   <path d="M35 110
-            C25 35 70 10 110 20
-            C160 20 180 70 160 145
-            L145 170
-            L45 170
-            Z"
-         fill="#352b32"/>
+    <ellipse class="blink" cx="118" cy="152" rx="6" ry="8" fill="#30263a"/>
+    <ellipse class="blink" cx="182" cy="152" rx="6" ry="8" fill="#30263a"/>
 
-   <!-- cara -->
-   <ellipse class="head"
-            cx="100" cy="100"
-            rx="57"
-            ry="67"
-            fill="#f1c3a5"/>
+    <circle cx="118" cy="154" r="2" fill="white"/>
+    <circle cx="182" cy="154" r="2" fill="white"/>
 
-   <!-- cabello -->
-   <path d="M45 70
-            Q80 20 120 48
-            Q145 35 160 70
-            Q140 68 125 78
-            Q100 58 72 78 Z"
-         fill="#352b32"/>
+    <path d="M136 182 Q150 190 164 182"
+          fill="none" stroke="#9c5365" stroke-width="4" stroke-linecap="round"/>
 
-   <!-- gafas -->
-   <circle cx="76" cy="103" r="15"
-           fill="none"
-           stroke="#403845"
-           stroke-width="3"/>
+    <rect x="99" y="138" width="42" height="27"
+          rx="8" fill="none" stroke="#5b5471" stroke-width="4"/>
+    <rect x="159" y="138" width="42" height="27"
+          rx="8" fill="none" stroke="#5b5471" stroke-width="4"/>
+    <path d="M141 150 H159" stroke="#5b5471" stroke-width="4"/>
 
-   <circle cx="124" cy="103" r="15"
-           fill="none"
-           stroke="#403845"
-           stroke-width="3"/>
+    <path d="M76 225 Q150 202 224 225 L247 300 H53Z"
+          fill="#83b6e8"/>
 
-   <line x1="91" y1="103"
-         x2="109" y2="103"
-         stroke="#403845"
-         stroke-width="3"/>
-
-   <!-- ojos -->
-   <circle cx="76" cy="103" r="4" fill="#302530"/>
-   <circle cx="124" cy="103" r="4" fill="#302530"/>
-
-   <!-- boca -->
-   <ellipse class="mouth"
-            cx="100"
-            cy="130"
-            rx="8"
-            ry="4"
-            fill="#a84f68"/>
-
-   <!-- ropa profesora -->
-   <path d="M45 170 Q100 145 155 170 L180 200 L20 200 Z"
-         fill="#668bc7"/>
-
-   <!-- camisa -->
-   <path d="M100 165 L85 195 L100 185 L115 195 Z"
-         fill="white"/>
-
- </svg>`;
- }
-
- return "";
+    <path class="mouth" d="M139 182 Q150 189 161 182"
+          fill="#a34e64"/>
+  </svg>`;
 }
-
 
 /* =========================================================
-   INSERTAR PERSONAJES
-========================================================= */
+   RENDER AVATARS
+   ========================================================= */
 
-document.getElementById("avatar-sora").innerHTML=avatarSVG("sora");
-document.getElementById("avatar-jin").innerHTML=avatarSVG("jin");
-document.getElementById("avatar-mina").innerHTML=avatarSVG("mina");
-document.getElementById("avatar-hana").innerHTML=avatarSVG("hana");
+["sora","jin","mina","hana"].forEach(id=>{
+  const el=document.getElementById("avatar-"+id);
+  if(el) el.innerHTML=avatarSVG(id);
+});
 
-
-/* =========================================================
-   ESTADÍSTICAS
-========================================================= */
-
-function updateStats(){
-
- document.getElementById("xp").textContent=xp;
- document.getElementById("xp2").textContent=xp;
-
- document.getElementById("skills").textContent=skills;
- document.getElementById("skills2").textContent=skills;
-
-}
-
-function save(){
-
- localStorage.setItem("kb_xp",xp);
- localStorage.setItem("kb_skills",skills);
-
- updateStats();
-
-}
-
+document.getElementById("bigAvatar").innerHTML=avatarSVG("sora");
 
 /* =========================================================
-   CONTROL DE ANIMACIÓN
-========================================================= */
+   PAGE NAVIGATION
+   ========================================================= */
 
-function setTalking(id,state){
+function openPage(page){
 
- document.querySelectorAll(".character-avatar")
-   .forEach(el=>el.classList.remove("talking"));
+  document.querySelectorAll(".page").forEach(p=>{
+    p.classList.remove("active");
+  });
 
- if(state){
+  const target=document.getElementById(page);
 
-   const avatar=document.getElementById("mini-"+id);
+  if(target) target.classList.add("active");
 
-   if(avatar)
-     avatar.classList.add("talking");
+  document.querySelectorAll(".nav-btn").forEach(btn=>{
+    btn.classList.toggle("active",btn.dataset.page===page);
+  });
 
-   const big=document.querySelector(
-     "#big-"+id
-   );
-
-   if(big)
-     big.classList.add("talking");
- }
-
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 
-
-/* =========================================================
-   VOZ
-========================================================= */
-
-function speak(text,rate=.85,pitch=1){
-
- if(!("speechSynthesis" in window)){
-
-   alert("Tu navegador no permite reproducir voz aquí.");
-
-   return;
- }
-
- speechSynthesis.cancel();
-
- const u=new SpeechSynthesisUtterance(text);
-
- u.lang="ko-KR";
- u.rate=rate;
- u.pitch=pitch;
-
- u.onstart=()=>{
-   setTalking(currentBuddy,true);
- };
-
- u.onend=()=>{
-   setTalking(currentBuddy,false);
- };
-
- speechSynthesis.speak(u);
-
-}
-
-
-/* =========================================================
-   HABLAR COREANO + ESPAÑOL
-========================================================= */
-
-function speakSequence(korean,spanish){
-
- if(!("speechSynthesis" in window))
-   return;
-
- speechSynthesis.cancel();
-
- const b=buddies[currentBuddy];
-
- const ko=new SpeechSynthesisUtterance(korean);
-
- ko.lang="ko-KR";
- ko.rate=b.rate;
- ko.pitch=b.pitch;
-
- ko.onstart=()=>{
-   setTalking(currentBuddy,true);
- };
-
- ko.onend=()=>{
-
-   setTalking(currentBuddy,false);
-
-   setTimeout(()=>{
-
-     const es=new SpeechSynthesisUtterance(spanish);
-
-     es.lang="es-ES";
-     es.rate=.92;
-     es.pitch=1;
-
-     es.onstart=()=>{
-       setTalking(currentBuddy,true);
-     };
-
-     es.onend=()=>{
-       setTalking(currentBuddy,false);
-     };
-
-     speechSynthesis.speak(es);
-
-   },350);
-
- };
-
- speechSynthesis.speak(ko);
-
-}
-
+document.querySelectorAll(".nav-btn").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    openPage(btn.dataset.page);
+  });
+});
 
 /* =========================================================
    BUDDY
-========================================================= */
+   ========================================================= */
 
-function speakCurrentBuddy(){
+function renderBuddy(){
 
- const b=buddies[currentBuddy];
+  const b=buddies[currentBuddy];
 
- speakSequence(
-   b.korean,
-   b.translation
- );
+  document.getElementById("buddyBadge").textContent=
+    b.emoji+" "+b.name.toUpperCase();
 
+  document.getElementById("bigAvatar").innerHTML=
+    avatarSVG(currentBuddy);
+
+  document.getElementById("buddyKorean").textContent=b.korean;
+  document.getElementById("buddyRoman").textContent=b.roman;
+  document.getElementById("buddySpanish").textContent=b.speech;
+
+  document.querySelectorAll(".buddy-card").forEach(card=>{
+    const selected=card.dataset.buddy===currentBuddy;
+
+    card.classList.toggle("selected",selected);
+
+    const btn=card.querySelector(".choose-btn");
+
+    if(selected){
+      btn.textContent="✓ Tu Buddy";
+      btn.classList.add("selected");
+    }else{
+      btn.textContent="Elegir";
+      btn.classList.remove("selected");
+    }
+  });
 }
 
+document.querySelectorAll(".buddy-card").forEach(card=>{
+  card.addEventListener("click",()=>{
+    currentBuddy=card.dataset.buddy;
+    renderBuddy();
+    openPage("buddy");
+  });
+});
 
-function showBuddy(id){
+document.getElementById("nextBuddyBtn").addEventListener("click",()=>{
 
- currentBuddy=id;
+  const ids=Object.keys(buddies);
 
- const b=buddies[id];
+  const index=ids.indexOf(currentBuddy);
 
- document.getElementById("home")
-   .classList.add("hidden");
+  currentBuddy=ids[(index+1)%ids.length];
 
- document.getElementById("buddyPage")
-   .classList.remove("hidden");
-
-
- document.getElementById("buddyCard").innerHTML=`
-
- <div style="text-align:center">
-
-   <div
-     class="avatar large character-avatar"
-     id="big-${id}"
-     style="margin:auto"
-   >
-     ${avatarSVG(id)}
-   </div>
-
-   <div class="talking-label">
-     🗣️ ${b.name} está hablando...
-   </div>
-
-   <div class="character-name">
-     ${b.name}
-   </div>
-
-   <span class="badge">
-     ${b.style}
-   </span>
-
-   <div class="korean">
-     ${b.korean}
-   </div>
-
-   <div class="translation">
-     ${b.translation}
-   </div>
-
-   <button
-     class="listen"
-     onclick="speakCurrentBuddy()"
-   >
-     🔊 Escuchar a ${b.name}
-   </button>
-
-   <p>
-     <b>Así aprenderás conmigo:</b><br>
-     ${b.style}
-   </p>
-
- </div>
-
- `;
-
-
- setTimeout(()=>{
-
-   speakCurrentBuddy();
-
- },500);
-
-}
-
-
-function goHome(){
-
- speechSynthesis.cancel();
-
- setTalking(currentBuddy,false);
-
- document.getElementById("buddyPage")
-   .classList.add("hidden");
-
- document.getElementById("home")
-   .classList.remove("hidden");
-
-}
-
+  renderBuddy();
+});
 
 /* =========================================================
-   SECCIONES
-========================================================= */
+   SPEECH SYNTHESIS
+   ========================================================= */
 
-function showSection(id){
+let voices=[];
+let selectedJinVoice=null;
 
- speechSynthesis.cancel();
+function loadVoices(){
 
- document.querySelectorAll("section")
-   .forEach(s=>s.classList.add("hidden"));
-
- document.getElementById(id)
-   .classList.remove("hidden");
-
- if(id==="lesson" && lessonStep===0)
-   loadLesson();
+  voices=window.speechSynthesis
+    ? window.speechSynthesis.getVoices()
+    : [];
 
 }
 
+if("speechSynthesis" in window){
+
+  loadVoices();
+
+  window.speechSynthesis.onvoiceschanged=loadVoices;
+
+}
+
+/*
+  IMPORTANT:
+  Web Speech API does NOT expose a reliable gender property.
+
+  Therefore we use name heuristics for Jin.
+  If the device offers a Korean male voice with a name
+  indicating male/man/남성/남, it gets priority.
+*/
+
+function koreanVoices(){
+
+  return voices.filter(v=>
+    (v.lang||"").toLowerCase().startsWith("ko")
+  );
+
+}
+
+function chooseVoice(type){
+
+  const ko=koreanVoices();
+
+  if(!ko.length) return null;
+
+  if(type==="male"){
+
+    const maleWords=[
+      "male",
+      "man",
+      "남",
+      "남성",
+      "male korean",
+      "minjun",
+      "junho",
+      "seung",
+      "hyun"
+    ];
+
+    const male=ko.find(v=>{
+      const n=(v.name||"").toLowerCase();
+
+      return maleWords.some(word=>
+        n.includes(word.toLowerCase())
+      );
+    });
+
+    if(male){
+      selectedJinVoice=male;
+      return male;
+    }
+  }
+
+  return ko[0];
+}
+
+function speakKorean(text, type="female"){
+
+  if(!("speechSynthesis" in window)){
+    alert("Tu dispositivo no permite reproducción de voz en este navegador.");
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+
+  const utterance=new SpeechSynthesisUtterance(text);
+
+  utterance.lang="ko-KR";
+  utterance.rate=.88;
+
+  const voice=chooseVoice(type);
+
+  if(voice){
+    utterance.voice=voice;
+  }
+
+  utterance.onstart=()=>{
+
+    document.getElementById("bigAvatar")
+      ?.classList.add("speaking");
+
+  };
+
+  utterance.onend=()=>{
+
+    document.getElementById("bigAvatar")
+      ?.classList.remove("speaking");
+
+  };
+
+  window.speechSynthesis.speak(utterance);
+}
+
+/*
+  Spanish translation is intentionally NOT sent to the
+  Korean voice here.
+
+  Emojis are never spoken.
+*/
+
+function speakBuddy(){
+
+  const b=buddies[currentBuddy];
+
+  if(!("speechSynthesis" in window)){
+    alert("Este navegador no tiene síntesis de voz disponible.");
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+
+  const avatar=document.getElementById("bigAvatar");
+
+  avatar.classList.add("speaking");
+
+  const korean=new SpeechSynthesisUtterance(b.korean);
+
+  korean.lang="ko-KR";
+  korean.rate=.88;
+
+  const koreanVoice=chooseVoice(b.voiceType);
+
+  if(koreanVoice){
+    korean.voice=koreanVoice;
+  }
+
+  const spanish=new SpeechSynthesisUtterance(b.speech);
+
+  spanish.lang="es-PR";
+  spanish.rate=.92;
+
+  korean.onend=()=>{
+
+    setTimeout(()=>{
+      window.speechSynthesis.speak(spanish);
+    },250);
+
+  };
+
+  spanish.onend=()=>{
+    avatar.classList.remove("speaking");
+  };
+
+  window.speechSynthesis.speak(korean);
+
+}
+
+document.getElementById("speakBuddyBtn")
+  .addEventListener("click",speakBuddy);
 
 /* =========================================================
-   LECCIÓN
-========================================================= */
+   VOICE SETTINGS
+   ========================================================= */
 
-const lesson=[
+document.getElementById("voiceSettingsBtn")
+.addEventListener("click",()=>{
 
- {
-  korean:"안녕하세요",
-  translation:"Hola",
-  explanation:
-  "Esta es una de las formas más importantes de saludar en coreano. Es educada y puedes usarla con casi cualquier persona."
- },
+  loadVoices();
 
- {
-  korean:"저는 수하일이에요",
-  translation:"Soy Suhail / Mi nombre es Suhail",
-  explanation:
-  "저는 significa 'yo'. 수하일 es Suhail. 이에요 es una forma educada de decir 'soy/es'."
- },
+  const ko=koreanVoices();
 
- {
-  korean:"잘 지냈어요?",
-  translation:"¿Has estado bien?",
-  explanation:
-  "Ahora ya puedes iniciar una pequeña conversación. Escucha primero y después intentaremos responder."
- }
+  let message="Voces coreanas disponibles:\n\n";
 
+  if(!ko.length){
+
+    message+="No encontré voces coreanas disponibles en este dispositivo.\n\n";
+
+  }else{
+
+    ko.forEach((v,i)=>{
+      message+=(i+1)+". "+v.name+
+        " — "+v.lang+"\n";
+    });
+
+  }
+
+  message+=
+    "\nPara Jin, Korean Buddy intentará escoger automáticamente una voz masculina coreana cuando el dispositivo la identifique.";
+
+  alert(message);
+
+});
+
+/* =========================================================
+   SPEECH RECOGNITION
+   ========================================================= */
+
+const SpeechRecognition=
+  window.SpeechRecognition ||
+  window.webkitSpeechRecognition;
+
+let recognition=null;
+let recognizing=false;
+
+const micButton=document.getElementById("micButton");
+const listenStatus=document.getElementById("listenStatus");
+const speechResult=document.getElementById("speechResult");
+const speechFeedback=document.getElementById("speechFeedback");
+
+if(SpeechRecognition){
+
+  recognition=new SpeechRecognition();
+
+  recognition.lang="ko-KR";
+  recognition.continuous=false;
+  recognition.interimResults=false;
+  recognition.maxAlternatives=3;
+
+  recognition.onstart=()=>{
+
+    recognizing=true;
+
+    micButton.classList.add("listening");
+
+    listenStatus.textContent=
+      "🔴 Te estoy escuchando… di la frase completa.";
+
+    speechFeedback.textContent="";
+
+  };
+
+  recognition.onresult=(event)=>{
+
+    const transcript=
+      event.results[0][0].transcript.trim();
+
+    speechResult.textContent=
+      "Tú dijiste: "+transcript;
+
+    evaluateSpeech(transcript);
+
+  };
+
+  recognition.onerror=(event)=>{
+
+    recognizing=false;
+
+    micButton.classList.remove("listening");
+
+    if(event.error==="not-allowed"){
+
+      listenStatus.textContent=
+        "🎙️ Necesitas permitir el micrófono.";
+
+    }else{
+
+      listenStatus.textContent=
+        "No pude escuchar la frase completa. Inténtalo otra vez.";
+
+    }
+
+  };
+
+  recognition.onend=()=>{
+
+    recognizing=false;
+
+    micButton.classList.remove("listening");
+
+    if(
+      listenStatus.textContent.includes("Te estoy escuchando")
+    ){
+
+      listenStatus.textContent=
+        "Listo. Procesando tu respuesta…";
+
+    }
+
+  };
+
+  micButton.addEventListener("click",()=>{
+
+    if(recognizing){
+
+      recognition.stop();
+      return;
+
+    }
+
+    speechResult.textContent=
+      "Escuchando…";
+
+    try{
+      recognition.start();
+    }catch(e){
+      console.log(e);
+    }
+
+  });
+
+}else{
+
+  micButton.disabled=true;
+
+  listenStatus.innerHTML=
+    "🎙️ Este navegador no ofrece reconocimiento de voz. "+
+    "Puedes practicar escuchando la pronunciación.";
+
+}
+
+function normalizeKorean(text){
+
+  return text
+    .replace(/[.,!?。，！？]/g,"")
+    .replace(/\s+/g,"")
+    .trim();
+
+}
+
+function evaluateSpeech(transcript){
+
+  const expected="안녕하세요";
+
+  const a=normalizeKorean(transcript);
+  const b=normalizeKorean(expected);
+
+  if(a===b){
+
+    speechFeedback.innerHTML=
+      "🎉 <strong>¡Muy bien!</strong> Dijiste la frase completa.";
+
+  }else{
+
+    speechFeedback.innerHTML=
+      "💜 Casi. No te preocupes. Escucha una vez más y vuelve a intentarlo.";
+
+  }
+
+}
+
+/* =========================================================
+   HANGUL DRAWING
+   ========================================================= */
+
+const canvas=document.getElementById("drawCanvas");
+const ctx=canvas.getContext("2d");
+
+let drawing=false;
+
+function position(e){
+
+  const rect=canvas.getBoundingClientRect();
+
+  const point=e.touches ? e.touches[0] : e;
+
+  return {
+    x:(point.clientX-rect.left)*(canvas.width/rect.width),
+    y:(point.clientY-rect.top)*(canvas.height/rect.height)
+  };
+
+}
+
+function startDrawing(e){
+
+  e.preventDefault();
+
+  drawing=true;
+
+  const p=position(e);
+
+  ctx.beginPath();
+  ctx.moveTo(p.x,p.y);
+
+}
+
+function draw(e){
+
+  if(!drawing)return;
+
+  e.preventDefault();
+
+  const p=position(e);
+
+  ctx.lineWidth=10;
+  ctx.lineCap="round";
+  ctx.strokeStyle="#7357e8";
+
+  ctx.lineTo(p.x,p.y);
+  ctx.stroke();
+
+}
+
+function stopDrawing(){
+
+  drawing=false;
+  ctx.beginPath();
+
+}
+
+canvas.addEventListener("pointerdown",startDrawing);
+canvas.addEventListener("pointermove",draw);
+canvas.addEventListener("pointerup",stopDrawing);
+canvas.addEventListener("pointerleave",stopDrawing);
+
+document.getElementById("clearCanvas")
+.addEventListener("click",()=>{
+
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+});
+
+const hangulData=[
+  ["ㄱ","기역 — gieok"],
+  ["ㄴ","니은 — nieun"],
+  ["ㄷ","디귿 — digeut"],
+  ["ㄹ","리을 — rieul"],
+  ["ㅁ","미음 — mieum"],
+  ["ㅂ","비읍 — bieup"],
+  ["ㅅ","시옷 — siot"],
+  ["ㅇ","이응 — ieung"]
 ];
 
+let hangulIndex=0;
 
-function startLesson(){
+function renderHangul(){
 
- lessonStep=0;
+  const item=hangulData[hangulIndex];
 
- showSection("lesson");
+  document.getElementById("hangulLetter")
+    .textContent=item[0];
 
- loadLesson();
-
-}
-
-
-function loadLesson(){
-
- const item=lesson[lessonStep];
-
- document.getElementById("lessonPart")
-   .textContent=lessonStep+1;
-
- document.getElementById("lessonProgress")
-   .style.width=((lessonStep+1)/3*100)+"%";
-
- document.getElementById("lessonKorean")
-   .textContent=item.korean;
-
- document.getElementById("lessonTranslation")
-   .textContent=item.translation;
-
- document.getElementById("lessonExplanation")
-   .textContent=item.explanation;
-
- document.getElementById("quizBox")
-   .classList.add("hidden");
-
- document.getElementById("lessonNext")
-   .textContent=
-   lessonStep===2
-   ?"Practicar →"
-   :"Ya entendí →";
-
- setTimeout(speakLesson,350);
+  document.getElementById("hangulExample")
+    .textContent=item[1];
 
 }
 
+document.getElementById("hangulAudio")
+.addEventListener("click",()=>{
 
-function speakLesson(){
+  speakKorean(hangulData[hangulIndex][0]);
 
- const item=lesson[lessonStep];
+});
 
- speak(
-   item.korean,
-   buddies[currentBuddy].rate,
-   buddies[currentBuddy].pitch
- );
+document.getElementById("nextHangul")
+.addEventListener("click",()=>{
 
-}
+  hangulIndex++;
 
+  if(hangulIndex>=hangulData.length){
+    hangulIndex=0;
+  }
 
-function nextLesson(){
+  renderHangul();
 
- if(lessonStep<2){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
 
-   lessonStep++;
-
-   loadLesson();
-
- }else{
-
-   startQuiz();
-
- }
-
-}
-
+});
 
 /* =========================================================
-   QUIZ
-========================================================= */
+   FLASHCARDS
+   ========================================================= */
 
-function startQuiz(){
+const flashcards=[
+  ["물","mul","agua"],
+  ["커피","keopi","café"],
+  ["케이크","keikeu","pastel"],
+  ["김치","gimchi","kimchi"],
+  ["친구","chingu","amigo/a"],
+  ["선생님","seonsaengnim","profesor/a"],
+  ["감사합니다","gamsahamnida","gracias"],
+  ["안녕하세요","annyeonghaseyo","hola"]
+];
 
- document.getElementById("lessonNext")
-   .classList.add("hidden");
+let flashIndex=1;
 
- document.getElementById("quizBox")
-   .classList.remove("hidden");
+function renderFlash(){
 
- document.getElementById("quizQuestion")
-   .textContent=
-   "¿Cómo respondes a “잘 지냈어요?”";
+  const f=flashcards[flashIndex];
 
- const options=[
-  ["감사합니다","wrong"],
-  ["잘 지냈어요","correct"],
-  ["안녕하세요","wrong"]
- ];
-
- document.getElementById("options").innerHTML=
-
- options.map((o,i)=>
-
- `<button
-   class="option"
-   onclick="answer(${i})"
- >
-   ${o[0]}
- </button>`
-
- ).join("");
+  document.getElementById("flashWord").textContent=f[0];
+  document.getElementById("flashRoman").textContent=f[1];
+  document.getElementById("flashMeaning").textContent=f[2];
+  document.getElementById("flashFeedback").textContent="";
 
 }
 
+document.getElementById("flashListen")
+.addEventListener("click",()=>{
 
-function answer(i){
+  speakKorean(flashcards[flashIndex][0]);
 
- const buttons=
-   document.querySelectorAll(".option");
+});
 
- if(i===1){
+document.getElementById("flashRepeat")
+.addEventListener("click",()=>{
 
-   buttons[i].classList.add("correct");
+  openPage("speak");
 
-   xp+=10;
-   skills++;
+});
 
-   save();
+document.getElementById("flashNext")
+.addEventListener("click",()=>{
 
-   document.getElementById("quizBox").innerHTML=`
+  flashIndex++;
 
-   <h2>🎉 ¡Muy bien!</h2>
+  if(flashIndex>=flashcards.length){
+    flashIndex=0;
+  }
 
-   <p>
-   Ahora puedes responder:
-   </p>
+  renderFlash();
 
-   <div class="korean">
-   잘 지냈어요
-   </div>
-
-   <p style="text-align:center">
-   Has desbloqueado una habilidad real.
-   </p>
-
-   <button
-     class="primary full"
-     onclick="showSection('speak')"
-   >
-   🗣️ Ahora quiero hablar
-   </button>
-
-   `;
-
- }else{
-
-   buttons[i].classList.add("wrong");
-
-   document.getElementById("quizQuestion")
-     .textContent=
-     "Casi. No pasa nada. Escucha otra vez y prueba nuevamente. ❤️";
-
-   speak("잘 지냈어요");
-
- }
-
-}
-
+});
 
 /* =========================================================
-   PRONUNCIACIÓN
-========================================================= */
-
-function startSpeech(){
-
- const status=
-   document.getElementById("speechStatus");
-
- const result=
-   document.getElementById("speechResult");
-
- const SpeechRecognition=
-   window.SpeechRecognition||
-   window.webkitSpeechRecognition;
-
-
- if(!SpeechRecognition){
-
-   status.textContent=
-     "⚠️ Este navegador no ofrece reconocimiento de voz aquí.";
-
-   result.textContent=
-     "Puedes usar el botón 🔊 para escuchar y practicar.";
-
-   return;
-
- }
-
-
- const recognition=
-   new SpeechRecognition();
-
- recognition.lang="ko-KR";
-
- recognition.continuous=false;
-
- recognition.interimResults=true;
-
- recognition.maxAlternatives=3;
-
-
- status.textContent=
-   "🔴 ESCUCHANDO… Habla la frase completa.";
-
- result.textContent=
-   "Estoy esperando que termines…";
-
-
- recognition.start();
-
-
- recognition.onresult=function(event){
-
-   let transcript="";
-
-   for(
-     let i=0;
-     i<event.results.length;
-     i++
-   ){
-
-     transcript+=
-       event.results[i][0].transcript+" ";
-
-   }
-
-
-   transcript=transcript.trim();
-
-
-   if(
-     event.results[
-       event.results.length-1
-     ].isFinal
-   ){
-
-     status.textContent=
-       "🧠 Procesando tu respuesta…";
-
-     setTimeout(()=>{
-
-       evaluateSpeech(
-         transcript,
-         status,
-         result
-       );
-
-     },700);
-
-   }
-
- };
-
-
- recognition.onerror=function(){
-
-   status.textContent=
-     "😕 No pude escucharte.";
-
-   result.textContent=
-     "Prueba nuevamente hablando un poco más cerca del micrófono.";
-
- };
-
-
- recognition.onend=function(){
-
-   if(
-     status.textContent.includes("ESCUCHANDO")
-   ){
-
-     status.textContent=
-       "👂 Esperando…";
-
-   }
-
- };
-
-}
-
-
-/* =========================================================
-   EVALUAR VOZ
-========================================================= */
-
-function normalize(text){
-
- return text
-   .toLowerCase()
-   .replace(/[.,!?¿¡]/g,"")
-   .replace(/\s+/g,"")
-   .trim();
-
-}
-
-
-function evaluateSpeech(
- transcript,
- status,
- result
-){
-
- const normalized=
-   normalize(transcript);
-
- const targets=[
-   normalize("안녕하세요"),
-   normalize("안녕하세용")
- ];
-
- let good=
-   targets.some(
-     t=>normalized.includes(t)
-   );
-
-
- if(good){
-
-   xp+=5;
-
-   save();
-
-   status.textContent=
-     "🎉 ¡Terminaste la frase!";
-
-   result.innerHTML=
-     "✅ <b>Muy bien.</b> Escuché: "+
-     transcript+
-     "<br><br>⭐ +5 XP";
-
- }else{
-
-   status.textContent=
-     "💜 Vamos otra vez.";
-
-   result.innerHTML=
-     "Escuché: <b>"+
-     transcript+
-     "</b><br><br>"+
-     "No te voy a regalar el punto. 😏 "+
-     "Escucha el modelo y vuelve a intentarlo.";
-
-   speak("안녕하세요");
-
- }
-
-}
-
-
-/* =========================================================
-   INICIO
-========================================================= */
-
-updateStats();
+   INITIALIZE
+   ========================================================= */
+
+renderBuddy();
+renderHangul();
+renderFlash();
 
 </script>
 
